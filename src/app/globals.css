@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Noto Sans JP", "Noto Sans SC", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  --font-display: "Fraunces", "Noto Serif", "Noto Naskh Arabic", ui-serif, Georgia,
+    "Times New Roman", "Hiragino Mincho ProN", "Songti SC", serif;
+
+  /* Warm commodity palette — cream, latte, espresso (see README design notes) */
+  --color-cream: #faf4e8;
+  --color-parchment: #f2e7d0;
+  --color-sand: #e2cda6;
+  --color-latte: #ecd9b8;
+  --color-caramel: #c08a4e;
+  --color-bark: #241611;
+  --color-bark-soft: #3a2417;
+  --color-espresso: #1c110a;
+  --color-cocoa: #4a2a18;
+  --color-clay: #a8622c;
+  --color-clay-deep: #7e4a1f;
+  --color-leaf: #2e4423;
+  --color-leaf-deep: #22331a;
+  --color-moss: #6f6247;
+  --color-gold: #c08a2e;
+  --color-line: #e3d3b4;
+  --color-ink-muted: #6b5c4b;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Stable scrolling: no bouncy / elastic overscroll at page top or bottom. */
+  overscroll-behavior: none;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-bark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-cocoa);
+  color: var(--color-cream);
+}
+
+/* Accessible focus indicator everywhere */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Native dropdown lists use OS chrome (white background) regardless of the
+   surrounding theme — force dark-on-cream so options stay readable
+   everywhere, including the dark footer language switcher. */
+select option,
+select optgroup {
+  color: var(--color-bark);
+  background-color: var(--color-cream);
+}
+
+/* Layout container shared by all pages */
+.container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+/* Editorial helpers */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Pill eyebrow badge (BURA/Heritage style section label) */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-clay-deep);
+  background: color-mix(in srgb, #fff 55%, transparent);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: var(--color-clay);
+  flex-shrink: 0;
+}
+.eyebrow-light {
+  border-color: color-mix(in srgb, var(--color-cream) 30%, transparent);
+  color: var(--color-sand);
+  background: transparent;
+}
+.eyebrow-light::before {
+  background: var(--color-sand);
+}
+
+/* Shared pill buttons */
+.btn-primary,
+.btn-outline,
+.btn-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.9rem;
+  padding: 0.8rem 1.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.btn-primary {
+  background: var(--color-cocoa);
+  color: var(--color-cream);
+  box-shadow: 0 10px 24px -12px rgb(74 42 24 / 0.7);
+}
+.btn-primary:hover {
+  background: var(--color-bark-soft);
+  transform: translateY(-1px);
+}
+.btn-outline {
+  border: 1.5px solid color-mix(in srgb, var(--color-bark) 35%, transparent);
+  color: var(--color-bark);
+  background: transparent;
+}
+.btn-outline:hover {
+  border-color: var(--color-bark);
+  background: var(--color-parchment);
+  transform: translateY(-1px);
+}
+.btn-light {
+  background: var(--color-cream);
+  color: var(--color-bark);
+  box-shadow: 0 10px 24px -12px rgb(0 0 0 / 0.55);
+}
+.btn-light:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.9rem;
+  padding: 0.8rem 1.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  border: 1.5px solid color-mix(in srgb, var(--color-cream) 45%, transparent);
+  color: var(--color-cream);
+  transition:
+    background-color 0.18s ease,
+    transform 0.18s ease;
+}
+.btn-outline-light:hover {
+  background: color-mix(in srgb, var(--color-cream) 12%, transparent);
+  transform: translateY(-1px);
+}
+/* Square-ish icon button that pairs with the pill buttons */
+.btn-icon {
+  padding-left: 0;
+  padding-right: 0;
+  width: 2.9rem;
+  flex-shrink: 0;
+}
+
+/* Soft rounded commerce card */
+.card-warm {
+  background: color-mix(in srgb, #fff 55%, var(--color-cream));
+  border: 1px solid var(--color-line);
+  border-radius: 1.75rem;
+}
+
+/* Ledger-style spec table */
+.ledger-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
+  padding-block: 0.7rem;
+  border-bottom: 1px dotted var(--color-line);
+}
+@media (min-width: 640px) {
+  .ledger-row {
+    grid-template-columns: 12rem 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Giant footer wordmark */
+.wordmark-giant {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--color-cream) 28%, transparent);
+  user-select: none;
+}
+
+/* Scroll-triggered reveals — transform/opacity only, never layout. */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-fade {
+  transform: none;
+}
+.reveal-scale {
+  transform: scale(0.96);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

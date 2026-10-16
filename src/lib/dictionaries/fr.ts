@@ -1,0 +1,462 @@
+import type { Dictionary } from "./en";
+
+const fr: Dictionary = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — Cacao en vrac, soja et cocopeat d’Afrique de l’Ouest",
+    homeDescription:
+      "HB33 fournit en vrac fèves de cacao, coques, beurre, nibs, potasse, tourteau, soja et cocopeat aux fabricants et acheteurs du monde entier. Commandes par conteneur, vérifiées à l’origine.",
+    productsTitle: "Produits — Matières premières agricoles en vrac",
+    productsDescription:
+      "Découvrez le catalogue vrac HB33 : fèves de cacao, coques, beurre, nibs, potasse, tourteau, soja et cocopeat. Commande minimum d’un conteneur.",
+    aboutTitle: "À propos de HB33",
+    aboutDescription:
+      "HB33 est un fournisseur ouest-africain de matières premières agricoles au service des fabricants, transformateurs et acheteurs en vrac, avec des expéditions vérifiées.",
+    howTitle: "Comment ça marche — Commande en vrac",
+    howDescription:
+      "Comment acheter en vrac auprès de HB33 : parcourez le catalogue, demandez un devis, confirmez la disponibilité et expédiez en FOB ou CIF. Minimum un conteneur.",
+    quoteTitle: "Demander un devis — Commande en vrac",
+    quoteDescription:
+      "Soumettez une demande de commande en vrac à HB33. Minimum un conteneur. Nous confirmons disponibilité, prix et expédition.",
+    contactTitle: "Contacter HB33",
+    contactDescription:
+      "Contactez HB33 pour vos demandes de vrac par e-mail ou WhatsApp. Nous répondons avec spécifications, prix et délais.",
+    privacyTitle: "Politique de confidentialité",
+    privacyDescription:
+      "HB33 collecte un minimum de données personnelles — uniquement ce que vous envoyez dans vos demandes de devis et messages — pour répondre. Ni comptes, ni lettres d’info, ni traceurs publicitaires.",
+    termsTitle: "Conditions d’utilisation",
+    termsDescription:
+      "Une demande de devis ou message ne crée ni contrat, ni confirmation de stock, ni prix ferme. Minimum : un conteneur. Conditions pour demandes de vrac authentiques uniquement.",
+  },
+  nav: {
+    home: "Accueil",
+    products: "Produits",
+    about: "À propos",
+    howItWorks: "Comment ça marche",
+    contact: "Contact",
+    requestQuote: "Demander un devis",
+    exploreProducts: "Voir les produits",
+    menu: "Menu",
+    close: "Fermer",
+    language: "Langue",
+    languageGroups: {
+      global: "Monde",
+      europe: "Europe",
+      asia: "Asie",
+      "middle-east": "Moyen-Orient",
+      ghana: "Ghana",
+      nigeria: "Nigéria",
+      "east-africa": "Afrique de l’Est",
+      francophone: "Afrique de l’Ouest francophone",
+    },
+  },
+  common: {
+    learnMore: "En savoir plus",
+    viewProduct: "Voir le produit",
+    viewAllProducts: "Voir tous les produits",
+    backToProducts: "Retour aux produits",
+    relatedProducts: "Produits associés",
+    send: "Envoyer",
+    sending: "Envoi…",
+    submitInquiry: "Envoyer la demande",
+    submitting: "Envoi…",
+    required: "Requis",
+    optional: "Facultatif",
+    containers: "conteneurs",
+    container: "conteneur",
+    tonnageNote: "Le tonnage final dépend de la densité du produit et du type de conteneur — confirmé avant expédition.",
+    allRightsReserved: "Tous droits réservés.",
+    backToTop: "Haut de page",
+    placeholderNote:
+      "Les mentions « à confirmer » seront vérifiées avec HB33 avant toute expédition.",
+  },
+  moq: {
+    short: "Commande minimum : 1 conteneur maritime. Vrac uniquement.",
+    long: "Commande minimum : 1 conteneur maritime. Nous traitons uniquement les commandes en vrac. Contactez-nous pour confirmer la taille de conteneur, la capacité de chargement, la disponibilité et l’expédition.",
+    badge: "MOQ : 1 conteneur",
+  },
+  topbar: {
+    message: "Export en vrac uniquement — minimum un conteneur par commande.",
+  },
+  hero: {
+    eyebrow: "Cacao et matières premières d’Afrique de l’Ouest, vérifiés à l’origine",
+    title: "Une mauvaise expédition coûte plus que de l’argent.",
+    lead: "HB33 livre en vrac cacao premium, soja et cocopeat sur les marchés mondiaux — inspectés avant chaque expédition.",
+    primary: "Voir les produits",
+    secondary: "Demander un devis",
+    stats: [
+      { value: "1 000 TM", label: "Capacité mensuelle" },
+      { value: "8", label: "Produits en vrac" },
+      { value: "3", label: "Continents desservis" },
+      { value: "FOB / CIF", label: "Expédition mondiale" },
+    ],
+  },
+  trust: {
+    eyebrow: "Pourquoi HB33",
+    title: "Conçu pour les acheteurs qui ne peuvent pas se permettre une mauvaise semaine.",
+    items: [
+      {
+        title: "La vérification d’abord",
+        text: "Inspection indépendante avant chaque expédition. Humidité vérifiée à l’origine, jamais à l’arrivée.",
+      },
+      {
+        title: "Zéro intermédiaire",
+        text: "Relations directes avec les fermes et coopératives ouest-africaines. Nous maîtrisons la chaîne — nous ne faisons pas que le lien.",
+      },
+      {
+        title: "Jamais silencieux",
+        text: "Des mises à jour réelles après accord. Documentation, chargement et expédition avec des jalons exploitables.",
+      },
+    ],
+  },
+  homeProducts: {
+    eyebrow: "Nos produits",
+    title: "Huit matières premières en vrac. Un seul standard.",
+    lead: "Produits du cacao, oléagineux et supports de culture — conditionnés pour conteneurs et vérifiés lot par lot.",
+    cta: "Voir tout le catalogue",
+  },
+  processPreview: {
+    eyebrow: "Comment ça marche",
+    title: "De la ferme à votre usine.",
+    steps: [
+      { title: "Parcourez et demandez", text: "Choisissez vos produits et indiquez volumes et destination." },
+      { title: "Confirmez les conditions", text: "Nous confirmons disponibilité, spécifications, prix et expédition FOB/CIF." },
+      { title: "Expédition vérifiée", text: "Inspectée, documentée et expédiée en conteneurs complets." },
+    ],
+    cta: "Voir le processus complet",
+  },
+  logistics: {
+    eyebrow: "Conditionnement et logistique",
+    title: "Conditionné pour conteneurs. Documenté pour la douane.",
+    items: [
+      { title: "Par conteneur", text: "Chargements 20 et 40 pieds. Capacité finale confirmée par produit et type de conteneur." },
+      { title: "Documents d’export", text: "Certificat phytosanitaire, certificat d’origine et connaissement pour chaque expédition." },
+      { title: "FOB / CIF", text: "Vos conditions, votre port — avec des mises à jour exploitables." },
+    ],
+  },
+  faqPreview: {
+    eyebrow: "Questions fréquentes",
+    title: "Ce que les acheteurs demandent avant leur première expédition.",
+    cta: "Comment commander",
+  },
+  homeFaqs: [
+    {
+      q: "Que fournit HB33 ?",
+      a: "Fèves de cacao, coques, beurre, nibs, potasse et tourteau en vrac, plus soja et cocopeat — en quantités conteneur pour fabricants, transformateurs et acheteurs en vrac.",
+    },
+    {
+      q: "Quelle est la commande minimum ?",
+      a: "Un conteneur maritime complet par commande. Nous traitons uniquement le vrac et confirmons avec vous la taille de conteneur et la capacité de chargement avant expédition.",
+    },
+    {
+      q: "Expédiez-vous en FOB ou CIF ?",
+      a: "Les deux. Nous cotons en FOB ou CIF selon ce qui convient à votre exploitation, votre port et votre chaîne logistique.",
+    },
+    {
+      q: "Comment obtenir prix et spécifications ?",
+      a: "Envoyez une demande de devis avec produit, volume et destination. Nous répondons avec spécifications, prix et délais — pas un discours commercial.",
+    },
+  ],
+  homeCta: {
+    title: "Votre prochaine expédition ne devrait pas être un pari.",
+    lead: "Dites-nous ce qu’il vous faut. Nous confirmerons disponibilité, spécifications et expédition — par écrit.",
+    primary: "Demander un devis",
+    secondary: "Nous contacter",
+  },
+  productsPage: {
+    eyebrow: "Catalogue",
+    title: "Catalogue vrac",
+    lead: "Recherchez et filtrez huit matières premières de qualité conteneur. Chaque commande démarre à un conteneur complet.",
+    searchLabel: "Rechercher un produit",
+    searchPlaceholder: "Rechercher cacao, soja, cocopeat…",
+    categoryLabel: "Catégorie",
+    allCategories: "Toutes catégories",
+    categories: {
+      cocoa: "Produits du cacao",
+      oilseeds: "Oléagineux",
+      "growing-media": "Supports de culture",
+    },
+    sortLabel: "Trier",
+    sortOptions: {
+      featured: "En vedette",
+      nameAsc: "Nom A–Z",
+      nameDesc: "Nom Z–A",
+    },
+    results: "produits",
+    result: "produit",
+    showing: "Affichage de",
+    emptyTitle: "Aucun produit ne correspond à vos filtres.",
+    emptyText: "Essayez un autre mot-clé ou une autre catégorie — ou envoyez-nous votre besoin directement.",
+    emptyCta: "Demander un devis",
+    quoteAction: "Demander un devis",
+  },
+  productDetail: {
+    overview: "Aperçu",
+    background: "Origines et importance commerciale",
+    educationalNote:
+      "Les informations générales ci-dessous sont pédagogiques. Les détails spécifiques aux lots HB33 sont confirmés par demande.",
+    uses: "Usages et applications",
+    specs: "Spécifications",
+    specsNote:
+      "Spécifications indicatives. Grade final, humidité et conditionnement confirmés par lot et vérifiés avant expédition.",
+    quality: "Qualité, manutention et stockage",
+    packaging: "Conditionnement et expédition en vrac",
+    buyers: "Acheteurs et industries types",
+    moqTitle: "Quantité minimum de commande",
+    faq: "Questions sur ce produit",
+    quoteCta: "Demander un devis pour ce produit",
+    quoteButton: "Demander un devis",
+    whatsappButton: "Poser une question sur WhatsApp",
+    whatsappUnavailable:
+      "La commande via WhatsApp n’est pas encore configurée — utilisez le formulaire de devis ou l’e-mail pour que nous recevions votre demande.",
+    toBeConfirmed: "À confirmer par lot",
+  },
+  aboutPage: {
+    eyebrow: "À propos de HB33",
+    title: "Un partenaire d’approvisionnement, pas un simple fournisseur.",
+    lead: "HB33 est née d’une conviction simple : les fabricants du monde entier méritent des expéditions de cacao et de matières premières dignes de confiance.",
+    storyTitle: "Notre histoire",
+    story: [
+      "HB33 est née d’une expérience directe de ce qui peut mal tourner dans le négoce : un partenaire logistique avait un jour modifié l’itinéraire sans prévenir pour réduire les coûts, et la pluie avait endommagé toute l’expédition. Le prix de cette leçon façonne tout notre fonctionnement.",
+      "La qualité seule ne suffit pas. Un approvisionnement fiable exige une logistique fiable, une documentation claire et une communication transparente. C’est pourquoi chaque expédition HB33 est vérifiée, documentée et inspectée avant de quitter le port.",
+      "Aujourd’hui, HB33 fournit en vrac produits du cacao, soja et cocopeat issus de fermes et coopératives ouest-africaines de confiance, à des fabricants en Asie, en Europe et au Moyen-Orient.",
+    ],
+    valuesTitle: "Nos engagements",
+    values: [
+      { title: "La vérification d’abord", text: "Inspection et contrôles d’humidité à l’origine — avant ensachage et chargement, pas à l’arrivée." },
+      { title: "Approvisionnement direct", text: "Des relations durables avec des fermes et coopératives que nous connaissons par leur nom." },
+      { title: "Communication transparente", text: "Confirmations écrites, vraies mises à jour d’expédition et documents pour chaque conteneur." },
+    ],
+    factsTitle: "Faits vérifiés",
+    factsNote:
+      "Seuls des faits vérifiés figurent ici. Certifications, destinations et capacités sont confirmées par demande — jamais supposées.",
+    facts: [
+      { label: "Base", value: "Afrique de l’Ouest" },
+      { label: "Produits", value: "8 références vrac" },
+      { label: "Capacité mensuelle", value: "Jusqu’à 1 000 TM" },
+      { label: "Conditions", value: "FOB / CIF" },
+      { label: "Commande minimum", value: "1 conteneur maritime" },
+    ],
+    ctaTitle: "Travaillez avec HB33",
+    ctaText: "Indiquez-nous vos volumes et votre destination — nous répondrons avec spécifications, prix et délais.",
+    ctaPrimary: "Demander un devis",
+    ctaSecondary: "Nous contacter",
+  },
+  howPage: {
+    eyebrow: "Comment ça marche",
+    title: "Cinq étapes vers un conteneur vérifié.",
+    lead: "Soumettre une demande ne confirme pas automatiquement une commande, une disponibilité ni un prix final. Chaque commande est confirmée par écrit avant toute expédition.",
+    steps: [
+      {
+        title: "Parcourez le catalogue",
+        text: "Explorez produits, spécifications et conditionnements. Tout est vendu en conteneurs complets.",
+      },
+      {
+        title: "Choisissez produit et quantité",
+        text: "Sélectionnez vos produits et le nombre de conteneurs. Le minimum est d’un conteneur par commande.",
+      },
+      {
+        title: "Soumettez votre demande",
+        text: "Envoyez coordonnées, livraison et besoins via le formulaire, l’e-mail ou WhatsApp.",
+      },
+      {
+        title: "Nous confirmons les conditions",
+        text: "HB33 confirme disponibilité, prix, spécifications, chargement, expédition et paiement.",
+      },
+      {
+        title: "Exécution et suivi",
+        text: "Inspection, documentation et expédition — avec des mises à jour à chaque étape jusqu’à la livraison.",
+      },
+    ],
+    noteTitle: "Veuillez noter",
+    noteText:
+      "Une demande est une sollicitation, pas une commande. Disponibilité, prix final, spécifications, chargement, expédition et paiement sont convenus avec HB33 avant tout engagement.",
+    cta: "Commencez par une demande de devis",
+  },
+  quotePage: {
+    eyebrow: "Demande de commande en vrac",
+    title: "Demander un devis",
+    lead: "Dites-nous ce qu’il vous faut et où l’expédier. Nous répondons avec disponibilité, spécifications, prix et expédition.",
+    form: {
+      fullName: "Nom complet",
+      company: "Société",
+      email: "E-mail professionnel",
+      countryCode: "Indicatif pays",
+      selectCode: "Choisir l’indicatif",
+      phone: "Numéro de téléphone",
+      country: "Pays",
+      searchCountryPlaceholder: "Tapez un pays…",
+      noCountryMatch: "Aucun pays — continuez à taper.",
+      destination: "Destination / port de livraison",
+      timeframe: "Délai de livraison souhaité",
+      timeframeOptions: {
+        asap: "Dès que possible",
+        oneMonth: "Sous 1 mois",
+        oneToThree: "1 à 3 mois",
+        flexible: "Flexible / en planification",
+      },
+      packaging: "Conditionnement souhaité",
+      packagingPlaceholder: "ex. sacs de jute 60 kg, sacs PP 25 kg, vrac…",
+      items: "Produits et quantités",
+      product: "Produit",
+      selectProduct: "Choisir un produit…",
+      quantityContainers: "Conteneurs",
+      addProduct: "Ajouter un produit",
+      removeProduct: "Retirer",
+      notes: "Exigences complémentaires",
+      notesPlaceholder: "Spécifications visées, grade, limites d’humidité, conditions (FOB/CIF), tout ce que nous devrions savoir…",
+      atLeastOne: "Ajoutez au moins un produit.",
+      submit: "Envoyer la demande",
+      submitting: "Envoi…",
+    },
+    errors: {
+      required: "Ce champ est requis.",
+      email: "Saisissez une adresse e-mail valide.",
+      phone: "Saisissez un numéro valide avec l’indicatif pays.",
+      minContainers: "Minimum 1 conteneur par produit — vrac uniquement.",
+      selectProduct: "Choisissez un produit ou retirez cette ligne.",
+    },
+    successTitle: "Demande reçue.",
+    successLead: "Merci — votre demande de vrac a bien été enregistrée.",
+    reference: "Votre numéro de référence",
+    nextStepsTitle: "Et ensuite",
+    nextSteps: [
+      "HB33 confirme la disponibilité pour vos volumes.",
+      "Vous recevez prix final et spécifications du lot.",
+      "Chargement, conditionnement et expédition FOB/CIF sont convenus.",
+      "Les conditions de paiement sont confirmées avant exécution.",
+    ],
+    emailStatusOn: "Une copie a été transmise à notre équipe commerciale par e-mail.",
+    emailStatusOff:
+      "L’envoi d’e-mails n’est pas activé dans cet environnement : pour une réponse rapide, renvoyez aussi votre demande par e-mail ou WhatsApp via les boutons ci-dessous — avec votre numéro de référence.",
+    sendEmail: "Envoyer par e-mail",
+    sendWhatsapp: "Continuer sur WhatsApp",
+    newInquiry: "Nouvelle demande",
+    failTitle: "Un problème est survenu.",
+    failText: "Votre demande n’a pas pu être envoyée. Réessayez — ou contactez-nous directement par e-mail.",
+  },
+  contactPage: {
+    eyebrow: "Contact",
+    title: "Parlez à HB33.",
+    lead: "Pour demandes de vrac, devis et spécifications — écrivez-nous et nous répondrons avec des délais, pas un discours commercial.",
+    formTitle: "Envoyer un message",
+    form: {
+      name: "Nom complet",
+      email: "E-mail",
+      subject: "Objet",
+      message: "Message",
+      messagePlaceholder: "Produit, volumes, destination…",
+      submit: "Envoyer le message",
+      sent: "Message envoyé.",
+    },
+    errors: {
+      required: "Ce champ est requis.",
+      email: "Saisissez une adresse e-mail valide.",
+      messageShort: "Veuillez écrire un message d’au moins 10 caractères.",
+    },
+    sentTitle: "Message reçu.",
+    sentText: "Merci — nous vous répondrons rapidement.",
+    channelsTitle: "Canaux directs",
+    emailLabel: "E-mail",
+    whatsappLabel: "WhatsApp",
+    whatsappHint: "Le plus rapide pour les demandes en cours — mentionnez votre référence si vous en avez une.",
+    whatsappUnavailable:
+      "WhatsApp n’est pas encore configuré. Contactez-nous par e-mail — nous répondons avec spécifications, prix et délais.",
+    locationLabel: "Base",
+    responseNote: "Nous répondons aux demandes de vrac sous 1 à 2 jours ouvrés.",
+    failText: "Votre message n’a pas pu être envoyé. Réessayez ou écrivez-nous directement.",
+  },
+  privacyPage: {
+    eyebrow: "Mentions légales",
+    title: "Politique de confidentialité",
+    updated: "Dernière mise à jour",
+    intro:
+      "HB33 collecte le minimum de données personnelles : uniquement ce que vous nous envoyez en demandant un devis ou en nous contactant, afin de répondre. Ni comptes, ni lettres d’information, ni traceurs publicitaires sur ce site.",
+    sections: [
+      {
+        title: "Informations que vous fournissez",
+        text: "Demandes de devis : nom, société, e-mail, téléphone, pays, destination, délai, conditionnement, produits et nombres de conteneurs, notes éventuelles. Messages : nom, e-mail, objet et message. Rien d’autre — sans comptes ni commentaires ni lettres d’information.",
+      },
+      {
+        title: "Utilisation",
+        text: "Uniquement pour répondre à votre demande : confirmer disponibilité et prix, préparer spécifications et expédition, communiquer sur votre dossier. Nous ne vendons pas vos données et n’envoyons pas d’e-mails commerciaux.",
+      },
+      {
+        title: "Conservation et partage",
+        text: "Les envois sont enregistrés dans le journal du serveur afin qu’aucune demande ne se perde. Selon configuration, une copie est transmise à l’adresse commerciale de HB33 par e-mail ou à un webhook privé — l’écran de confirmation indique toujours honnêtement si le transfert e-mail est activé. Les boutons e-mail et WhatsApp agissent dans vos propres applications : nous ne recevons que ce que vous envoyez.",
+      },
+      {
+        title: "Cookies et mesure d’audience",
+        text: "Par défaut, ce site ne dépose aucun cookie et n’exécute aucune mesure d’audience. Si la mesure est activée un jour, elle ne chargera qu’après votre acceptation dans le bandeau, et votre choix reste stocké dans votre navigateur.",
+      },
+      {
+        title: "Conservation et droits",
+        text: "Les demandes sont conservées pour des besoins commerciaux et d’archivage légitimes. Vous pouvez demander à tout moment copie, correction ou suppression de vos données via l’e-mail de contact du site.",
+      },
+      {
+        title: "Note de révision",
+        text: "Cette politique décrit les flux réels du site mais doit être relue par le conseil juridique de HB33 avant usage commercial, y compris droit applicable, rôles de traitement et spécificités d’hébergement ou de messagerie.",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "Mentions légales",
+    title: "Conditions d’utilisation",
+    updated: "Dernière mise à jour",
+    intro:
+      "En utilisant ce site, vous acceptez les conditions suivantes. Si vous n’êtes pas d’accord, veuillez ne pas utiliser le site.",
+    sections: [
+      {
+        title: "Les demandes ne sont pas des commandes",
+        text: "Soumettre une demande de devis ou un message ne crée ni contrat, ni confirmation de stock, ni prix ferme. Il n’y a ni panier ni paiement sur ce site. Chaque commande est confirmée séparément par écrit avec spécifications, chargement, expédition et paiement.",
+      },
+      {
+        title: "Commande minimum",
+        text: "HB33 traite uniquement le vrac, avec un minimum d’un conteneur complet par commande. Les demandes en deçà ne peuvent être honorées.",
+      },
+      {
+        title: "Informations produits",
+        text: "Les spécifications du site sont indicatives. Grade final, humidité, conditionnement et chargement sont confirmés par lot et vérifiés avant expédition.",
+      },
+      {
+        title: "Usage acceptable",
+        text: "Utilisez les formulaires honnêtement et pour de vrais besoins en vrac. Interdits : spam, fausses informations, contenus illicites et envois automatisés abusifs.",
+      },
+      {
+        title: "Contenus et responsabilité",
+        text: "Textes et design du site appartiennent à HB33 ; les photographies produits appartiennent à des tiers crédités sur les pages concernées. Dans la limite de la loi, HB33 n’est pas responsable des décisions fondées sur les contenus indicatifs du site — seuls les accords écrits confirmés régissent chaque commande.",
+      },
+      {
+        title: "Note de révision",
+        text: "Ce contenu de départ doit être relu par le conseil juridique de HB33 avant usage commercial, y compris droit applicable, plafonds de responsabilité et règlement des litiges.",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "Cette page n’est pas montée dans le conteneur.",
+    text: "La page recherchée n’existe pas ou a été déplacée.",
+    home: "Retour à l’accueil",
+    products: "Voir les produits",
+  },
+  consent: {
+    title: "Un mot sur la mesure",
+    text: "HB33 utilise une mesure d’audience respectueuse, sans cookies, pour comprendre quelles pages aident les acheteurs. Elle ne charge que si vous acceptez — sinon, rien n’est mesuré.",
+    accept: "Accepter la mesure",
+    decline: "Refuser",
+  },
+  footer: {
+    tagline: "Cacao, soja et cocopeat en vrac — vérifiés à l’origine, expédiés dans le monde entier.",
+    shop: "Catalogue",
+    company: "Société",
+    legal: "Mentions légales",
+    privacy: "Politique de confidentialité",
+    terms: "Conditions d’utilisation",
+    contactTitle: "Contact",
+    language: "Langue",
+    minOrder: "Commande minimum : 1 conteneur maritime.",
+    photoCredit: "Photographies via Wikimedia Commons — voir les crédits sur les pages produits.",
+  },
+};
+
+export default fr;
