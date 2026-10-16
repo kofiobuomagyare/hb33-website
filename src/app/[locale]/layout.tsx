@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Fraunces, Inter } from "next/font/google";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { getLocaleInfo, isFrench, ogLocale } from "@/lib/i18n";
@@ -88,6 +89,7 @@ export default async function LocaleLayout({
         <SiteFooter locale={locale} dict={dict} />
         <ConsentBanner dict={dict} />
         <BackToTop label={dict.common.backToTop} />
+        <Analytics />
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
