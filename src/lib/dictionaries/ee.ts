@@ -1,10 +1,37 @@
 import type { DictionaryPatch } from "../dictionaries";
 
 /**
- * Ewe (Eʋegbe) starter pack — core UI translated, long-form content
- * falls back to English pending native-speaker review.
+ * Ewe (Ʋegbe) — full UI translation. Long-form product copy lives in
+ * `lib/products.ts` and currently falls back to English/French.
  */
 const ee: DictionaryPatch = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — Ɣetoɖoƒe Afrika ƒe Koko, Soyabeans kple Cocopeat (Gedewo)",
+    homeDescription:
+      "HB33 tsɔa koko ƒe nukui, koko ƒe kotoku, koko ami, koko nib, koko potash, koko cake, soyabeans kple cocopeat yina dɔwɔƒewo kple nusiflela gãwo gbɔ le xexeme. Nudɔɖo tso kontenna dzi, wokpɔe ɖi tso gɔmedzedze.",
+    productsTitle: "Nusiwo — Agblemenusi Gedewo",
+    productsDescription:
+      "HB33 ƒe nusi gedewo ƒe nusiwo: koko ƒe nukui, koko ƒe kotoku, koko ami, koko nib, koko potash, koko cake, soyabeans kple cocopeat. Nudɔɖo sue wu nye tɔdziʋu ƒe kontenna 1.",
+    aboutTitle: "HB33 ŋuti",
+    aboutDescription:
+      "HB33 nye Ɣetoɖoƒe Afrika ƒe agblemenusi dzraɖoƒe si tsɔa kontenna siwo wokpɔ ɖi subɔa dɔwɔƒe, nuwɔla kple nusiflela gãwo.",
+    howTitle: "Alesi Wòwɔa Dɔ — Nusi Gedewo Nudɔɖo ƒe Ɖoɖo",
+    howDescription:
+      "Alesi nàƒle nusi gedewo le HB33 gbɔ: kpɔ nusiwo, bia asi, kpɔ nusiwo li ɖi, eye nàdɔe ɖa to FOB alo CIF. Kontenna 1 le sue wu me.",
+    quoteTitle: "Bia Asi — Nusi Gedewo Nudɔɖo Biabia",
+    quoteDescription:
+      "Dɔ nusi gedewo nudɔɖo biabia ɖa na HB33. Nudɔɖo sue wu nye tɔdziʋu ƒe kontenna 1. Míekpɔa nusiwo li, asi kple ɖoɖo ɖi.",
+    contactTitle: "De Asi HB33 Ŋu",
+    contactDescription:
+      "De asi HB33 ŋu kuɖe nusi gedewo ŋu to email alo WhatsApp dzi. Míaɖo eŋu kple nɔnɔmewo, asi kple ɣeyiɣi.",
+    privacyTitle: "Nyatakaka Ɣaɣla",
+    privacyDescription:
+      "HB33 ƒoa nu ɣaɣla lãmesẽ koe — nusi nèdɔ ɖe biabia alo gbedoxɔ me koe míezãna, be míaɖo eŋu. Akɔnti aɖeke, nyadzɔdzɔgbalẽ aɖeke, alo ɖoɖo aɖeke meli o.",
+    termsTitle: "Zazã Sewo",
+    termsDescription:
+      "Biabia alo gbedoxɔ ɖoɖo metɔa nu le nubabla dzi o, medzraa nusiwo ɖo o, eye meɖoa asi ɖe te o. Ga numarere aɖeke meli le afi sia o. Wokpɔa nudɔɖo katã ɖi le agbalẽ me kple nɔnɔmewo, agbaʋuʋu, ɖoɖo kple ga numarere ɖoɖo. Se siawo kuɖe nusi gedewo biabia vavãtɔ ŋu koe.",
+  },
   nav: {
     home: "Aƒe",
     products: "Nusiwo",
@@ -18,8 +45,12 @@ const ee: DictionaryPatch = {
     language: "Gbe",
     languageGroups: {
       global: "Xexeme",
+      europe: "Europa",
+      asia: "Asia",
+      "middle-east": "Titinaɖoƒe Ɣedzeƒe",
       ghana: "Ghana",
       nigeria: "Nigeria",
+      "east-africa": "Ɣedzeƒe Afrika",
       francophone: "Ɣetoɖoƒe Afrika (Fransegbe)",
     },
   },
@@ -40,6 +71,7 @@ const ee: DictionaryPatch = {
     tonnageNote:
       "Kpekpe mamlɛtɔ anɔ nusi ƒe ʋuʋudedi kple kontenna ƒomevi nu — míakpɔe ɖi hafi aɖɔe ɖa.",
     allRightsReserved: "Wodzra gomenɔamesiwo katã ɖo.",
+    backToTop: "Trɔ yi dzi",
     placeholderNote:
       "Mía kple HB33 akpɔ nyatakaka siwo ŋlɔ “womekpɔe ɖi o” la ɖi hafi aɖo nuɖoɖo ɖa.",
   },
@@ -64,11 +96,45 @@ const ee: DictionaryPatch = {
       { value: "FOB / CIF", label: "Xexeme ɖoɖo" },
     ],
   },
+  trust: {
+    eyebrow: "Nusita wotiaa HB33",
+    title: "Na nusiflela siwo mate ŋu alɔ̃ kɔsiɖa vɔ̃ o.",
+    items: [
+      {
+        title: "Kpɔ ɖi gbã",
+        text: "Amedzi ƒe kpɔkpɔ hafi kontenna ɖesiaɖe nadzo. Wokpɔa vuvɔ le agble, menye ɣeyiɣi si wòava o.",
+      },
+      {
+        title: "Dzidzela aɖeke meli o",
+        text: "Dzidzedze tẽ kple Ɣetoɖoƒe Afrika ƒe agblewo kple habɔbɔwo. Míele agbeƒe la te, menye ɖekawɔwɔ ko o.",
+      },
+      {
+        title: "Míenɔa ɖiɖim o",
+        text: "Nyatakaka siwo doa dzidzedze le nubabla megbe, wotsɔa agbalẽwo, agbaʋuʋu kple ɖoɖo wɔa dɔ le afi ɖesiaɖe.",
+      },
+    ],
+  },
   homeProducts: {
     eyebrow: "Míaƒe nusiwo",
     title: "Agblemenusi enyi siwo nye gedewo. Se ɖeka.",
-    lead: "Koko nusiwo, ami kuwo kple nusiwo wotsɔna dona nu — wodzrae ɖo na kontenna, wokpɔna ɖesiaɖe ɖi.",
+    lead: "Koko nusiwo, ami kuwo kple coconut nusiwo — wodzrae ɖo na kontenna, wokpɔna ɖesiaɖe ɖi.",
     cta: "Kpɔ nusiwo katã",
+  },
+  founder: {
+    eyebrow: "Tso dutala gbɔ",
+    title: "Woezɔ",
+    titleAccent: "HB33.",
+    imageAlt: "HB33 dutala Hugo Obed",
+    paragraphs: [
+      "HB33 dze egɔme tso xɔse bɔbɔ aɖe me: xexeme ƒe dɔwɔƒewo dze na be woaxɔ asiɖeɖe si wokpɔ ɖi.",
+      "Xɔse sia tso numekuku me. Le nye dɔwɔwɔ gɔmedzedze, logistics haƒo aɖe trɔ mɔ si woto la menye kple nye lɔlɔ̃ o be wòatsɔ aƙɔ ga, eye tsi gbegblẽe tɔ ɖe agba la dzi. Eɖu fu wɔ nye dɔwɔwɔ ŋu kpɔ, ke ete gbe ɖe le ame ɖesiaɖe ŋu kura.",
+      "Efia ame be nyonyo ɖeɖe ko medze o. Asiɖeɖe si wokpɔ ɖi dze na be wòanɔ logistics si wokpɔ ɖi, agbalẽ si me kɔ, kple nyatakaka si me kɔ dzi. Esia tae míekpɔa ɖi, míeŋlɔa agbalẽwo, eye míetsɔa SGS kpɔa ɖi le nu ɖesiaɖe si míeɖona ɖa ŋu hafi wòadzo le tɔdziʋu ƒe nɔƒe.",
+      "Egbea, HB33 tsɔa koko ƒe nukui, koko ƒe kotoku, koko ami, koko nib, koko potash kple koko cake tso Ɣetoɖoƒe Afrika ƒe agble siwo wokpɔ ɖi la me yina dɔwɔƒewo le Asia, Europa kple Titinaɖoƒe Ɣedzeƒe.",
+      "Le HB33, míeɖaa nu ɖe ɖeɖemɔ o. Míexɔa se ɖe ɖoɖo, kpɔkpɔ kple asiɖeɖe si wokpɔ ɖi ŋu.",
+      "Akpe na wò be nètsɔ wò ɖokui de mía si abe dzidzela ƒe haƒo ene. Melé gbe be mòakpe ɖe ŋu wò asitsatsa nanɔ tsitsim kple dzideƒo fũu.",
+    ],
+    name: "Hugo Obed",
+    role: "Dutala, HB33",
   },
   processPreview: {
     eyebrow: "Alesi wòwɔa dɔ",
@@ -80,11 +146,38 @@ const ee: DictionaryPatch = {
     ],
     cta: "Kpɔ ɖoɖo bliboa",
   },
+  logistics: {
+    eyebrow: "Ɖoɖo kple Logistics",
+    title: "Wodzrae ɖo na kontenna. Woŋlɔ agbalẽwo na customs.",
+    items: [
+      { title: "Kontenna agbaʋuʋu", text: "Aƒe 20 kple aƒe 40 agbaʋuʋu. Wokpɔa kpekpe mamlɛtɔ ɖi na nu kple kontenna ƒomevi ɖesiaɖe." },
+      { title: "Ɖeɖe go agbalẽwo", text: "Nukpokpɔ agbalẽ, gɔmedzedze agbalẽ kple cargo agbalẽ kpe ɖe ɖoɖo ɖesiaɖe ŋu." },
+      { title: "FOB / CIF", text: "Le ɖoɖo kple tɔdziʋu ƒe nɔƒe si nèdi te — kple nyatakaka siwo doa dzo ɖe dɔ ŋu." },
+    ],
+  },
   faqPreview: {
     eyebrow: "Biabia siwo wobia zi geɖe",
     title: "Nusi flelawo bia hafi woƒe ɖoɖo gbãtɔ nadzo.",
     cta: "Alesi wodɔa nu",
   },
+  homeFaqs: [
+    {
+      q: "Nusi ka HB33 tsɔna?",
+      a: "Míetsɔa koko ƒe nukui, koko ƒe kotoku, koko ami, koko nib, koko potash kple koko cake ɖona ɖe go le nusi gedewo me, kpea soyabeans kple cocopeat ɖe eŋu, le kontenna me, na dɔwɔƒewo, nuwɔla kple nusiflela gãwo.",
+    },
+    {
+      q: "Nudɔɖo sue wu ka nye?",
+      a: "Kontenna blibo ɖeka le nudɔɖo ɖesiaɖe me. Nusi gedewo ko míewɔna, eye míekpɔa kontenna lolome kple agbaʋuʋu nyuitɔ ɖi kpli wò hafi aɖɔe ɖa.",
+    },
+    {
+      q: "Míeɖoa nu ɖa to FOB alo CIFa?",
+      a: "Kple eveawo. Míena FOB alo CIF asi si sɔ na wò dɔwɔwɔ, tɔdziʋu ƒe nɔƒe kple asiɖeɖe mɔ.",
+    },
+    {
+      q: "Alesi màkpɔ asi kple nɔnɔmewo?",
+      a: "Dɔ biabia ɖa kple nu, agbɔsɔsɔ kple afisi woayi. Míaɖo eŋu kple nɔnɔmewo, asi kple ɣeyiɣi — menye asitsatsa nya o.",
+    },
+  ],
   homeCta: {
     title: "Wò ɖoɖo si gbɔna memle be wòanɔ abe fofotete ene o.",
     lead: "Gblɔ nusi nèhiã na mí. Míakpɔ nusiwo li, woƒe nɔnɔme kple ɖoɖo ɖi — le agbalẽ me.",
@@ -102,7 +195,7 @@ const ee: DictionaryPatch = {
     categories: {
       cocoa: "Koko nusiwo",
       oilseeds: "Ami kuwo",
-      "growing-media": "Nu dodo nusiwo",
+      "growing-media": "Coconut nusiwo",
     },
     sortLabel: "Ðo ɖe ɖoɖo nu",
     sortOptions: {
@@ -121,8 +214,12 @@ const ee: DictionaryPatch = {
   productDetail: {
     overview: "Kpɔkpɔ blemɛ",
     background: "Gɔmedzedze kple asitsatsa me vevie",
+    educationalNote:
+      "Nusi siawo ŋuti nyatakaka blibo la nye na nusɔsrɔ̃ koe. Wokpɔa HB33 ƒe lot ɖesiaɖe ƒe nyatakaka ɖi na biabia ɖesiaɖe.",
     uses: "Nusi zazã kple alesi wowɔnae",
     specs: "Eƒe nɔnɔmewo",
+    specsNote:
+      "Nɔnɔmewo nye mɔfiame koe. Wokpɔa nɔnɔme mamlɛtɔ, vuvɔ kple eɖoɖo ɖi na lot ɖesiaɖe, eye wokpɔnɛ ɖi hafi aɖɔe ɖa.",
     quality: "Nyonyo, ekpɔkpɔ kple edzraɖo",
     packaging: "Eɖoɖo kple nusi gedewo ɖoɖo",
     buyers: "Flelawo kple dɔwɔƒewo",
@@ -131,6 +228,58 @@ const ee: DictionaryPatch = {
     quoteCta: "Bia asi kuɖe nu sia ŋu",
     quoteButton: "Bia Asi",
     whatsappButton: "Bia le WhatsApp dzi",
+    whatsappUnavailable:
+      "Womenya WhatsApp nudɔɖo ɖo o — be míagablẽ biabia o, meɖekuku zã asi biabia ƒe fɔm alo email.",
+    toBeConfirmed: "Woakpɔe ɖi na lot ɖesiaɖe",
+  },
+  aboutPage: {
+    eyebrow: "HB33 ŋuti",
+    title: "Menye dzraɖoƒe ko o — nye dzidzela ƒe haƒo.",
+    lead: "HB33 dze egɔme tso xɔse bɔbɔ aɖe me: xexeme ƒe dɔwɔƒewo dze na be woaxɔ koko kple agblemenusi asiɖeɖe si wokpɔ ɖi.",
+    storyTitle: "Míaƒe xoxoŋutinya",
+    story: [
+      "HB33 dze egɔme tso agblemenusi asitsatsa ƒe afɔku si mewɔ la me — logistics haƒo aɖe trɔ mɔ menye kple nye lɔlɔ̃ o, eye tsi gbegblẽe tɔ ɖe nu la katã dzi. Nye dɔwɔwɔ ƒe gbeɖuɖɔ la nye esi wɔe be míaƒe dɔwɔwɔ nɔa alea egbea.",
+      "Nyonyo ɖeɖe ko medze o. Asiɖeɖe si wokpɔ ɖi dze na be wòanɔ logistics si wokpɔ ɖi, agbalẽ si me kɔ kple nyatakaka si me kɔ dzi. Esia tae míekpɔa ɖi, míeŋlɔa agbalẽwo eye míekpɔa HB33 ƒe nu ɖesiaɖe ɖi hafi wòadzo le tɔdziʋu ƒe nɔƒe.",
+      "Egbea, HB33 tsɔa koko nusiwo, soyabeans kple cocopeat tso Ɣetoɖoƒe Afrika ƒe agble kple habɔbɔ siwo wokpɔ ɖi la me yina dɔwɔƒewo le Asia, Europa kple Titinaɖoƒe Ɣedzeƒe.",
+    ],
+    valuesEyebrow: "Míaƒe se",
+    valuesTitle: "Se siwo míele ɖom ɖo",
+    values: [
+      { title: "Kpɔ ɖi gbã", text: "Kpɔkpɔ kple vuvɔ dzidzedze le agble — hafi aɖo eɖoɖo kple agbaʋuʋu, menye ɣeyiɣi si wòava o." },
+      { title: "Tẽ ƒle", text: "Dzidzedze didi kple agblewo kple habɔbɔ siwo ƒe ŋkɔ míenya." },
+      { title: "Nyatakaka si me kɔ", text: "Kpɔkpɔ ɖi le agbalẽ me, ɖoɖo nyatakaka siwo doa dzidzedze kple agbalẽ na kontenna ɖesiaɖe." },
+    ],
+    factsEyebrow: "Le kpɔɖeŋu me",
+    factsTitle: "Dɔwɔwɔ ƒe nyateƒe",
+    factsNote:
+      "Nyateƒe si wokpɔ ɖi koe míeŋlɔna ɖoƒe sia. Wokpɔa dzidzemeɖoɖo, afisi woayi kple ɣleti ŋusɛ̃ ɖi na biabia ɖesiaɖe, míenyaa nu o.",
+    facts: [
+      { label: "Nɔƒe", value: "Ɣetoɖoƒe Afrika" },
+      { label: "Nusiwo", value: "Nusi gedewo 8" },
+      { label: "Ɣleti ŋusɛ̃", value: "Va se 1,000 MT" },
+      { label: "Ɖoɖo ƒomevi", value: "FOB / CIF" },
+      { label: "Nudɔɖo sue wu", value: "Tɔdziʋu ƒe kontenna 1" },
+    ],
+    ctaTitle: "Wɔ asitsatsa kple HB33",
+    ctaText: "Gblɔ wò agbɔsɔsɔ kple afisi woayi na mí — míaɖo eŋu kple nɔnɔmewo, asi kple ɣeyiɣi.",
+    ctaPrimary: "Bia Asi",
+    ctaSecondary: "De asi mía ŋu",
+  },
+  howPage: {
+    eyebrow: "Alesi wòwɔa dɔ",
+    title: "Afɔɖeɖe atɔ̃ va se kontenna si wokpɔ ɖi.",
+    lead: "Biabia ɖoɖo metɔa nukpɔkpɔ le nudɔɖo dzi o, medzraa nusiwo ɖo o eye meɖoa asi ɖe te o. Wokpɔa nudɔɖo katã ɖi le agbalẽ me hafi aɖɔe ɖa.",
+    steps: [
+      { title: "Kpɔ nusiwo", text: "Kpɔ nusiwo, nɔnɔmewo kple eɖoɖo. Wodzraa nu katã le kontenna blibo ɖeka me." },
+      { title: "Tia nu kple agbɔsɔsɔ", text: "Tia nu kple kontenna xexlẽme. Tɔdziʋu ƒe kontenna 1 le sue wu me le nudɔɖo ɖesiaɖe me." },
+      { title: "Dɔ wò biabia", text: "Dɔ kadodowo, ɖoɖo kple nuhiãhiãwo ƒe nyatakaka ɖa to asi biabia ƒe fɔm, email alo WhatsApp dzi." },
+      { title: "Kpɔ ɖoɖowo ɖi", text: "HB33 kpɔa nusiwo li, asi, nɔnɔmewo, kontenna agbaʋuʋu, ɖoɖo kple ga numarere ɖi." },
+      { title: "Wɔwɔ kple ɖoɖo yiyi", text: "Kpɔkpɔ, agbalẽwo, ɖoɖo — nyatakaka le afi ɖesiaɖe va se asiɖeɖe." },
+    ],
+    noteTitle: "Meɖekuku kpɔe",
+    noteText:
+      "Biabia nye didi, menye nudɔɖo o. Nusiwo li, asi mamlɛtɔ, nɔnɔmewo, kontenna agbaʋuʋu, ɖoɖo kple ga numarere ƒe nɔnɔme katã wokpɔa wo ɖi kple HB33 hafi ŋugbedodo ɖesiaɖe.",
+    cta: "Dze egɔme kple asi biabia",
   },
   quotePage: {
     eyebrow: "Nusi gedewo nudɔɖo biabia",
@@ -140,8 +289,12 @@ const ee: DictionaryPatch = {
       fullName: "Ŋkɔ bliboa",
       company: "Dɔwɔƒe ŋkɔ",
       email: "Dɔwɔƒe email",
-      phone: "Telefon (kple dukɔ ƒe dzesi)",
+      countryCode: "Dukɔ ƒe dzesi",
+      selectCode: "Tia dzesi",
+      phone: "Telefon",
       country: "Dukɔ",
+      searchCountryPlaceholder: "Ŋlɔ dukɔ ƒe ŋkɔ…",
+      noCountryMatch: "Dukɔ aɖeke mesɔ o — yi edzi ŋlɔ.",
       destination: "Afisi woayi / tɔdziʋu ƒe nɔƒe",
       timeframe: "Ɣeyiɣi si woakpɔ mɔ na",
       timeframeOptions: {
@@ -176,11 +329,14 @@ const ee: DictionaryPatch = {
     reference: "Wò dzeside xexlẽdzesi",
     nextStepsTitle: "Nusi gbɔna",
     nextSteps: [
-      "HB33 akpɔ koko nusiwo li ɖi na wò agbɔsɔsɔ.",
+      "HB33 akpɔ nusiwo li ɖi na wò agbɔsɔsɔ.",
       "Àxɔ asi mamlɛtɔ kple nɔnɔmewo.",
       "Woadzra ɖo le kontenna agbaʋuʋu, eɖoɖo kple FOB/CIF ɖoɖo ŋu.",
       "Woakpɔ ga numarere ɖi hafi dɔwɔwɔ nadze egɔme.",
     ],
+    emailStatusOn: "Míedɔ eƒe akpɔɖeŋu ɖa na míaƒe nusi dzraɖoƒe ƒe haƒo to email me.",
+    emailStatusOff:
+      "Womenya email ɖoɖo ɖo le afi sia o. Na ŋuɖoɖo kabakaba, dɔ wò biabia ɖa to email alo WhatsApp dzi to bɔtɔne si le anyi la dzi — kpe wò dzeside xexlẽdzesi ɖe eŋu.",
     sendEmail: "Dɔ to email me",
     sendWhatsapp: "Yi edzi le WhatsApp dzi",
     newInquiry: "Biabia yeye",
@@ -199,6 +355,7 @@ const ee: DictionaryPatch = {
       message: "Gbedoxɔ",
       messagePlaceholder: "Nu, agbɔsɔsɔ, afisi woayi…",
       submit: "Dɔ gbedoxɔ la",
+      sent: "Wodɔe ɖa.",
     },
     errors: {
       required: "Ele be nàŋlɔ afi sia.",
@@ -210,8 +367,89 @@ const ee: DictionaryPatch = {
     channelsTitle: "Mɔ tẽtẽwo",
     emailLabel: "Email",
     whatsappLabel: "WhatsApp",
+    whatsappHint: "Kabakaba wu na biabia si le edzi yim — kpe wò dzeside xexlẽdzesi ɖe eŋu ne ele asiwò.",
+    whatsappUnavailable: "Womenya WhatsApp ɖoɖo ɖo o. Meɖekuku de asi mí ŋu to email me — míaɖo eŋu kple nɔnɔmewo, asi kple ɣeyiɣi.",
     locationLabel: "Nɔƒe",
     responseNote: "Míedzea agbagba be míaɖo eŋu na nusi gedewo biabia le dɔwɔ ŋkeke 1–2 me.",
+    failText: "Míete ŋu dɔ wò gbedoxɔ la ɖo o. Gbugbɔ te kpɔ — alo de asi mía ŋu tẽ to email me.",
+  },
+  privacyPage: {
+    eyebrow: "Se",
+    title: "Nyatakaka Ɣaɣla",
+    updated: "Wɔtrɔe mlɔeba",
+    intro:
+      "HB33 ƒoa nu ɣaɣla sue si hiã koe. Nusi nèdɔ ɖe biabia alo gbedoxɔ me koe míezãna, be míaɖo eŋu. Wɛbsait sia me akɔnti aɖeke, nyadzɔdzɔgbalẽ aɖeke alo ɖoɖo aɖeke meli o.",
+    sections: [
+      {
+        title: "Nyatakaka si nèna",
+        text: "Biabia: ŋkɔ, dɔwɔƒe, email, telefon, dukɔ, afisi woayi, ɣeyiɣi si woakpɔ mɔ na, eɖoɖo si nèdi, nusiwo kple kontenna xexlẽme, kple nya bubu ɖesiaɖe. Gbedoxɔ: ŋkɔ, email, tanya kple gbedoxɔ. Míefɔa nu bubu aɖeke o — akɔnti, nya alo nyadzɔdzɔgbalẽ aɖeke meli o.",
+      },
+      {
+        title: "Zazã",
+        text: "Be míaɖo eŋu na wò biabia koe: kpɔ nusiwo li kple asi ɖi, dzra nɔnɔmewo kple ɖoɖo ɖo, eye nàƒo nu kpli wò kuɖe wò nuhiãhiã ŋu. Míedzrana nu ɣaɣla o, eye míedɔa asitsatsa email o.",
+      },
+      {
+        title: "Dzraɖo kple mama",
+        text: "Wotaa nusi nèdɔ ɖa ɖe wɛbsait sia ƒe sɛva ƒe nyatakaka me be woagablẽ biabia o. Ne wodo ɖo la, wodɔa eƒe akpɔɖeŋu ɖa to email alo webhook ɣaɣla dzi yi HB33 ƒe asitsatsa akpata me — kpɔɖeŋu mɔxexe la fiaa nyateƒe ɣesiaɣi ne email ɖoɖo le dɔwɔm alo o. Email kple WhatsApp bɔtɔnewo wɔa dɔ le wò app me, nusi nèdɔ la koe míexɔna.",
+      },
+      {
+        title: "Cookie kple numekuku",
+        text: "Wɛbsait sia medoa cookie ɖo o eye mewɔa numekuku alo ɖoɖo le gɔmedzedze o. Ne wodo numekuku ɖo la, enyena ɖe edzi ne èlɔ̃ le lɔlɔ̃ ƒe mɔxexe me koe, eye wotaa wò tiatia ɖe wò browser me.",
+      },
+      {
+        title: "Dzraɖoɣeyiɣi kple wò gomenɔamesiwo",
+        text: "Wodzrana biabia ŋuti ŋkɔɖiɖi ɖo na asitsatsa kple ŋkɔɖiɖi tɔxɛ. Àte ŋu abia wò nyatakaka ƒe akpɔɖeŋu, ɖɔɖɔɖo alo tutu ɣesiaɣi to wɛbsait sia ƒe kadodo email dzi.",
+      },
+      {
+        title: "Agbalẽ si me nɔnɔme",
+        text: "Se sia ɖe alesi wɛbsait sia ƒe data yia edzi la me, gake hafi wòazãe le asitsatsa me, ele be HB33 ƒe sɛnanyaŋlɔla nakpɔe ɖi, kpe se siwo kuɖe eŋu, data dzikpɔkpɔ dɔwɔwɔ kple hosting kple email dzikpɔlawo ɖe eŋu.",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "Se",
+    title: "Zazã Sewo",
+    updated: "Wɔtrɔe mlɔeba",
+    intro: "Ne èzã wɛbsait sia la, enye be èlɔ̃ se siawo dzi. Ne mèlɔ̃ o la, meɖekuku mèzãe o.",
+    sections: [
+      {
+        title: "Biabia menye nudɔɖo o",
+        text: "Biabia alo gbedoxɔ ɖoɖo metɔa nu le nubabla dzi o, medzraa nusiwo ɖo o eye meɖoa asi ɖe te o. Ga numarere aɖeke meli le afi sia o. Wokpɔa nudɔɖo katã ɖi ɖe vovo le agbalẽ me kple nɔnɔmewo, agbaʋuʋu, ɖoɖo kple ga numarere ƒe nɔnɔme.",
+      },
+      {
+        title: "Nudɔɖo sue wu",
+        text: "HB33 wɔa nusi gedewo ko, eye kontenna blibo ɖeka le sue wu me le nudɔɖo ɖesiaɖe me. Míate ŋu axɔ biabia si le anyi wu esia o.",
+      },
+      {
+        title: "Nusiwo ŋuti nyatakaka",
+        text: "Nɔnɔme siwo wofiana le wɛbsait sia dzi nye mɔfiame koe. Wokpɔa nɔnɔme mamlɛtɔ, vuvɔ, eɖoɖo kple agbaʋuʋu ɖi na lot ɖesiaɖe, eye wokpɔnɛ ɖi hafi aɖɔe ɖa.",
+      },
+      {
+        title: "Zazã si wolɔ̃",
+        text: "Meɖekuku zã biabia ƒe fɔm la kple nuteƒe ko na agblemenusi gã tɔxɛ siwo hiã. Mèdɔa spam, nya ʋuʋu, se metsɔ nu ɖo o alo mɔnu siwo gbɔa dɔ la dzi ɖa o.",
+      },
+      {
+        title: "Nusi le eme kple agba",
+        text: "Wɛbsait sia ƒe ŋɔŋlɔ kple nuwɔwɔ nye HB33 tɔ, nusiwo ƒe foto nye amedzi etɔ̃a ƒe nunana siwo woŋlɔ woƒe ŋkɔ ɖe axa ɖesiaɖe dzi. Le se si de mɔ na la me, HB33 mekpɔa agba le nyatakaka siwo le wɛbsait sia dzi la tae o — nubabla si wokpɔ ɖi le agbalẽ me lae dzina ɖe nudɔɖo katã ŋu.",
+      },
+      {
+        title: "Agbalẽ si me nɔnɔme",
+        text: "Esia nye gɔmedzedze tɔ, ele be HB33 ƒe sɛnanyaŋlɔla nakpɔe ɖi hafi wòazãe le asitsatsa me, kpe se siwo kuɖe eŋu, agba ƒe se kple nyaʋuʋu ɖoɖo ɖe eŋu.",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "Axa sia mege ɖe kontenna la me o.",
+    text: "Axa si nèdi la meli o alo woʋui.",
+    home: "Trɔ yi aƒe",
+    products: "Kpɔ nusiwo",
+  },
+  consent: {
+    title: "Cookie kple Numekuku Lɔlɔ̃",
+    text: "Míezãa numekuku si bɔa ɣaɣla ta la ɖo be wɛbsait sia nanyo ɖe edzi. Enyena ɖe edzi ne èlɔ̃ koe. Ne ègbe la, womeɖoa ɖoɖo aɖeke ɖo o.",
+    accept: "Lɔ̃ numekuku",
+    decline: "Gbe",
   },
   footer: {
     tagline: "Koko, soyabeans kple cocopeat gedewo — wokpɔe ɖi tso gɔmedzedze, woɖoe ɖa le xexeme.",
@@ -223,13 +461,7 @@ const ee: DictionaryPatch = {
     contactTitle: "Nukpɔkpɔ",
     language: "Gbe",
     minOrder: "Nudɔɖo sue wu: kontenna 1.",
-  },
-  notFound: {
-    eyebrow: "404",
-    title: "Axa sia mege ɖe kontenna la me o.",
-    text: "Axa si nèdi la meli o alo woʋui.",
-    home: "Trɔ yi aƒe",
-    products: "Kpɔ nusiwo",
+    photoCredit: "Fotowo tso Wikimedia Commons — kpɔ ŋkɔɖoɖo le nu ƒe axa ɖesiaɖe dzi.",
   },
 };
 

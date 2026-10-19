@@ -213,6 +213,7 @@ export default async function HomePage({
                 width={1200}
                 height={800}
                 loading="lazy"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="aspect-[4/3] w-full object-cover"
               />
             </div>

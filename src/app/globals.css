@@ -32,10 +32,15 @@ html {
   scroll-behavior: smooth;
   /* Stable scrolling: no bouncy / elastic overscroll at page top or bottom. */
   overscroll-behavior: none;
+  /* Clip horizontal overflow (long words, fixed-width elements) without
+     turning the root into a scroll container — `hidden` here traps vertical
+     page scroll in some browsers. `clip` keeps normal scrolling intact. */
+  overflow-x: clip;
 }
 
 body {
   overscroll-behavior-y: none;
+  overflow-x: clip;
 }
 
 body {

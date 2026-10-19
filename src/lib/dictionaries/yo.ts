@@ -1,10 +1,37 @@
 import type { DictionaryPatch } from "../dictionaries";
 
 /**
- * Yoruba (Yorùbá) starter pack — core UI translated, long-form content
- * falls back to English pending native-speaker review.
+ * Yoruba (Yorùbá) — full UI translation. Long-form product copy lives in
+ * `lib/products.ts` and currently falls back to English/French.
  */
 const yo: DictionaryPatch = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — Koko, Soybean àti Cocopeat Ìwọ̀-oòrùn Áfríkà (Ńlá)",
+    homeDescription:
+      "HB33 ń pèsè koko bean, koko shell, koko bọ́tà, koko nib, koko potash, koko cake, ẹ̀wà sóyà àti cocopeat ní ọ̀nà ńlá fún àwọn olùṣe àti olùra ńlá kárí ayé. Àṣẹ láti kọnténà, a fìdí múlẹ̀ láti orísun.",
+    productsTitle: "Ọjà — Ọjà oko ńlá",
+    productsDescription:
+      "Àkójọ ńlá HB33: koko bean, koko shell, koko bọ́tà, koko nib, koko potash, koko cake, ẹ̀wà sóyà àti cocopeat. Àṣẹ tó kéré jù ni kọnténà ọkọ̀ ojú omi kan.",
+    aboutTitle: "Nípa HB33",
+    aboutDescription:
+      "HB33 jẹ́ olùpèsè ọjà oko Ìwọ̀-oòrùn Áfríkà tí ń fi kọnténà tí a fìdí múlẹ̀ sìn àwọn olùṣe, aláṣepọ̀ àti olùra ńlá.",
+    howTitle: "Bá a ṣe n ṣiṣẹ́ — Ìlànà ra ọjà ńlá",
+    howDescription:
+      "Bá a ṣe ń ra ní ọ̀nà ńlá lọ́wọ́ HB33: wo àkójọ, beere idiyele, fìdí wíwà múlẹ̀, kí o sì ránṣẹ́ ní FOB tàbí CIF. Kọnténà kan ní ìkéré.",
+    quoteTitle: "Beere idiyele — Ìbéèrè àṣẹ ńlá",
+    quoteDescription:
+      "Fi ìbéèrè àṣẹ ńlá ránṣẹ́ sí HB33. Àṣẹ tó kéré jù ni kọnténà ọkọ̀ ojú omi kan. A ń fìdí wíwà, idiyele àti ránṣẹ́ múlẹ̀.",
+    contactTitle: "Kàn sí HB33",
+    contactDescription:
+      "Kàn sí HB33 nípa ọjà ńlá ní ímeèlì tàbí WhatsApp. A ń dáhùn ìsọfúnni, idiyele àti àkókò ìfijíṣẹ́.",
+    privacyTitle: "Àṣírí ìsọfúnni",
+    privacyDescription:
+      "HB33 ń gba ìsọfúnni ara ẹni tó kéré jù nìkan — ohun tí ẹ fi ránṣẹ́ nínú ìbéèrè tàbí ìfiranṣẹ́, láti dáhùn. Kò sí àkọsílẹ̀, ìwé ìròyìn, tàbí ìtọ́pa ìpolówó.",
+    termsTitle: "Àwọn òfin ìlò",
+    termsDescription:
+      "Fífi ìbéèrè tàbí ìfiranṣẹ́ ránṣẹ́ kì í dá àdéhùn, kì í pa ọjà mọ́, kì í sì fi idiyele múlẹ̀. Àṣẹ tó kéré jù: kọnténà ọkọ̀ ojú omi kan. Òfin yìí kan ìbéèrè ọjà ńlá tòótọ́ nìkan.",
+  },
   nav: {
     home: "Ilé",
     products: "Ọjà",
@@ -18,8 +45,12 @@ const yo: DictionaryPatch = {
     language: "Èdè",
     languageGroups: {
       global: "Gbogbo agbaye",
+      europe: "Yúróòpù",
+      asia: "Éṣíà",
+      "middle-east": "Àárín Gbùngbùn Ìlà-oòrùn",
       ghana: "Ghana",
       nigeria: "Nàìjíríà",
+      "east-africa": "Ìlà-oòrùn Áfríkà",
       francophone: "Ìwọ̀-oòrùn Áfríkà (Faransé)",
     },
   },
@@ -40,6 +71,7 @@ const yo: DictionaryPatch = {
     tonnageNote:
       "Ìwọ̀n ìkẹyìn sinmi lórí ìwúwo ọjà àti irú kọnténà — a óo fìdí rẹ̀ múlẹ̀ kí a tó ránṣẹ́.",
     allRightsReserved: "Gbogbo ẹ̀tọ́ wà ní pamọ́.",
+    backToTop: "Padà sókè",
     placeholderNote:
       "A óo fìdí àwọn ìsọfúnni tó ní àmì “tó yẹ kí a fìdí múlẹ̀” múlẹ̀ pẹ̀lú HB33 kí a tó ránṣẹ́.",
   },
@@ -64,11 +96,45 @@ const yo: DictionaryPatch = {
       { value: "FOB / CIF", label: "Ránṣẹ́ kárí ayé" },
     ],
   },
+  trust: {
+    eyebrow: "Ìdí tí a fi yan HB33",
+    title: "Fún àwọn olùra tí kò lè farada ọ̀sẹ̀ búburú.",
+    items: [
+      {
+        title: "Ìṣàyẹ̀wò kìíní",
+        text: "Ìṣàyẹ̀wò ẹlẹ́ẹ̀kẹta kí kọnténà kọ̀ọ̀kan tó lọ. A ń ṣàyẹ̀wò ọrinrin ní oko, kì í ṣe nígbà tó dé.",
+      },
+      {
+        title: "Kò sí alárinà",
+        text: "Ìbáṣepọ̀ tààrà pẹ̀lú àwọn oko àti ẹgbẹ́ ìwọ̀-oòrùn Áfríkà. A ni ìkápá ọ̀nà ọjà, kì í ṣe ìsopọ̀ nìkan.",
+      },
+      {
+        title: "A kì í dákẹ́",
+        text: "Ìròyìn tí ó wúlò lẹ́yìn àdéhùn, tí ń sọ ìwé, ìkojọpọ̀ àti ránṣẹ́ di ìgbésẹ̀ ní gbogbo ìpele.",
+      },
+    ],
+  },
   homeProducts: {
     eyebrow: "Àwọn ọjà wa",
     title: "Ọjà oko mẹ́jọ ńlá. Ìwọ̀n kan.",
-    lead: "Ọjà koko, ẹ̀wà epo àti ohun èlò ìgbìn — a ṣe wọ́n fún kọnténà, a sì ń ṣàyẹ̀wò kọ̀ọ̀kan.",
+    lead: "Ọjà koko, ẹ̀wà epo àti ọja àgbọn — a ṣe wọ́n fún kọnténà, a sì ń ṣàyẹ̀wò kọ̀ọ̀kan.",
     cta: "Wo gbogbo àkójọ ọjà",
+  },
+  founder: {
+    eyebrow: "Láti ọ̀dọ̀ olùdásílẹ̀",
+    title: "Káàbọ̀ sí",
+    titleAccent: "HB33.",
+    imageAlt: "Olùdásílẹ̀ HB33 Hugo Obed",
+    paragraphs: [
+      "HB33 bẹ̀rẹ̀ láti inú ìgbàgbọ́ kan tó rọrùn: àwọn olùṣe kárí ayé yẹ kí wọ́n gba ẹrù tí a lè gbẹ́kẹ̀lé.",
+      "Ìgbàgbọ́ yìí wá láti inú ìrírí. Ní ìbẹ̀rẹ̀ iṣẹ́ mi, alábàáṣiṣẹ́ ọ̀nà ọkọ̀ kan yí ọ̀nà ìrìnàjò padà láìsí ìfọwọ́sí mi láti dín owó kù. Abajade jẹ́ ìparun — òjò ba ẹrù náà jẹ́, èmi sì gba gbogbo àdánù náà. Ẹ̀kọ́ líle ni, ṣùgbọ́n ó yí bí mo ṣe ń ṣe iṣẹ́ ọjà oke-òkun padà pátápátá.",
+      "Ó kọ́ mi pé dídára nìkan kò tó. Ìpèsè tí a lè gbẹ́kẹ̀lé gbọ́dọ̀ dúró lórí ọ̀nà ọkọ̀ tí a lè gbẹ́kẹ̀lé, ìwé tó ṣe kedere àti ìbáṣepọ̀ tó ṣe kedere. Ìdí nìyí tí a fi ń ṣàyẹ̀wò, kọ ìwé, kí a sì fi SGS ṣàyẹ̀wò gbogbo ẹrù tí a ń ṣe kí ó tó kúrò ní èbúté.",
+      "Lónìí, HB33 ń pèsè koko bean, koko shell, koko bọ́tà, koko nib, koko potash àti koko cake láti àwọn oko tí a lè gbẹ́kẹ̀lé ní Ìwọ̀-oòrùn Áfríkà fún àwọn olùṣe ní Éṣíà, Yúróòpù àti Àárín Gbùngbùn Ìlà-oòrùn.",
+      "Ní HB33, a kì í rán ẹrù kí a retí oríire. A gbàgbọ́ nínú ètò, ìṣàyẹ̀wò àti ìfijíṣẹ́ tí a lè gbẹ́kẹ̀lé.",
+      "Ẹ ṣeun fún gbígbẹ́kẹ̀lé wa gẹ́gẹ́ bí alábàáṣiṣẹ́ ìpèsè. Mo retí láti ràn ọ́ lọ́wọ́ kí iṣẹ́ yín lè dàgbà pẹ̀lú ìgbẹ́kẹ̀lé kíkún.",
+    ],
+    name: "Hugo Obed",
+    role: "Olùdásílẹ̀, HB33",
   },
   processPreview: {
     eyebrow: "Bá a ṣe n ṣiṣẹ́",
@@ -80,11 +146,38 @@ const yo: DictionaryPatch = {
     ],
     cta: "Wo gbogbo ìlànà",
   },
+  logistics: {
+    eyebrow: "Ìṣakojọpọ̀ àti Ìrìnrìnàjò",
+    title: "A ṣe fún kọnténà. A kọ ìwé fún ìkọ́nilẹ̀.",
+    items: [
+      { title: "Ìkojọpọ̀ kọnténà", text: "Ìkojọpọ̀ ẹsẹ̀ 20 àti 40. A ń fi ìwọ̀n ìkẹyìn múlẹ̀ fún ọjà àti irú kọnténà kọ̀ọ̀kan." },
+      { title: "Ìwé ìjáde", text: "Ìwé ìmọ́tótó ohun ọ̀gbìn, ìwé orísun àti ìwé ẹrù ń tẹ̀lé gbogbo ẹrù." },
+      { title: "FOB / CIF", text: "Lábẹ́ àwọn ètò àti èbúté tí ẹ fẹ́ — pẹ̀lú ìròyìn tó ń ru ìgbésẹ̀." },
+    ],
+  },
   faqPreview: {
     eyebrow: "Àwọn ìbéèrè tí ó wọ́pọ̀",
     title: "Ohun tí àwọn oníbàárà ń beere kí ránṣẹ́ àkọ́kọ́ tó dé.",
     cta: "Bá a ṣe ń pàṣẹ",
   },
+  homeFaqs: [
+    {
+      q: "Kí ni HB33 ń pèsè?",
+      a: "A ń pèsè koko bean, koko shell, koko bọ́tà, koko nib, koko potash àti koko cake ní ọ̀nà ńlá, pẹ̀lú ẹ̀wà sóyà àti cocopeat, ní kọnténà, fún àwọn olùṣe, aláṣepọ̀ àti olùra ńlá.",
+    },
+    {
+      q: "Kí ni àṣẹ tó kéré jù?",
+      a: "Kọnténà kíkún kan fún àṣẹ kọ̀ọ̀kan. A ń ṣe àṣẹ ńlá nìkan, a sì ń fìdí ìwọ̀n kọnténà àti ìkojọpọ̀ tó dára jù múlẹ̀ pẹ̀lú yín kí a tó ránṣẹ́.",
+    },
+    {
+      q: "Ṣé ẹ ń ránṣẹ́ ní FOB tàbí CIF?",
+      a: "Méjèjì. A ń pèsè idiyele FOB tàbí CIF tó dára jù fún iṣẹ́ yín, èbúté àti ọ̀nà ọjà yín.",
+    },
+    {
+      q: "Bá wo ni mo ṣe lè rí idiyele àti ìsọfúnni?",
+      a: "Fi ìbéèrè ránṣẹ́ pẹ̀lú ọjà, iye àti ibi tí a óo lọ. A óo dáhùn pẹ̀lú ìsọfúnni, idiyele àti àkókò ìfijíṣẹ́ — láìsí ọ̀rọ̀ ìpolówó.",
+    },
+  ],
   homeCta: {
     title: "Ránṣẹ́ yín tó ń bọ̀ kò gbọdọ̀ dàbí tẹ́tẹ́.",
     lead: "Sọ ohun tí ẹ nílò. A óo fìdí wíwà, ìsọfúnni àti ránṣẹ́ múlẹ̀ — ní ìwé.",
@@ -102,7 +195,7 @@ const yo: DictionaryPatch = {
     categories: {
       cocoa: "Ọjà koko",
       oilseeds: "Ẹ̀wà epo",
-      "growing-media": "Ohun èlò ìgbìn",
+      "growing-media": "Ọja àgbọn",
     },
     sortLabel: "Tò",
     sortOptions: {
@@ -121,8 +214,12 @@ const yo: DictionaryPatch = {
   productDetail: {
     overview: "Àkótán",
     background: "Ìpilẹ̀ṣẹ̀ àti pàtàkì ìṣòwò",
+    educationalNote:
+      "Àlàyé gbogbogbòo nípa àwọn ohun èlò wọ̀nyí wà fún ẹ̀kọ́ nìkan. A ń fìdí kúlẹ̀kúlẹ̀ ọjà kọ̀ọ̀kan múlẹ̀ ní HB33 fún ìbéèrè kọ̀ọ̀kan.",
     uses: "Àwọn ìlò àti bí a ṣe ń lò ó",
     specs: "Àwọn ìsọfúnni",
+    specsNote:
+      "Ìsọfúnni jẹ́ ìtọ́kasí. A ń fìdí ìpele ìkẹyìn, ọrinrin àti ìṣakojọpọ̀ múlẹ̀ fún ẹrù kọ̀ọ̀kan, a sì ń ṣàyẹ̀wò rẹ̀ kí a tó ránṣẹ́.",
     quality: "Dídára, mímú àti pípa mọ́",
     packaging: "Ìṣakojọpọ̀ àti ránṣẹ́ ńlá",
     buyers: "Àwọn oníbàárà àti iṣẹ́",
@@ -131,6 +228,58 @@ const yo: DictionaryPatch = {
     quoteCta: "Beere idiyele fún ọjà yìí",
     quoteButton: "Beere Idiyele",
     whatsappButton: "Beere lórí WhatsApp",
+    whatsappUnavailable:
+      "A kò tíì ṣètò àṣẹ WhatsApp — kí a má baà pàdánù ìbéèrè, jọ̀wọ́ lo fọ́mù ìbéèrè idiyele tàbí ímeèlì.",
+    toBeConfirmed: "A óo fìdí múlẹ̀ fún ẹrù kọ̀ọ̀kan",
+  },
+  aboutPage: {
+    eyebrow: "Nípa HB33",
+    title: "Kì í ṣe olùpèsè nìkan — alábàáṣiṣẹ́ ìpèsè.",
+    lead: "HB33 bẹ̀rẹ̀ láti inú ìgbàgbọ́ kan tó rọrùn: àwọn olùṣe kárí ayé yẹ kí wọ́n gba ẹrù koko àti ọjà oko tí a lè gbẹ́kẹ̀lé.",
+    storyTitle: "Ìtàn wa",
+    story: [
+      "HB33 bẹ̀rẹ̀ láti inú ìrírí ewu ìṣòwò oko — alábàáṣiṣẹ́ ọ̀nà ọkọ̀ kan yí ọ̀nà padà láìsí ìfọwọ́sí láti dín owó kù, òjò sì ba gbogbo ẹrù jẹ́. Ìdíyelé ẹ̀kọ́ yẹn ni ó mọ bí a ṣe ń ṣiṣẹ́ lónìí.",
+      "Dídára nìkan kò tó. Ìpèsè tí a lè gbẹ́kẹ̀lé gbọ́dọ̀ dúró lórí ọ̀nà ọkọ̀ tí a lè gbẹ́kẹ̀lé, ìwé tó ṣe kedere àti ìbáṣepọ̀ tó ṣe kedere. Ìdí nìyí tí a fi ń ṣàyẹ̀wò, kọ ìwé, kí a sì ṣàyẹ̀wò gbogbo ẹrù HB33 kí ó tó kúrò ní èbúté.",
+      "Lónìí, HB33 ń pèsè ọjà koko, ẹ̀wà sóyà àti cocopeat láti àwọn oko àti ẹgbẹ́ tí a lè gbẹ́kẹ̀lé ní Ìwọ̀-oòrùn Áfríkà fún àwọn olùṣe ní Éṣíà, Yúróòpù àti Àárín Gbùngbùn Ìlà-oòrùn.",
+    ],
+    valuesEyebrow: "Ìlànà wa",
+    valuesTitle: "Àwọn ìlànà wa",
+    values: [
+      { title: "Ìṣàyẹ̀wò kìíní", text: "Ìṣàyẹ̀wò àti ìyẹ̀wò ọrinrin ní oko — kí a tó ṣakojọpọ̀ àti kí a tó kó ẹrù, kì í ṣe nígbà tó dé." },
+      { title: "Ìpèsè tààrà", text: "Ìbáṣepọ̀ gígùn pẹ̀lú àwọn oko àti ẹgbẹ́ tí a mọ orúkọ wọn." },
+      { title: "Ìbáṣepọ̀ tó ṣe kedere", text: "Ìfìdí múlẹ̀ ní ìwé, ìròyìn ẹrù tí ó wúlò àti ìwé fún kọnténà kọ̀ọ̀kan." },
+    ],
+    factsEyebrow: "Ní ṣókí",
+    factsTitle: "Àwọn òtítọ́ iṣẹ́",
+    factsNote:
+      "Òtítọ́ tí a fìdí múlẹ̀ nìkan la ń kọ síbí. A ń fìdí ìwé-ẹ̀rí, ibi tí a óo lọ àti agbára oṣooṣù múlẹ̀ fún ìbéèrè kọ̀ọ̀kan, a kì í sì ro àfojúsùn.",
+    facts: [
+      { label: "Ibùgbé", value: "Ìwọ̀-oòrùn Áfríkà" },
+      { label: "Ọjà", value: "Ọjà ńlá 8" },
+      { label: "Agbára oṣooṣù", value: "Tó 1,000 MT" },
+      { label: "Ètò ìfijíṣẹ́", value: "FOB / CIF" },
+      { label: "Àṣẹ tó kéré jù", value: "Kọnténà ọkọ̀ ojú omi kan" },
+    ],
+    ctaTitle: "Ṣòwò pẹ̀lú HB33",
+    ctaText: "Sọ iye àti ibi tí a óo lọ fún wa — a óo dáhùn pẹ̀lú ìsọfúnni, idiyele àti àkókò ìfijíṣẹ́.",
+    ctaPrimary: "Beere Idiyele",
+    ctaSecondary: "Kàn sí wa",
+  },
+  howPage: {
+    eyebrow: "Bá a ṣe n ṣiṣẹ́",
+    title: "Ìgbésẹ̀ márùn-ún láti rí kọnténà tí a fìdí múlẹ̀.",
+    lead: "Fífi ìbéèrè ránṣẹ́ kì í dá àṣẹ, kì í pa ọjà mọ́, kì í sì fi idiyele ìkẹyìn múlẹ̀. A ń fìdí gbogbo àṣẹ múlẹ̀ ní ìwé kí a tó ránṣẹ́.",
+    steps: [
+      { title: "Wo àkójọ", text: "Wo àwọn ọjà, ìsọfúnni àti ìṣakojọpọ̀. A ń ta gbogbo rẹ̀ ní kọnténà kíkún kan." },
+      { title: "Yan ọjà àti iye", text: "Yan ọjà àti iye kọnténà. Kọnténà ọkọ̀ ojú omi kan ní ìkéré fún àṣẹ kọ̀ọ̀kan." },
+      { title: "Fi ìbéèrè yín ránṣẹ́", text: "Fi ìsọfúnni ìkànsí, ìfijíṣẹ́ àti àwọn àìní ránṣẹ́ ní fọ́mù ìbéèrè, ímeèlì tàbí WhatsApp." },
+      { title: "Fìdí àwọn ètò múlẹ̀", text: "HB33 ń fìdí wíwà, idiyele, ìsọfúnni, ìkojọpọ̀ kọnténà, ránṣẹ́ àti ìsanwó múlẹ̀." },
+      { title: "Ìmúṣẹ àti ìtẹ̀lé", text: "Ìṣàyẹ̀wò, ìwé, ránṣẹ́ — ìròyìn ní gbogbo ìpele títí dé ìfijíṣẹ́." },
+    ],
+    noteTitle: "Jọ̀wọ́ ṣàkíyèsí",
+    noteText:
+      "Ìbéèrè jẹ́ èròǹgbà, kì í ṣe àṣẹ. A óo fìdí wíwà, idiyele ìkẹyìn, ìsọfúnni, ìkojọpọ̀ kọnténà, ránṣẹ́ àti àwọn ipò ìsanwó múlẹ̀ pẹ̀lú HB33 kí a tó ṣe ìlérí èyíkéyìí.",
+    cta: "Bẹ̀rẹ̀ pẹ̀lú bíbéèrè idiyele",
   },
   quotePage: {
     eyebrow: "Ìbéèrè àṣẹ ńlá",
@@ -140,8 +289,12 @@ const yo: DictionaryPatch = {
       fullName: "Orúkọ kíkún",
       company: "Orúkọ ilé-iṣẹ́",
       email: "Ímeèlì iṣẹ́",
-      phone: "Fóònù (pẹ̀lú koodu orílẹ̀-èdè)",
+      countryCode: "Koodu orílẹ̀-èdè",
+      selectCode: "Yan koodu",
+      phone: "Fóònù",
       country: "Orílẹ̀-èdè",
+      searchCountryPlaceholder: "Kọ orúkọ orílẹ̀-èdè…",
+      noCountryMatch: "Kò sí orílẹ̀-èdè tó bá mu — ẹ máa kọ sí i.",
       destination: "Ibi tí a óo lọ / èbúté",
       timeframe: "Àkókò tí a óo dé tí a retí",
       timeframeOptions: {
@@ -181,6 +334,9 @@ const yo: DictionaryPatch = {
       "A óo fọwọ́ sí ìkojọpọ̀ kọnténà, ìṣakojọpọ̀ àti ránṣẹ́ FOB/CIF.",
       "A óo fìdí ètò ìsanwó múlẹ̀ kí a tó bẹ̀rẹ̀ iṣẹ́.",
     ],
+    emailStatusOn: "A ti fi ẹ̀dà ránṣẹ́ sí ẹgbẹ́ ìta wa ní ímeèlì.",
+    emailStatusOff:
+      "A kò tíì mu ìfiránṣẹ́ ímeèlì ṣiṣẹ́ ní ibí yìí. Fún ìdáhùn tó yára jù, fi ìbéèrè yín ránṣẹ́ ní ímeèlì tàbí WhatsApp nípasẹ̀ bọ́tìnì ìsàlẹ̀ — pẹ̀lú nọ́mbà ìtọ́kasí yín.",
     sendEmail: "Fi ímeèlì ránṣẹ́",
     sendWhatsapp: "Tẹ̀síwájú lórí WhatsApp",
     newInquiry: "Ìbéèrè tuntun",
@@ -199,6 +355,7 @@ const yo: DictionaryPatch = {
       message: "Ìfiranṣẹ́",
       messagePlaceholder: "Ọjà, iye, ibi tí a óo lọ…",
       submit: "Fí ìfiranṣẹ́ ránṣẹ́",
+      sent: "A ti ránṣẹ́.",
     },
     errors: {
       required: "Ààyè yìí ṣe pàtàkì.",
@@ -210,8 +367,89 @@ const yo: DictionaryPatch = {
     channelsTitle: "Ọ̀nà tààrà",
     emailLabel: "Ímeèlì",
     whatsappLabel: "WhatsApp",
+    whatsappHint: "Ó yára jù fún ìbéèrè tó ń lọ lọ́wọ́ — fi nọ́mbà ìtọ́kasí yín kún un bí ẹ bá ní.",
+    whatsappUnavailable: "A kò tíì ṣètò WhatsApp. Jọ̀wọ́ kàn sí wa ní ímeèlì — a óo dáhùn pẹ̀lú ìsọfúnni, idiyele àti àkókò ìfijíṣẹ́.",
     locationLabel: "Ibùgbé",
     responseNote: "A ń sá láti dáhùn ìbéèrè ńlá láàrín ọjọ́ iṣẹ́ 1–2.",
+    failText: "A kò le fi ìfiranṣẹ́ yín ránṣẹ́. Gbìyànjú lẹ́ẹ̀kan sí i — tàbí kàn sí wa tààrà ní ímeèlì.",
+  },
+  privacyPage: {
+    eyebrow: "Òfin",
+    title: "Àṣírí ìsọfúnni",
+    updated: "Ìmúdójúìwọ̀n ìkẹyìn",
+    intro:
+      "HB33 ń gba ìsọfúnni ara ẹni tó kéré jù tó bá ṣeé ṣe. Ohun tí ẹ fi ránṣẹ́ nínú ìbéèrè tàbí ìfiranṣẹ́ nìkan la ń lò, láti dáhùn. Ojú wẹ́ẹ̀bù yìí kò ní àkọsílẹ̀, ìwé ìròyìn tàbí ìtọ́pa ìpolówó.",
+    sections: [
+      {
+        title: "Ìsọfúnni tí ẹ ń pèsè",
+        text: "Ìbéèrè: orúkọ, ilé-iṣẹ́, ímeèlì, fóònù, orílẹ̀-èdè, ibi tí a óo lọ, àkókò ìfijíṣẹ́, ìṣakojọpọ̀ tí a fẹ́, ọjà àti iye kọnténà, àti àkọsílẹ̀ mìíràn èyíkéyìí. Ìfiranṣẹ́ ìkànsí: orúkọ, ímeèlì, kókó àti ìfiranṣẹ́. A kì í gba ohun mìíràn — kò sí àkọsílẹ̀, àlàyé tàbí ìwé ìròyìn.",
+      },
+      {
+        title: "Ìlò",
+        text: "Láti dáhùn ìbéèrè yín nìkan: fìdí wíwà àti idiyele múlẹ̀, ṣètò ìsọfúnni àti ránṣẹ́, àti ìbáṣepọ̀ nípa àìní yín. A kì í ta ìsọfúnni ara ẹni, a kì í sì fi ímeèlì ìpolówó ránṣẹ́.",
+      },
+      {
+        title: "Pípa mọ́ àti pínpín",
+        text: "A ń kọ ohun tí a fi ránṣẹ́ sínú àkọsílẹ̀ sáfà ojú wẹ́ẹ̀bù yìí kí a má baà pàdánù ìbéèrè. Bí a bá ṣètò rẹ̀, a ń fi ẹ̀dà ránṣẹ́ ní ímeèlì tàbí webhook ìkọ̀kọ̀ sí àpótí títa HB33 — ojú ìfìdí múlẹ̀ ń sọ nígbà gbogbo bóyá ìfiránṣẹ́ ímeèlì wà. Àwọn bọ́tìnì ímeèlì àti WhatsApp ń ṣiṣẹ́ nínú ohun èlò yín, ohun tí ẹ yan láti fi ránṣẹ́ nìkan la ń gba.",
+      },
+      {
+        title: "Cookie àti Ìtúpalẹ̀",
+        text: "Ojú wẹ́ẹ̀bù yìí kì í fi cookie sílẹ̀ tàbí ṣe ìtúpalẹ̀ tàbí ìtọ́pa ní àìpẹ̀. Bí a bá mú ìtúpalẹ̀ ṣiṣẹ́, a ń gbé e wọlé lẹ́yìn tí ẹ bá gbà nínú àpótí ìfọwọ́sí nìkan, a sì ń pa yíyan yín mọ́ nínú aṣàwákiri yín.",
+      },
+      {
+        title: "Àkókò ìpamọ́ àti ẹ̀tọ́ yín",
+        text: "A ń pa àkọsílẹ̀ ìbéèrè mọ́ fún ìdí ìṣòwò tòótọ́ àti àkọsílẹ̀. Ẹ lè béèrè fún ẹ̀dà, àtúnṣe tàbí pípa ìsọfúnni yín rẹ́ nígbàkigbà nípasẹ̀ ímeèlì ìkànsí ojú wẹ́ẹ̀bù yìí.",
+      },
+      {
+        title: "Àkíyèsí àkọ́kọ́",
+        text: "Òfin yìí ṣàlàyé ìṣàn dátà gidi ojú wẹ́ẹ̀bù yìí, ṣùgbọ́n kí a tó lò ó ní ìṣòwò, agbẹjọ́rò HB33 gbọ́dọ̀ ṣàyẹ̀wò rẹ̀, pẹ̀lú òfin tó kan, ipa ìṣàkóso dátà àti àwọn olùpèsè ìgbàlejò àti ímeèlì.",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "Òfin",
+    title: "Àwọn òfin ìlò",
+    updated: "Ìmúdójúìwọ̀n ìkẹyìn",
+    intro: "Lílo ojú wẹ́ẹ̀bù yìí túmọ̀ sí pé ẹ gbà àwọn òfin wọ̀nyí. Bí ẹ kò bá gbà, jọ̀wọ́ má lo ojú wẹ́ẹ̀bù yìí.",
+    sections: [
+      {
+        title: "Ìbéèrè kì í ṣe àṣẹ",
+        text: "Fífi ìbéèrè tàbí ìfiranṣẹ́ ránṣẹ́ kì í dá àdéhùn, kì í pa ọjà mọ́, kì í sì fi idiyele múlẹ̀. Kò sí ìsanwó lórí ojú wẹ́ẹ̀bù yìí. A ń fìdí gbogbo àṣẹ múlẹ̀ lọ́tọ̀ ní ìwé pẹ̀lú ìsọfúnni, ìkojọpọ̀, ránṣẹ́ àti àwọn ipò ìsanwó.",
+      },
+      {
+        title: "Àṣẹ tó kéré jù",
+        text: "HB33 ń ṣe àṣẹ ńlá nìkan, pẹ̀lú kọnténà kíkún kan ní ìkéré fún àṣẹ kọ̀ọ̀kan. A kò lè gba ìbéèrè tó kéré ju èyí lọ.",
+      },
+      {
+        title: "Ìsọfúnni ọjà",
+        text: "Ìsọfúnni tí a fi hàn lórí ojú wẹ́ẹ̀bù yìí jẹ́ ìtọ́kasí. A ń fìdí ìpele ìkẹyìn, ọrinrin, ìṣakojọpọ̀ àti ìkojọpọ̀ múlẹ̀ fún ẹrù kọ̀ọ̀kan, a sì ń ṣàyẹ̀wò rẹ̀ kí a tó ránṣẹ́.",
+      },
+      {
+        title: "Ìlò tí a gbà",
+        text: "Jọ̀wọ́ lo fọ́mù ìbéèrè pẹ̀lú òtítọ́ nìkan fún àìní ọjà ńlá tòótọ́. Ẹ má ṣe fi spam, ìsọfúnni èké, àkóónú tí kò bófin mu tàbí ìfìsílẹ̀ ẹ̀rọ tí ń ba iṣẹ́ jẹ́ ránṣẹ́.",
+      },
+      {
+        title: "Àkóónú àti ojúṣe",
+        text: "Ìkọ̀wé àti àwòrán ojú wẹ́ẹ̀bù yìí jẹ́ ti HB33, fọ́tò ọjà jẹ́ ti àwọn olùkópa ẹlẹ́ẹ̀kẹta tí a dárúkọ ní ojú kọ̀ọ̀kan. Ní ìwọ̀n tí òfin gba, HB33 kò ní ojúṣe fún àwọn ìpinnu tó dá lórí ìsọfúnni ìtọ́kasí ojú wẹ́ẹ̀bù yìí — àwọn ipò ìwé tí a fìdí múlẹ̀ ni ó ń darí gbogbo àṣẹ.",
+      },
+      {
+        title: "Àkíyèsí àkọ́kọ́",
+        text: "Èyí jẹ́ àkóónú àkọ́kọ́, agbẹjọ́rò HB33 gbọ́dọ̀ ṣàyẹ̀wò rẹ̀ kí a tó lò ó ní ìṣòwò, pẹ̀lú òfin tó kan, ààlà ojúṣe àti àwọn ọ̀rọ̀ ìpinnu aáwọ̀.",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "Ojú yìí kò wọ kọnténà.",
+    text: "Ojú tí ẹ ń wá kò sí tàbí a ti gbé e.",
+    home: "Padà sí ilé",
+    products: "Wo ọjà",
+  },
+  consent: {
+    title: "Ìfọwọ́sí Cookie àti Ìtúpalẹ̀",
+    text: "A ń lo ìtúpalẹ̀ tó bọ̀wọ̀ fún àṣírí láti mú ojú wẹ́ẹ̀bù yìí dára sí i. A ń gbé e wọlé lẹ́yìn tí ẹ bá gbà nìkan. Bí ẹ bá kọ̀, a kì í tọ́pa ohunkóhun.",
+    accept: "Gbà ààyè ìtúpalẹ̀",
+    decline: "Kọ̀",
   },
   footer: {
     tagline: "Koko, ẹ̀wà sóyà àti cocopeat ńlá — a fìdí múlẹ̀ láti orísun, a ń ránṣẹ́ kárí ayé.",
@@ -223,13 +461,7 @@ const yo: DictionaryPatch = {
     contactTitle: "Ìkànsí",
     language: "Èdè",
     minOrder: "Àṣẹ tó kéré jù: kọnténà 1.",
-  },
-  notFound: {
-    eyebrow: "404",
-    title: "Ojú yìí kò wọ kọnténà.",
-    text: "Ojú tí ẹ ń wá kò sí tàbí a ti gbé e.",
-    home: "Padà sí ilé",
-    products: "Wo ọjà",
+    photoCredit: "Fọ́tò wá láti Wikimedia Commons — ẹ wo ẹ̀tọ́ ní ojú ọjà kọ̀ọ̀kan.",
   },
 };
 

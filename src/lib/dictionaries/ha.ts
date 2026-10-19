@@ -1,10 +1,37 @@
 import type { DictionaryPatch } from "../dictionaries";
 
 /**
- * Hausa (Hausa) starter pack — core UI translated, long-form content
- * falls back to English pending native-speaker review.
+ * Hausa — full UI translation. Long-form product copy lives in `lib/products.ts`
+ * and currently falls back to English/French.
  */
 const ha: DictionaryPatch = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — Koko, Waken Suya da Cocopeat na Yammacin Afirka (Masu Yawa)",
+    homeDescription:
+      "HB33 na isar da koko wake, koko bawo, koko man shanu, koko nib, koko potash, koko cake, waken suya da cocopeat ga masana'antu da manyan masu saya a duniya. Oda ta kwantena, an tabbatar tun daga tushe.",
+    productsTitle: "Kayayyaki — Kayan Gona Masu Yawa",
+    productsDescription:
+      "Kundin kaya masu yawa na HB33: koko wake, koko bawo, koko man shanu, koko nib, koko potash, koko cake, waken suya da cocopeat. Mafi ƙarancin oda kwantena ɗaya na jigila.",
+    aboutTitle: "Game da HB33",
+    aboutDescription:
+      "HB33 mai samar da kayan gona ne na Yammacin Afirka, yana hidima ga masana'antu, masu sarrafawa da manyan masu saya da kwantena da aka tabbatar.",
+    howTitle: "Yadda Yake Aiki — Tsarin Oda Masu Yawa",
+    howDescription:
+      "Yadda ake siya da yawa daga HB33: duba kundi, nemi farashi, tabbatar da samuwa, sannan a jigila ta FOB ko CIF. Aƙalla kwantena ɗaya.",
+    quoteTitle: "Nemi Farashi — Buƙatar Odar Kaya Masu Yawa",
+    quoteDescription:
+      "Aika buƙatar oda mai yawa zuwa HB33. Mafi ƙarancin oda kwantena ɗaya na jigila. Muna tabbatar da samuwa, farashi da jigila.",
+    contactTitle: "Tuntuɓi HB33",
+    contactDescription:
+      "Tuntuɓi HB33 game da kaya masu yawa ta imel ko WhatsApp. Muna amsa da bayanai, farashi da lokacin isarwa.",
+    privacyTitle: "Sirrin Bayanai",
+    privacyDescription:
+      "HB33 na tattara kaɗan daga bayanan sirri da ake buƙata — kawai abin da ka aika a buƙata ko saƙo, don amsa. Babu asusu, wasiƙa, ko bin diddigin talla.",
+    termsTitle: "Sharuɗɗan Amfani",
+    termsDescription:
+      "Aika buƙata ko saƙo ba ya ƙirƙirar kwangila, ajiye kaya, ko kulle farashi. Mafi ƙarancin oda: kwantena ɗaya na jigila. Waɗannan sharuɗɗa sun shafi buƙatun kaya masu yawa na gaske kawai.",
+  },
   nav: {
     home: "Shafi",
     products: "Kayayyaki",
@@ -18,8 +45,12 @@ const ha: DictionaryPatch = {
     language: "Harshe",
     languageGroups: {
       global: "Duniya",
+      europe: "Turai",
+      asia: "Asiya",
+      "middle-east": "Gabas ta Tsakiya",
       ghana: "Ghana",
       nigeria: "Najeriya",
+      "east-africa": "Gabas ta Afirka",
       francophone: "Yammacin Afirka (Faransanci)",
     },
   },
@@ -40,6 +71,7 @@ const ha: DictionaryPatch = {
     tonnageNote:
       "Nauyin ƙarshe ya dogara da yawa da nau'in kwantena — za a tabbatar kafin jigila.",
     allRightsReserved: "An kiyaye haƙƙoƙi.",
+    backToTop: "Koma sama",
     placeholderNote:
       "Za a tabbatar da bayanai masu alamar “za a tabbatar” da HB33 kafin jigila.",
   },
@@ -64,11 +96,45 @@ const ha: DictionaryPatch = {
       { value: "FOB / CIF", label: "Jigila ta duniya" },
     ],
   },
+  trust: {
+    eyebrow: "Me ya sa a ke zaɓar HB33",
+    title: "Ga masu saya da ba za su iya jure mako mara kyau ba.",
+    items: [
+      {
+        title: "Bincike tukuna",
+        text: "Bincike na ɓangare na uku kafin kowace jigila. Ana auna danshi a gona, ba a lokacin isowa ba.",
+      },
+      {
+        title: "Babu ɗan tsakiya",
+        text: "Dangantaka kai tsaye da gonaki da ƙungiyoyi na Yammacin Afirka. Muna sarrafa sarkar samarwa, ba kawai haɗawa ba.",
+      },
+      {
+        title: "Ba mu yin shiru",
+        text: "Sadarwa mai amfani bayan yarjejeniya, tana mai da takardu, lodi da jigila ayyuka a kowane mataki.",
+      },
+    ],
+  },
   homeProducts: {
     eyebrow: "Kayayyakinmu",
     title: "Kayan gona takwas masu yawa. Ma'auni ɗaya.",
-    lead: "Kayan koko, hatsi mai da kayan shuka — an shirya don kwantena, ana duba kowane loti.",
+    lead: "Kayan koko, hatsi mai da samfurin kwakwa — an shirya don kwantena, ana duba kowane loti.",
     cta: "Duba cikakken kundin kaya",
+  },
+  founder: {
+    eyebrow: "Daga mai kafa",
+    title: "Barka da zuwa",
+    titleAccent: "HB33.",
+    imageAlt: "Mai kafa HB33 Hugo Obed",
+    paragraphs: [
+      "HB33 ya fara ne daga imani mai sauƙi: masana'antu a duniya sun cancanci karɓar jigila abin dogaro.",
+      "Wannan imani ya fito ne daga gogewa. A farkon aikina, wani abokin haɗin gwiwa na sufuri ya canza hanyar jigila ba tare da izinina ba don rage kuɗi. Sakamako ya kasance mai muni — ruwa ya lalata kayan, ni kuma na ɗauki duk asarar. Darasi ne mai tsanani, amma ya canza yadda nake yin kasuwancin fitar da kaya gaba ɗaya.",
+      "Ya koya mini cewa inganci kaɗai bai isa ba. Samarwa abin dogaro dole ta tsaya kan sufuri abin dogaro, takardu bayyanannu da sadarwa bayyananna. Shi ya sa muke bincike, rubuta takardu, da bincika kowace jigila da SGS kafin ta bar tashar ruwa.",
+      "A yau, HB33 na samar da koko wake, koko bawo, koko man shanu, koko nib, koko potash da koko cake daga gonaki abin dogaro na Yammacin Afirka ga masana'antu a Asiya, Turai da Gabas ta Tsakiya.",
+      "A HB33, ba ma aika kaya muna fatan sa'a. Mun yi imani da shiri, bincike da isar da kaya abin dogaro.",
+      "Na gode da amincewa da mu a matsayin abokin haɗin gwiwar samarwa. Ina jin daɗin taimaka wa kasuwancinka ya girma da cikakken kwarin gwiwa.",
+    ],
+    name: "Hugo Obed",
+    role: "Mai kafa, HB33",
   },
   processPreview: {
     eyebrow: "Yadda yake aiki",
@@ -80,11 +146,38 @@ const ha: DictionaryPatch = {
     ],
     cta: "Duba cikakken tsari",
   },
+  logistics: {
+    eyebrow: "Shiryawa da Sufuri",
+    title: "An shirya don kwantena. An rubuta takardu don kwastam.",
+    items: [
+      { title: "Lodin kwantena", text: "Lodi na ƙafa 20 da 40. Ana tabbatar da nauyin ƙarshe ga kowane kaya da nau'in kwantena." },
+      { title: "Takardun fitarwa", text: "Takardar lafiyar tsirrai, takardar asali da takardar kaya suna tare da kowace jigila." },
+      { title: "FOB / CIF", text: "Ƙarƙashin sharuɗɗan da tashar ruwa da ka zaɓa — tare da sabuntawa da ke motsa aiki." },
+    ],
+  },
   faqPreview: {
     eyebrow: "Tambayoyin da aka fi yawan yi",
     title: "Abin da masu saya ke tambaya kafin jigila ta farko.",
     cta: "Yadda oda yake",
   },
+  homeFaqs: [
+    {
+      q: "Me HB33 ke samarwa?",
+      a: "Muna samar da koko wake, koko bawo, koko man shanu, koko nib, koko potash da koko cake da yawa, tare da waken suya da cocopeat, a kwantena, ga masana'antu, masu sarrafawa da manyan masu saya.",
+    },
+    {
+      q: "Menene mafi ƙarancin oda?",
+      a: "Cikakken kwantena ɗaya kowace oda. Muna yin oda masu yawa kawai, muna kuma tabbatar da girman kwantena da lodi mafi kyau tare da kai kafin jigila.",
+    },
+    {
+      q: "Kuna jigila da FOB ko CIF?",
+      a: "Duka biyun. Muna bayar da farashin FOB ko CIF mafi dacewa da aikinka, tashar ruwa da sarkar samarwa.",
+    },
+    {
+      q: "Yaya zan sami farashi da bayanai?",
+      a: "Aika buƙata da kaya, yawa da inda za a kai. Za mu amsa da bayanai, farashi da lokacin isarwa — ba tallan banza ba.",
+    },
+  ],
   homeCta: {
     title: "Jigilarka ta gaba bai kamata ta zama caca ba.",
     lead: "Faɗa mana abin da kake buƙata. Za mu tabbatar da samuwa, bayanai da jigila — a rubuce.",
@@ -102,7 +195,7 @@ const ha: DictionaryPatch = {
     categories: {
       cocoa: "Kayan koko",
       oilseeds: "Hatsi mai",
-      "growing-media": "Kayan shuka",
+      "growing-media": "Samfurin kwakwa",
     },
     sortLabel: "Jera",
     sortOptions: {
@@ -121,8 +214,12 @@ const ha: DictionaryPatch = {
   productDetail: {
     overview: "Bayani",
     background: "Tushe da muhimmancin kasuwanci",
+    educationalNote:
+      "Bayanin gama gari game da waɗannan kayan don ilimi ne kawai. Ana tabbatar da cikakken bayanin kowane loti na HB33 ga kowace buƙata.",
     uses: "Amfani da aikace-aikace",
     specs: "Ƙayyadaddun bayanai",
+    specsNote:
+      "Ƙayyadaddun bayanai jagora ne. Ana tabbatar da inganci na ƙarshe, danshi da shiryawa ga kowane loti, ana kuma bincika su kafin jigila.",
     quality: "Inganci, riƙewa da ajiya",
     packaging: "Shiryawa da jigilar kaya masu yawa",
     buyers: "Masu saya da masana'antu",
@@ -131,6 +228,58 @@ const ha: DictionaryPatch = {
     quoteCta: "Nemi Farashi don wannan kaya",
     quoteButton: "Nemi Farashi",
     whatsappButton: "Tambaya ta WhatsApp",
+    whatsappUnavailable:
+      "Ba a saita odar WhatsApp ba tukuna — domin kada a rasa buƙata, don Allah yi amfani da fom ɗin neman farashi ko imel.",
+    toBeConfirmed: "Za a tabbatar ga kowane loti",
+  },
+  aboutPage: {
+    eyebrow: "Game da HB33",
+    title: "Ba mai samarwa kawai ba — abokin haɗin gwiwar samarwa.",
+    lead: "HB33 ya fara ne daga imani mai sauƙi: masana'antu a duniya sun cancanci karɓar jigilar koko da kayan gona abin dogaro.",
+    storyTitle: "Labarinmu",
+    story: [
+      "HB33 ya fara ne daga gogewar haɗarin kasuwancin gona — wani abokin haɗin gwiwar sufuri ya canza hanya ba tare da izini ba don rage kuɗi, ruwa kuma ya lalata duk kayan. Kuɗin wannan darasi ne ya tsara yadda muke aiki a yau.",
+      "Inganci kaɗai bai isa ba. Samarwa abin dogaro dole ta tsaya kan sufuri abin dogaro, takardu bayyanannu da sadarwa bayyananna. Shi ya sa ake bincike, rubuta takardu da bincika kowace jigilar HB33 kafin ta bar tashar ruwa.",
+      "A yau, HB33 na samar da kayan koko, waken suya da cocopeat daga gonaki da ƙungiyoyi abin dogaro na Yammacin Afirka ga masana'antu a Asiya, Turai da Gabas ta Tsakiya.",
+    ],
+    valuesEyebrow: "Ƙa'idojinmu",
+    valuesTitle: "Ƙa'idojin da muke riƙe",
+    values: [
+      { title: "Bincike tukuna", text: "Bincike da auna danshi a gona — kafin shiryawa da lodi, ba a lokacin isowa ba." },
+      { title: "Samarwa kai tsaye", text: "Dangantaka mai tsawo da gonaki da ƙungiyoyin da muka san sunayensu." },
+      { title: "Sadarwa bayyananna", text: "Tabbatarwa a rubuce, sabuntawar jigila mai amfani da takardu ga kowane kwantena." },
+    ],
+    factsEyebrow: "A taƙaice",
+    factsTitle: "Gaskiyar kasuwanci",
+    factsNote:
+      "Gaskiya da aka tabbatar kawai muke rubutawa a nan. Ana tabbatar da takaddun shaida, wuraren da ake kai da ƙarfin wata ga kowace buƙata, ba ma yin hasashe.",
+    facts: [
+      { label: "Tushe", value: "Yammacin Afirka" },
+      { label: "Kayayyaki", value: "Kayayyaki masu yawa 8" },
+      { label: "Ƙarfin wata", value: "Har MT 1,000" },
+      { label: "Sharuɗɗan isarwa", value: "FOB / CIF" },
+      { label: "Mafi ƙarancin oda", value: "Kwantena ɗaya na jigila" },
+    ],
+    ctaTitle: "Yi kasuwanci da HB33",
+    ctaText: "Faɗa mana yawanka da inda za a kai — za mu amsa da bayanai, farashi da lokacin isarwa.",
+    ctaPrimary: "Nemi Farashi",
+    ctaSecondary: "Tuntuɓe mu",
+  },
+  howPage: {
+    eyebrow: "Yadda yake aiki",
+    title: "Matakai biyar zuwa kwantena da aka tabbatar.",
+    lead: "Aika buƙata ba ya ƙirƙirar oda, ajiyar kaya ko farashi na ƙarshe kai tsaye. Ana tabbatar da duk oda a rubuce kafin jigila.",
+    steps: [
+      { title: "Duba kundi", text: "Duba kayayyaki, bayanai da shiryawa. Ana sayar da komai da cikakken kwantena ɗaya." },
+      { title: "Zaɓi kaya da yawa", text: "Zaɓi kaya da adadin kwantena. Aƙalla kwantena ɗaya na jigila kowace oda." },
+      { title: "Aika buƙatarka", text: "Aika bayanan tuntuɓa, isarwa da buƙatu ta fom ɗin farashi, imel ko WhatsApp." },
+      { title: "Tabbatar da sharuɗɗa", text: "HB33 na tabbatar da samuwa, farashi, bayanai, lodin kwantena, jigila da biya." },
+      { title: "Cikawa da bibiya", text: "Bincike, takardu, jigila — sabuntawa a kowane mataki har zuwa isarwa." },
+    ],
+    noteTitle: "Don Allah a lura",
+    noteText:
+      "Buƙata nema ce, ba oda ba. Samuwa, farashi na ƙarshe, bayanai, lodin kwantena, jigila da sharuɗɗan biya duk ana amincewa da su tare da HB33 kafin kowace alkawari.",
+    cta: "Fara da neman farashi",
   },
   quotePage: {
     eyebrow: "Buƙatar odar kaya masu yawa",
@@ -140,8 +289,12 @@ const ha: DictionaryPatch = {
       fullName: "Cikakken suna",
       company: "Sunan kamfani",
       email: "Imel ɗin kasuwanci",
-      phone: "Waya (da lambar ƙasa)",
+      countryCode: "Lambar ƙasa",
+      selectCode: "Zaɓi lamba",
+      phone: "Waya",
       country: "Ƙasa",
+      searchCountryPlaceholder: "Rubuta sunan ƙasa…",
+      noCountryMatch: "Babu ƙasar da ta dace — ci gaba da rubutu.",
       destination: "Inda za a kai / tashar ruwa",
       timeframe: "Lokacin isarwa da ake tsammani",
       timeframeOptions: {
@@ -181,6 +334,9 @@ const ha: DictionaryPatch = {
       "Za a amince da lodin kwantena, shiryawa da jigila FOB/CIF.",
       "Za a tabbatar da sharuɗɗan biya kafin cikawa.",
     ],
+    emailStatusOn: "An aika kwafin zuwa ƙungiyar tallace-tallacenmu ta imel.",
+    emailStatusOff:
+      "Ba a kunna tura imel ba a wannan yanayin. Don amsa mafi sauri, aika buƙatarka ta imel ko WhatsApp ta maɓallin da ke ƙasa — tare da lambar bayaninka.",
     sendEmail: "Aika ta imel",
     sendWhatsapp: "Ci gaba ta WhatsApp",
     newInquiry: "Sabuwar buƙata",
@@ -199,6 +355,7 @@ const ha: DictionaryPatch = {
       message: "Saƙo",
       messagePlaceholder: "Kaya, yawa, inda za a kai…",
       submit: "Aika saƙo",
+      sent: "An aika.",
     },
     errors: {
       required: "Wannan fili wajibi ne.",
@@ -210,8 +367,89 @@ const ha: DictionaryPatch = {
     channelsTitle: "Hanyoyi kai tsaye",
     emailLabel: "Imel",
     whatsappLabel: "WhatsApp",
+    whatsappHint: "Mafi sauri ga buƙata mai gudana — haɗa lambar bayaninka idan kana da ita.",
+    whatsappUnavailable: "Ba a saita WhatsApp ba tukuna. Don Allah tuntuɓe mu ta imel — za mu amsa da bayanai, farashi da lokacin isarwa.",
     locationLabel: "Tushe",
     responseNote: "Muna ƙoƙarin amsa buƙatun kaya masu yawa cikin kwana 1–2 na aiki.",
+    failText: "Ba a iya aika saƙonka ba. Sake gwadawa — ko tuntuɓe mu kai tsaye ta imel.",
+  },
+  privacyPage: {
+    eyebrow: "Shari'a",
+    title: "Sirrin Bayanai",
+    updated: "Sabuntawa ta ƙarshe",
+    intro:
+      "HB33 na tattara kaɗan daga bayanan sirri kamar yadda ya yiwu. Abin da ka aika a buƙata ko saƙo kawai ake amfani da shi, don amsa. Wannan rukunin yanar gizo ba shi da asusu, wasiƙa ko bin diddigin talla.",
+    sections: [
+      {
+        title: "Bayanan da kake bayarwa",
+        text: "Buƙata: suna, kamfani, imel, waya, ƙasa, inda za a kai, lokacin isarwa, shiryawar da aka fi so, kaya da adadin kwantena, da duk wani ƙarin bayani. Saƙon tuntuɓa: suna, imel, maudu'i da saƙo. Ba mu tattara wani abu ba — babu asusu, sharhi ko wasiƙa.",
+      },
+      {
+        title: "Amfani",
+        text: "Don amsa buƙatarka kawai: tabbatar da samuwa da farashi, shirya bayanai da jigila, da tuntuɓar ka game da buƙatunka. Ba ma sayar da bayanan sirri, ba ma aika imel ɗin talla.",
+      },
+      {
+        title: "Ajiya da rabawa",
+        text: "Ana rubuta abin da aka aika a cikin tarihin uwar garken wannan rukunin yanar gizo don kada a rasa buƙata. Idan an saita, ana tura kwafi ta imel ko webhook na sirri zuwa akwatin tallace-tallacen HB33 — allon tabbatarwa koyaushe yana nuna gaskiya ko an kunna tura imel. Maɓallan imel da WhatsApp suna aiki a cikin manhajar ka, muna karɓar abin da ka zaɓa ka aika kawai.",
+      },
+      {
+        title: "Cookie da Bincike",
+        text: "Wannan rukunin yanar gizo ba ya saita cookie ko yin bincike ko bin diddigi ta tsoho. Idan an kunna bincike, ana loda shi ne kawai bayan ka amince a banner ɗin yarda, ana kuma ajiye zaɓinka a cikin burauzarka.",
+      },
+      {
+        title: "Lokacin ajiya da haƙƙoƙinka",
+        text: "Ana ajiye tarihin buƙata don ingantaccen dalilin kasuwanci da rikodi. Kana iya neman kwafi, gyara ko shafe bayaninka a kowane lokaci ta imel ɗin tuntuɓa na wannan rukunin yanar gizo.",
+      },
+      {
+        title: "Bayanin daftari",
+        text: "Wannan manufa tana bayanin ainihin yadda bayanai ke gudana a wannan rukunin yanar gizo, amma kafin amfani da kasuwanci, lauyan HB33 ya kamata ya duba ta, gami da dokokin da suka dace, ayyukan sarrafa bayanai da masu ba da sabis na ɗaukar nauyi da imel.",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "Shari'a",
+    title: "Sharuɗɗan Amfani",
+    updated: "Sabuntawa ta ƙarshe",
+    intro: "Yin amfani da wannan rukunin yanar gizo yana nufin ka yarda da waɗannan sharuɗɗa. Idan ba ka yarda ba, don Allah kada ka yi amfani da shi.",
+    sections: [
+      {
+        title: "Buƙata ba oda ba ce",
+        text: "Aika buƙatar farashi ko saƙo ba ya ƙirƙirar kwangila, ajiyar kaya ko kulle farashi. Babu biya a wannan rukunin yanar gizo. Ana tabbatar da duk oda daban a rubuce tare da bayanai, lodi, jigila da sharuɗɗan biya.",
+      },
+      {
+        title: "Mafi ƙarancin oda",
+        text: "HB33 na yin oda masu yawa kawai, aƙalla kwantena cikakke ɗaya kowace oda. Ba za mu iya karɓar buƙatu ƙasa da wannan ba.",
+      },
+      {
+        title: "Bayanan kaya",
+        text: "Ƙayyadaddun bayanai da aka nuna a wannan rukunin yanar gizo jagora ne. Ana tabbatar da inganci na ƙarshe, danshi, shiryawa da lodi ga kowane loti, ana kuma bincika su kafin jigila.",
+      },
+      {
+        title: "Amfani da aka yarda",
+        text: "Don Allah yi amfani da fom ɗin buƙata da gaskiya don buƙatun kaya masu yawa na gaske. Kada ka aika spam, bayanan ƙarya, abun ciki da doka ba ta yarda ba ko manyan aikawa na atomatik da ke lalata sabis ɗin.",
+      },
+      {
+        title: "Abun ciki da alhaki",
+        text: "Rubutun da zane na wannan rukunin yanar gizo na HB33 ne, hotunan kaya na masu ba da gudummawa na ɓangare na uku ne da aka ambata a kowane shafi. A iyakar da doka ta yarda, HB33 ba shi da alhakin shawarwarin da aka yanke bisa bayanan jagora na wannan rukunin yanar gizo — sharuɗɗan rubuce da aka tabbatar ne ke mulkin duk oda.",
+      },
+      {
+        title: "Bayanin daftari",
+        text: "Wannan abun ciki na farko ne, lauyan HB33 ya kamata ya duba shi kafin amfani da kasuwanci, gami da dokokin da suka dace, iyakar alhaki da tanade-tanaden warware takaddama.",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "Wannan shafin bai shiga kwantena ba.",
+    text: "Shafin da kake nema babu shi ko an motsa shi.",
+    home: "Koma shafin farko",
+    products: "Duba kayayyaki",
+  },
+  consent: {
+    title: "Yardar Cookie da Bincike",
+    text: "Muna amfani da bincike mai kula da sirri don inganta wannan rukunin yanar gizo. Ana loda shi ne kawai bayan ka amince. Idan ka ƙi, ba a bin diddigin komai.",
+    accept: "Yarda da bincike",
+    decline: "Ƙi",
   },
   footer: {
     tagline: "Koko, waken suya da cocopeat masu yawa — an tabbatar tun daga tushe, ana jigila ta duniya.",
@@ -223,13 +461,7 @@ const ha: DictionaryPatch = {
     contactTitle: "Tuntuɓe",
     language: "Harshe",
     minOrder: "Mafi ƙarancin oda: kwantena 1.",
-  },
-  notFound: {
-    eyebrow: "404",
-    title: "Wannan shafin bai shiga kwantena ba.",
-    text: "Shafin da kake nema babu shi ko an motsa shi.",
-    home: "Koma shafin farko",
-    products: "Duba kayayyaki",
+    photoCredit: "Hotuna daga Wikimedia Commons — duba yabo a kowane shafin kaya.",
   },
 };
 

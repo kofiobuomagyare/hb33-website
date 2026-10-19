@@ -1,10 +1,37 @@
 import type { DictionaryPatch } from "../dictionaries";
 
 /**
- * Akan starter pack — core UI translated, long-form content
- * falls back to English pending native-speaker review.
+ * Akan (Twi) — full UI translation. Long-form product copy lives in
+ * `lib/products.ts` and currently falls back to English/French.
  */
 const ak: DictionaryPatch = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — Abibiman Atɔe Koko, Soyabeans ne Cocopeat (Nneɛma Pii)",
+    homeDescription:
+      "HB33 de koko aba, koko nkataa, koko bɔta, koko nib, koko potash, koko cake, soyabeans ne cocopeat mena factories ne atɔfo akɛse wɔ wiase nyinaa. Kra fi kontenna so, wɔahwɛ mu afi mfiase.",
+    productsTitle: "Nneɛma — Kuayɛ Nneɛma Pii",
+    productsDescription:
+      "HB33 nneɛma pii nhyehyɛe: koko aba, koko nkataa, koko bɔta, koko nib, koko potash, koko cake, soyabeans ne cocopeat. Nea wɔkra a ɛsua koraa yɛ po so kontenna 1.",
+    aboutTitle: "HB33 ho nsɛm",
+    aboutDescription:
+      "HB33 yɛ Abibiman Atɔe kuayɛ adetɔnfo a ɔde kontenna a wɔahwɛ mu som factories, adwumayɛfo ne atɔfo akɛse.",
+    howTitle: "Sɛnea Ɛyɛ Adwuma — Nneɛma Pii Kra Nhyehyɛe",
+    howDescription:
+      "Sɛnea wotumi tɔ nneɛma pii fi HB33: hwɛ nhyehyɛe, bisa boɔ, hyɛ nea ɛwɔ hɔ mu, na fa FOB anaa CIF soma. Kontenna 1 nanso.",
+    quoteTitle: "Bisa Boɔ — Nneɛma Pii Kra Bisa",
+    quoteDescription:
+      "Mene nneɛma pii kra bisa brɛ HB33. Nea wɔkra a ɛsua koraa yɛ po so kontenna 1. Yɛhyɛ nea ɛwɔ hɔ, bo ne soma mu.",
+    contactTitle: "Frɛ HB33",
+    contactDescription:
+      "Frɛ HB33 fa nneɛma pii ho wɔ email anaa WhatsApp so. Yɛbua ne su nsɛm, bo ne nneɛma kɔ bere.",
+    privacyTitle: "Nsɛm Kokoamsɛm",
+    privacyDescription:
+      "HB33 boa nsɛm kokoamsɛm kakraa pɛ — nea womene wɔ bisa anaa nkra mu nkoara, ma yɛabua. Adwuma biara nni hɔ, nhoma biara, anaa adebɔsɛm firi.",
+    termsTitle: "Nea Wɔde Di Dwuma Ho Mmara",
+    termsDescription:
+      "Sɛ womene bisa anaa nkra a, ɛnyɛ apam so, ɛnkora ade so, ɛnhyɛ bo mu. Sika tua biara nni ha. Wɔhyɛ kra nyinaa mu wɔ krataa so babi a ne su, so gu, soma ne sika tua ka ho. Saa mmara yi fa nneɛma pii bisa ankasa nkoara so.",
+  },
   nav: {
     home: "Fie",
     products: "Nneɛma",
@@ -18,8 +45,12 @@ const ak: DictionaryPatch = {
     language: "Kasa",
     languageGroups: {
       global: "Wiase",
+      europe: "Europe",
+      asia: "Asia",
+      "middle-east": "Mfinimfini Apuei",
       ghana: "Ghana",
       nigeria: "Nigeria",
+      "east-africa": "Apuei Afrika",
       francophone: "Afrika Atɔe (Frɛnkye)",
     },
   },
@@ -40,6 +71,7 @@ const ak: DictionaryPatch = {
     tonnageNote:
       "Nea etwa to no gyina ade no su ne kontenna ko a wɔde di dwuma so — yɛbɛhyɛ no mu ansa na wɔde akɔ.",
     allRightsReserved: "Wɔakora hokwan nyinaa so.",
+    backToTop: "San kɔ soro",
     placeholderNote:
       "Yɛne HB33 bɛhyɛ nsɛm a wɔahyɛ no “wɔnnya nhyɛ mu” nyinaa mu ansa na wɔde akɔ.",
   },
@@ -64,11 +96,45 @@ const ak: DictionaryPatch = {
       { value: "FOB / CIF", label: "Wiase nyinaa soma" },
     ],
   },
+  trust: {
+    eyebrow: "Ɛnne a wɔpaw HB33",
+    title: "Ma atɔfo a wontumi nnye da bɔne.",
+    items: [
+      {
+        title: "Hwɛ ansa",
+        text: "Ahwɛfo a wɔnnyɛ yɛn hwɛ kwan ansa na kontenna biara akɔ. Wɔhwɛ nsu mu duru wɔ afuom, ɛnyɛ berɛ a ɛba no.",
+      },
+      {
+        title: "Alatinfo biara nni hɔ",
+        text: "Yɛne Abibiman Atɔe afuo ne akuo di nkitaho tẽẽ. Yɛdi adetɔn kwan so, ɛnyɛ kɔmpe.",
+      },
+      {
+        title: "Yɛnnye komm",
+        text: "Nkrasɛm a ɛho hia wɔ apam akyi, ɛma krataa, so gu ne soma yɛ adwuma wɔ anammɔn biara.",
+      },
+    ],
+  },
   homeProducts: {
     eyebrow: "Yɛn nneɛma",
     title: "Kuayɛ nneɛma awotwe a ɛyɛ pii. Gyinapɛn baako.",
-    lead: "Koko nneɛma, ngo aba ne nnɔbae nneɛma — wɔasiesie ama kontenna, na wɔhwɛ biara mu.",
+    lead: "Koko nneɛma, ngo aba ne coconut nneɛma — wɔasiesie ama kontenna, na wɔhwɛ biara mu.",
     cta: "Hwɛ nneɛma nyinaa",
+  },
+  founder: {
+    eyebrow: "Efi ohyehyɛfo nkyɛn",
+    title: "Akwaaba",
+    titleAccent: "HB33.",
+    imageAlt: "HB33 ohyehyɛfo Hugo Obed",
+    paragraphs: [
+      "HB33 fi gyidi a ɛnyɛ den mu: wiase nyinaa factories sɛ wonya nneɛma a wotumi de ho to so.",
+      "Saa gyidi yi fi tebea a metoo mu. Wɔ m'adwuma fiefie no, logistics yɔnko bi sesaa kwan a wɔfa so kɔ, a wannya me ho kwan, ma ɛbɔɔ emu. Efi bɔɔ no yɛɛ mmusu — osu sɛee nneɛma no, na me gyaa adwuma so hwe no nyinaa. Ɛyɛ adesua den, nanso ɛsesaa sɛnea meyɛ amannɔne adwuma koraa.",
+      "Ɛkyerɛɛ me sɛ pa nkoara nsɔ. Adetɔn a wotumi de ho to so ɛsɛ sɛ egyina logistics a wotumi de ho to so, krataa a emu da hɔ ne nkrasɛm a emu da hɔ so. Ɛnne na yɛhwɛ mu, yɛkyerɛw nsɛm, na yɛde SGS hwɛ nneɛma nyinaa a yɛde mena ansa na wɔafi po so hyɛn gyinabea.",
+      "Ɛnnɛ, HB33 de koko aba, koko nkataa, koko bɔta, koko nib, koko potash ne koko cake fi Abibiman Atɔe afuo a wotumi de ho to so mena factories a wɔwɔ Asia, Europe ne Mfinimfini Apuei.",
+      "Wɔ HB33, yɛnnye nneɛma nkɔ na yɛahwɛ anisoadehu. Yɛgye di sɛ nhyehyɛe, ahwɛ ne mena a wotumi de ho to so.",
+      "Meda wo ase sɛ wode wo ho to yɛn so sɛ apam yɔnko. Mehwɛ kwan sɛ mɛboa wo adwuma ma ɛnyin a woanya awerɛhyem pii.",
+    ],
+    name: "Hugo Obed",
+    role: "Ohyehyɛfo, HB33",
   },
   processPreview: {
     eyebrow: "Sɛnea ɛyɛ adwuma",
@@ -80,11 +146,38 @@ const ak: DictionaryPatch = {
     ],
     cta: "Hwɛ nhyehyɛe nyinaa",
   },
+  logistics: {
+    eyebrow: "Siesie ne Logistics",
+    title: "Wɔasiesie ama kontenna. Wɔakyerɛw krataa ama customs.",
+    items: [
+      { title: "Kontenna so gu", text: "Nan 20 ne nan 40 so gu. Wɔhyɛ nea etwa to mu ma ade ne kontenna su biara." },
+      { title: "Amannɔne krataa", text: "Aduaba apɔmuden krataa, fibea krataa ne cargo krataa ka soma biara ho." },
+      { title: "FOB / CIF", text: "Ɛwɔ nhyehyɛe ne po so hyɛn gyinabea a wopɛ ase — ne nsɛm foforo a ɛboa adwuma." },
+    ],
+  },
   faqPreview: {
     eyebrow: "Nsɛmmisa a wɔbisa kɛse",
     title: "Nea atɔfo bisa ansa na wɔn soma a edi kan aba.",
     cta: "Sɛnea wɔkra nneɛma",
   },
+  homeFaqs: [
+    {
+      q: "Dɛn na HB33 de ma?",
+      a: "Yɛde koko aba, koko nkataa, koko bɔta, koko nib, koko potash ne koko cake mena wɔ nneɛma pii mu, ka soyabeans ne cocopeat ho, wɔ kontenna so, ma factories, adwumayɛfo ne atɔfo akɛse.",
+    },
+    {
+      q: "Dɛn ne nea wɔkra a ɛsua koraa?",
+      a: "Kontenna a ayɛ ma baako wɔ kra biara mu. Yɛyɛ nneɛma pii nkoara, na yɛhyɛ kontenna kɛse ne so gu a eye sen biara mu kyerɛ wo ansa na wɔde akɔ.",
+    },
+    {
+      q: "Mude FOB anaa CIF soma anaa?",
+      a: "Abien nyinaa. Yɛde FOB anaa CIF bo a ɛfata wo adwuma, po so hyɛn gyinabea ne kwan so bɛma.",
+    },
+    {
+      q: "Sɛn na mebɛnya bo ne ne su nsɛm?",
+      a: "Mene bisa a ade, dodow ne beae a wɔrekɔ ka ho. Yɛbɛbua ne su nsɛm, bo ne nneɛma kɔ bere — ɛnyɛ tɔn nsɛm.",
+    },
+  ],
   homeCta: {
     title: "Wo soma a edi hɔ no ɛnsɛ sɛ ɛyɛ sika to.",
     lead: "Ka nea wuhia kyerɛ yɛn. Yɛbɛhyɛ nea ɛwɔ hɔ, ne su ne soma mu — wɔ krataa so.",
@@ -102,7 +195,7 @@ const ak: DictionaryPatch = {
     categories: {
       cocoa: "Koko nneɛma",
       oilseeds: "Ngo aba",
-      "growing-media": "Nnɔbae nneɛma",
+      "growing-media": "Coconut nneɛma",
     },
     sortLabel: "Hyehyɛ",
     sortOptions: {
@@ -121,8 +214,12 @@ const ak: DictionaryPatch = {
   productDetail: {
     overview: "Tiatia",
     background: "Mfiase ne aguadi mu hia",
+    educationalNote:
+      "Saa nneɛma yi ho nsɛm tiatia yi yɛ ma ntetee nkoara. Wɔhyɛ HB33 lot biara nsɛm koro mu ma bisa biara.",
     uses: "Nea wɔde yɛ ne sɛnea wɔde di dwuma",
     specs: "Ne su nsɛm",
+    specsNote:
+      "Ne su nsɛm yɛ nsɛnkyerɛnne nkoara. Wɔhyɛ nea etwa to, nsu mu duru ne siesie mu ma lot biara, na wɔhwɛ mu ansa na wɔde akɔ.",
     quality: "Pa, ne sohwɛ ne ne sie",
     packaging: "Ne siesie ne nneɛma pii soma",
     buyers: "Atɔfo ne nnwuma",
@@ -131,6 +228,58 @@ const ak: DictionaryPatch = {
     quoteCta: "Bisa boɔ fa ade yi ho",
     quoteButton: "Bisa Boɔ",
     whatsappButton: "Bisa wɔ WhatsApp so",
+    whatsappUnavailable:
+      "Wonnhyehyɛ WhatsApp kra da — na yɛanhwere bisa, mesrɛ fa bo bisa fɔɔm anaa email di dwuma.",
+    toBeConfirmed: "Wɔbɛhyɛ mu ma lot biara",
+  },
+  aboutPage: {
+    eyebrow: "HB33 ho nsɛm",
+    title: "Ɛnyɛ adetɔnfo nkoara — apam yɔnko.",
+    lead: "HB33 fi gyidi a ɛnyɛ den mu: wiase nyinaa factories sɛ wonya koko ne kuayɛ nneɛma a wotumi de ho to so.",
+    storyTitle: "Yɛn abakɔsɛm",
+    story: [
+      "HB33 fi kuayɛ adwuma mu asiane a metoo mu — logistics yɔnko bi sesaa kwan a wannya me ho kwan ma ɛbɔɔ emu, na osu sɛee nneɛma no nyinaa. Adesua no bo no na ɛkyerɛɛ sɛnea yɛyɛ adwuma nnɛ.",
+      "Pa nkoara nsɔ. Adetɔn a wotumi de ho to so ɛsɛ sɛ egyina logistics a wotumi de ho to so, krataa a emu da hɔ ne nkrasɛm a emu da hɔ so. Ɛnne na yɛhwɛ mu, yɛkyerɛw nsɛm na yɛhwɛ HB33 nneɛma nyinaa ansa na wɔafi po so hyɛn gyinabea.",
+      "Ɛnnɛ, HB33 de koko nneɛma, soyabeans ne cocopeat fi Abibiman Atɔe afuo ne akuo a wotumi de ho to so mena factories a wɔwɔ Asia, Europe ne Mfinimfini Apuei.",
+    ],
+    valuesEyebrow: "Yɛn gyinapɛn",
+    valuesTitle: "Gyinapɛn a yɛkora so",
+    values: [
+      { title: "Hwɛ ansa", text: "Ahwɛ ne nsu mu duru nhwɛ wɔ afuom — ansa na wɔasiesie ne wɔde agu, ɛnyɛ berɛ a ɛba no." },
+      { title: "Tẽẽ tɔ", text: "Nkitaho a ɛkyɛ pii ne afuo ne akuo a yɛnim wɔn din." },
+      { title: "Nkrasɛm a emu da hɔ", text: "Krataa so nhyɛ mu, soma nsɛm foforo a ɛho hia ne krataa ma kontenna biara." },
+    ],
+    factsEyebrow: "Yi tiawa mu",
+    factsTitle: "Adwuma nokware",
+    factsNote:
+      "Nokware a wɔahwɛ mu nkoara na yɛkyerɛw ha. Wɔhyɛ krataa a ɛgye too mu, beae a wɔrekɔ ne bosome tumi mu ma bisa biara, yɛnnyɛ nsusui.",
+    facts: [
+      { label: "Fakulta", value: "Abibiman Atɔe" },
+      { label: "Nneɛma", value: "Nneɛma pii 8" },
+      { label: "Bosome tumi", value: "Kosi 1,000 MT" },
+      { label: "Soma nhyehyɛe", value: "FOB / CIF" },
+      { label: "Nea wɔkra a ɛsua koraa", value: "Po so kontenna 1" },
+    ],
+    ctaTitle: "Di adwuma ne HB33",
+    ctaText: "Ka wo dodow ne beae a wɔrekɔ kyerɛ yɛn — yɛbɛbua ne su nsɛm, bo ne nneɛma kɔ bere.",
+    ctaPrimary: "Bisa Boɔ",
+    ctaSecondary: "Frɛ yɛn",
+  },
+  howPage: {
+    eyebrow: "Sɛnea ɛyɛ adwuma",
+    title: "Anammɔn enum kosi kontenna a wɔahwɛ mu.",
+    lead: "Sɛ womene bisa a, ɛnyɛ kra so, ɛnkora ade so anaa ɛnhyɛ bo etwa to mu. Wɔhyɛ kra nyinaa mu wɔ krataa so ansa na wɔde akɔ.",
+    steps: [
+      { title: "Hwɛ nhyehyɛe", text: "Hwɛ nneɛma, ne su nsɛm ne siesie. Wɔtɔn ne nyinaa wɔ kontenna a ayɛ ma baako mu." },
+      { title: "Paw ade ne dodow", text: "Paw ade ne kontenna dodow. Po so kontenna 1 nanso wɔ kra biara mu." },
+      { title: "Mene wo bisa", text: "Mene nkitahodi, nneɛma kɔ ne nea wuhia nsɛm fa bo bisa fɔɔm, email anaa WhatsApp so." },
+      { title: "Hyɛ nhyehyɛe mu", text: "HB33 hyɛ nea ɛwɔ hɔ, bo, ne su nsɛm, kontenna so gu, soma ne sika tua mu." },
+      { title: "Dwuma ne ntoatoaso", text: "Ahwɛ, krataa, soma — nsɛm foforo wɔ anammɔn biara kosi nneɛma kɔ." },
+    ],
+    noteTitle: "Mesrɛ hwɛ yie",
+    noteText:
+      "Bisa yɛ akɔnnodɔ, ɛnyɛ kra. Wɔhyɛ nea ɛwɔ hɔ, bo etwa to, ne su nsɛm, kontenna so gu, soma ne sika tua tebea nyinaa mu ne HB33 ansa na wɔahyɛ bɔ biara.",
+    cta: "Fi ase wɔ bo bisa mu",
   },
   quotePage: {
     eyebrow: "Nneɛma pii kra bisa",
@@ -140,8 +289,12 @@ const ak: DictionaryPatch = {
       fullName: "Din nyinaa",
       company: "Adwumakuo din",
       email: "Adwuma email",
-      phone: "Telefon (ne ɔman nɔma)",
+      countryCode: "Ɔman nɔma",
+      selectCode: "Paw nɔma",
+      phone: "Telefon",
       country: "Ɔman",
+      searchCountryPlaceholder: "Kyerɛw ɔman din…",
+      noCountryMatch: "Ɔman biara nni hɔ a ɛfata — toa so kyerɛw.",
       destination: "Beae a wɔrekɔ / po so hyɛn gyinabea",
       timeframe: "Bere a wɔbɛba a wɔhwɛ kwan",
       timeframeOptions: {
@@ -181,6 +334,9 @@ const ak: DictionaryPatch = {
       "Yɛbɛpene kontenna so gu, siesie ne FOB/CIF soma so.",
       "Yɛbɛhyɛ sika tua nhyehyɛe mu ansa na wɔafi adwuma ase.",
     ],
+    emailStatusOn: "Yɛde nsɛm no bi menee yɛn adetɔn akuo no wɔ email so.",
+    emailStatusOff:
+      "Wɔnnhyehyɛ email mena wɔ ha. Ma mmuae ntɛm paa, mene wo bisa fa email anaa WhatsApp so fa bɔtɔne a ɛwɔ ase ha so — ka wo nɔma a wɔde hu wo ho.",
     sendEmail: "Mene fa email so",
     sendWhatsapp: "Toa so wɔ WhatsApp so",
     newInquiry: "Bisa foforo",
@@ -199,6 +355,7 @@ const ak: DictionaryPatch = {
       message: "Nkra",
       messagePlaceholder: "Ade, dodow, beae a wɔrekɔ…",
       submit: "Mene nkra no",
+      sent: "Wɔamene.",
     },
     errors: {
       required: "Ɛsɛ sɛ wuhyɛ ha.",
@@ -210,8 +367,89 @@ const ak: DictionaryPatch = {
     channelsTitle: "Akwan tẽẽ",
     emailLabel: "Email",
     whatsappLabel: "WhatsApp",
+    whatsappHint: "Ɛyɛ ntɛm paa ma bisa a ɛrekɔ so — ka wo nɔma a wɔde hu wo ho sɛ wowɔ.",
+    whatsappUnavailable: "Wonnhyehyɛ WhatsApp da. Mesrɛ frɛ yɛn fa email so — yɛbɛbua ne su nsɛm, bo ne nneɛma kɔ bere.",
     locationLabel: "Fakulta",
     responseNote: "Yɛbɔ mmɔden bua nneɛma pii bisa nnwuma nna 1–2 mu.",
+    failText: "Yɛantumi ammene wo nkra no. Sɔ bio hwɛ — anaasɛ frɛ yɛn tẽẽ fa email so.",
+  },
+  privacyPage: {
+    eyebrow: "Mmara",
+    title: "Nsɛm Kokoamsɛm",
+    updated: "Nsesa a etwa to",
+    intro:
+      "HB33 boa nsɛm kokoamsɛm kakraa pɛ sɛnea ɛbɛyɛ. Nea womene wɔ bisa anaa nkra mu nkoara na yɛde di dwuma, ma yɛabua. Saa wɛbsaet yi nni akontaabu, nhoma anaa adebɔsɛm firi.",
+    sections: [
+      {
+        title: "Nsɛm a wode ma",
+        text: "Bisa: din, adwumakuo, email, telefon, ɔman, beae a wɔrekɔ, bere a wɔbɛba, siesie a wopɛ, nneɛma ne kontenna dodow, ne nsɛm foforo biara. Nkra: din, email, asɛmti ne nkra. Yɛmfa biribiara foforo — akontaabu, nsɛm biara anaa nhoma biara nni hɔ.",
+      },
+      {
+        title: "Dwuma",
+        text: "Ma yɛabua wo bisa nkoara: hyɛ nea ɛwɔ hɔ ne bo mu, siesie ne su nsɛm ne soma, na di nkitaho wo ho fa nea wuhia ho. Yɛntɔn nsɛm kokoamsɛm, na yɛmfa email firi.",
+      },
+      {
+        title: "Sie ne kyɛ",
+        text: "Wɔkyerɛw nea womene wɔ saa wɛbsaet yi sɛfa lɔg mu na yɛanhwere bisa. Sɛ wɔahyehyɛ a, wɔde nsɛm no bi mena fa email anaa webhook kokoam so kɔ HB33 adetɔn adaka mu — mpa a wobu no kyerɛ nokware bere nyinaa sɛ email mena rebɛyɛ anaa. Email ne WhatsApp bɔtɔne yɛ adwuma wɔ wo app mu, nea wopaw sɛ womene nkoara na yɛgye.",
+      },
+      {
+        title: "Cookie ne nhwehwɛ",
+        text: "Saa wɛbsaet yi nnhyehyɛ cookie anaa ɛnyɛ nhwehwɛ anaa firi wɔ tẽẽ. Sɛ wɔbɛyɛ nhwehwɛ a, wɔbɛfa mu berɛ a wopene wɔ akwamma bɔ mu nkoara, na wɔkora wo paw so wɔ wo browser mu.",
+      },
+      {
+        title: "Sie bere ne wo hokwan",
+        text: "Wɔkora bisa nsɛm so ma adwuma ne nkrataa nyinaa. Wobetumi abisa wo nsɛm no bi, trɛ no anaa pepa no bere biara fa wɛbsaet yi nkitahodi email so.",
+      },
+      {
+        title: "Nhyehyɛe nhyɛmu nsɛm",
+        text: "Saa nhyehyɛe yi kyerɛ sɛnea wɛbsaet yi data kwan yɛ ankasa, nanso ansa na wɔde adi dwuma wɔ adwuma mu, ɛsɛ sɛ HB33 abrafo hwɛ mu, ka mmara a ɛfata, data sohwɛ dwuma ne hosting ne email adwumayɛfo ho.",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "Mmara",
+    title: "Nea Wɔde Di Dwuma Ho Mmara",
+    updated: "Nsesa a etwa to",
+    intro: "Sɛ wode saa wɛbsaet yi di dwuma a, egyina sɛ wopene saa mmara yi so. Sɛ wompene so a, mesrɛ mfa di dwuma.",
+    sections: [
+      {
+        title: "Bisa nyɛ kra",
+        text: "Sɛ womene bo bisa anaa nkra a, ɛnyɛ apam so, ɛnkora ade so, ɛnhyɛ bo mu. Sika tua biara nni ha. Wɔhyɛ kra nyinaa mu babi wɔ krataa so ne ne su, so gu, soma ne sika tua sharɛ mu.",
+      },
+      {
+        title: "Nea wɔkra a ɛsua koraa",
+        text: "HB33 yɛ nneɛma pii nkoara, a ɛwɔ kontenna ma baako wɔ kra biara mu. Yɛrentumi nnye bisa a ɛba fam sen saa.",
+      },
+      {
+        title: "Ade ho nsɛm",
+        text: "Ne su nsɛm a wɔkyerɛ wɔ ha yɛ nsɛnkyerɛnne nkoara. Wɔhyɛ nea etwa to, nsu mu duru, siesie ne so gu mu ma lot biara, na wɔhwɛ mu ansa na wɔde akɔ.",
+      },
+      {
+        title: "Dwuma a wɔpene so",
+        text: "Mesrɛ fa bisa fɔɔm di dwuma wɔ nokware mu ma nneɛma pii hia ankasa nkoara. Mfa spam, atoro nsɛm, mmara mma nsɛm anaa mfiri pii a ɛsɛe adwuma no mena.",
+      },
+      {
+        title: "Nsɛm ne asɛde",
+        text: "Saa wɛbsaet yi nkyerɛw ne nhyehyɛe yɛ HB33 dea, ade foto yɛ ananmusifo a wɔka wɔn din wɔ krataa biara dea. Wɔ mmara ma bere mu, HB33 nni asɛde ma gyina a wɔgyina wɔ nsɛnkyerɛnne nsɛm so — krataa so nhyɛ mu na ɛdi kra nyinaa so.",
+      },
+      {
+        title: "Nhyehyɛe nhyɛmu nsɛm",
+        text: "Yi yɛ mfiase nsɛm, ɛsɛ sɛ HB33 abrafo hwɛ mu ansa na wɔde adi dwuma wɔ adwuma mu, ka mmara a ɛfata, asɛde ano ne ntɔkwaw ho nsɛm ho.",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "Saa krataa yi ankɔ kontenna no mu.",
+    text: "Krataa a worehwehwɛ no nni hɔ anaa wɔasesa no.",
+    home: "San kɔ fie",
+    products: "Hwɛ nneɛma",
+  },
+  consent: {
+    title: "Cookie ne Nhwehwɛ Akwamma",
+    text: "Yɛde nhwehwɛ a ɛbu kokoamsɛm so di dwuma ma wɛbsaet yi yɛ yie. Wɔfa mu berɛ a wopene nkoara. Sɛ wofa so a, wɔnfiri hwee.",
+    accept: "Pene nhwehwɛ so",
+    decline: "Fa so",
   },
   footer: {
     tagline: "Koko, soyabeans ne cocopeat pii — wɔahwɛ mu afi mfiase, wɔde rekɔ wiase nyinaa.",
@@ -223,13 +461,7 @@ const ak: DictionaryPatch = {
     contactTitle: "Nkitahodi",
     language: "Kasa",
     minOrder: "Nea wɔkra a ɛsua koraa: kontenna 1.",
-  },
-  notFound: {
-    eyebrow: "404",
-    title: "Saa krataa yi ankɔ kontenna no mu.",
-    text: "Krataa a worehwehwɛ no nni hɔ anaa wɔasesa no.",
-    home: "San kɔ fie",
-    products: "Hwɛ nneɛma",
+    photoCredit: "Mfoni fi Wikimedia Commons — hwɛ din wɔ ade krataa biara so.",
   },
 };
 

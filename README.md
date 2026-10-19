@@ -38,11 +38,11 @@ Copy `.env.example` to `.env.local`. Key variables:
 | `INQUIRY_WEBHOOK_URL` | optional | Generic POST webhook receiving every inquiry JSON |
 
 Update business facts in one place: `src/lib/site.ts`. Product content lives in
-`src/lib/products.ts` (English/French, typed).
+`src/lib/products.ts` (all 16 content languages, typed).
 
 ## Languages & locales
 
-14 locale variants across 10 languages, routed as `/en/...`, `/tw/...`,
+20 locale variants across 16 languages, routed as `/en/...`, `/tw/...`,
 `/ha/...` etc. with full hreflang coverage and Accept-Language detection
 (exact region first, then base language) in `src/proxy.ts`.
 
@@ -50,23 +50,27 @@ Update business facts in one place: `src/lib/site.ts`. Product content lives in
 |---|---|---|---|
 | `en`, `en-GH`, `en-NG` | English (+Ghana/Nigeria) | complete | Regional variants share the English pack; dates/numbers format per region |
 | `fr`, `fr-CI`, `fr-SN` | French (+Côte d’Ivoire/Sénégal) | complete | Regional variants share the French pack |
-| `ak` | Akan | starter | Core UI translated; long-form falls back to English |
-| `tw` | Twi (Asante Twi) | starter | Falls back through Akan, then English |
-| `fat` | Fante (Mfantse) | starter | Falls back through Akan, then English |
-| `ee` | Ewe (Eʋegbe) | starter | Core UI translated |
-| `gaa` | Ga | starter | Core UI translated |
-| `ig` | Igbo | starter | Core UI translated |
-| `yo` | Yorùbá | starter | Core UI translated |
-| `ha` | Hausa | starter | Core UI translated |
-| `de` | German (Deutsch) | starter | Core UI translated |
-| `pt` | Portuguese (Português) | starter | Core UI translated |
-| `sw` | Swahili (Kiswahili) | starter | Core UI translated |
-| `ar` | Arabic (العربية) | starter | Core UI translated; rendered right-to-left (`dir="rtl"`, logical CSS properties throughout) |
-| `ja` | Japanese (日本語) | starter | Core UI translated |
-| `zh-CN` | Chinese Simplified (简体中文) | starter | Core UI translated |
+| `ak` | Akan | complete | All interface strings translated; UI and product copy translated |
+| `tw` | Twi (Asante Twi) | complete | Shares much of the Akan pack; UI and product copy translated |
+| `fat` | Fante (Mfantse) | complete | Distinct Fante orthography; UI and product copy translated |
+| `ee` | Ewe (Ʋegbe) | complete | All interface strings translated; UI and product copy translated |
+| `gaa` | Ga | complete | All interface strings translated; UI and product copy translated |
+| `ig` | Igbo | complete | All interface strings translated; UI and product copy translated |
+| `yo` | Yorùbá | complete | All interface strings translated; UI and product copy translated |
+| `ha` | Hausa | complete | All interface strings translated; UI and product copy translated |
+| `de` | German (Deutsch) | complete | All interface strings translated; UI and product copy translated |
+| `pt` | Portuguese (Português) | complete | All interface strings translated; UI and product copy translated |
+| `sw` | Swahili (Kiswahili) | complete | All interface strings translated; UI and product copy translated |
+| `ar` | Arabic (العربية) | complete | All interface strings translated; rendered right-to-left (`dir="rtl"`, logical CSS properties throughout) |
+| `ja` | Japanese (日本語) | complete | All interface strings translated; UI and product copy translated |
+| `zh-CN` | Chinese Simplified (简体中文) | complete | All interface strings translated; UI and product copy translated |
 
-Starter packs need native-speaker review before commercial use — anything not
-yet translated renders in English automatically, so pages never break.
+All 14 non-English/French locale packs now cover the full UI **and** all
+long-form product copy. Both were produced with AI assistance and **need
+native-speaker proofreading before commercial use** — this applies especially to
+the Ghanaian and Nigerian languages (`ak`, `tw`, `fat`, `ee`, `gaa`, `ig`, `yo`,
+`ha`), where tone, register and dialect choices matter most. Any missing key
+renders in English automatically, so pages never break.
 
 **Adding a language:** append the code to `localeCodes` and a registry entry
 (name, group, Intl tag, fallback chain) in `src/lib/i18n.ts`, optionally add

@@ -1,10 +1,37 @@
 import type { DictionaryPatch } from "../dictionaries";
 
 /**
- * Chinese Simplified (简体中文) starter pack — core UI translated,
- * long-form content falls back to English pending native-speaker review.
+ * Chinese Simplified (简体中文) — full UI translation. Long-form product copy
+ * lives in `lib/products.ts` and currently falls back to English/French.
  */
 const zh: DictionaryPatch = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — 西非优质可可、大豆与椰糠（大宗供应）",
+    homeDescription:
+      "HB33向全球生产商与大宗买家供应可可豆、可可壳、可可脂、可可碎、可可粉、可可饼、大豆和椰糠。集装箱起订，原产地验证。",
+    productsTitle: "产品 — 大宗农产品",
+    productsDescription:
+      "HB33大宗目录：可可豆、可可壳、可可脂、可可碎、可可粉、可可饼、大豆与椰糠。最小起订量为一个海运集装箱。",
+    aboutTitle: "关于HB33",
+    aboutDescription:
+      "HB33是一家西非农产品供应商，以经检验的大宗货柜服务生产商、加工商与大宗买家。",
+    howTitle: "订购流程 — 大宗采购方式",
+    howDescription:
+      "如何向HB33大宗采购：浏览目录、索取报价、确认库存，再以FOB或CIF发运。最小一个集装箱。",
+    quoteTitle: "索取报价 — 大宗订单询盘",
+    quoteDescription:
+      "向HB33发送大宗订单询盘。最小起订量为一个海运集装箱。我们确认库存、价格与船运。",
+    contactTitle: "联系HB33",
+    contactDescription:
+      "通过邮件或WhatsApp就大宗供应联系HB33。我们回复规格、价格与交期。",
+    privacyTitle: "隐私政策",
+    privacyDescription:
+      "HB33只收集最少必要的信息 — 您在询盘或留言中提供的联系方式仅用于回复。无账户、无简报、无广告追踪。",
+    termsTitle: "使用条款",
+    termsDescription:
+      "发送询盘或留言并不构成合同、库存预留或价格锁定。最小起订量：一个海运集装箱。本条款仅适用于真实的大宗询盘。",
+  },
   nav: {
     home: "首页",
     products: "产品",
@@ -41,11 +68,10 @@ const zh: DictionaryPatch = {
     optional: "选填",
     containers: "集装箱",
     container: "集装箱",
-    tonnageNote:
-      "最终装载量取决于产品密度和集装箱类型 — 出货前确认。",
+    tonnageNote: "最终装载量取决于产品密度和集装箱类型 — 出货前确认。",
     allRightsReserved: "版权所有。",
-    placeholderNote:
-      "标注“待确认”的信息将在出货前与HB33核实。",
+    backToTop: "返回顶部",
+    placeholderNote: "标注“待确认”的信息将在出货前与HB33核实。",
   },
   moq: {
     short: "最小起订量：1个海运集装箱。仅接受大宗订单。",
@@ -68,11 +94,36 @@ const zh: DictionaryPatch = {
       { value: "FOB / CIF", label: "全球船运" },
     ],
   },
+  trust: {
+    eyebrow: "为什么选择HB33",
+    title: "为无法承受糟糕一周的买家而生。",
+    items: [
+      { title: "先检验", text: "每个集装箱出货前第三方检验，水分在产地而非到港时检测。" },
+      { title: "没有中间商", text: "与西非农场和合作社直接合作。我们掌控供应链，而不是转介绍。" },
+      { title: "绝不沉默", text: "约定后提供实质进展更新，把单证、装箱和发运的每个节点都变为行动。" },
+    ],
+  },
   homeProducts: {
     eyebrow: "我们的产品",
     title: "八种大宗原料，同一标准。",
-    lead: "可可制品、油籽和栽培基质 — 按集装箱包装，逐批检验。",
+    lead: "可可制品、油籽和椰子产品 — 按集装箱包装，逐批检验。",
     cta: "查看完整目录",
+  },
+  founder: {
+    eyebrow: "创始人寄语",
+    title: "欢迎来到",
+    titleAccent: "HB33。",
+    imageAlt: "HB33创始人 Hugo Obed",
+    paragraphs: [
+      "HB33源于一个简单的信念：全球生产商应当获得值得信赖的货物。",
+      "这个信念来自亲身经历。在我事业的早期，一个物流伙伴为了节省成本，未经我同意更改了运输路线。结果是一场灾难——雨淋毁了货物，损失全部由我承担。那是一次惨痛的教训，却彻底改变了我做出口的方式。",
+      "它教会我：光有品质还不够。可靠的采购必须建立在可靠的物流、清晰的文件和透明的沟通之上。正因如此，我们经手的每一批货，在离港前都要经过检验、建档并由SGS检测。",
+      "如今，HB33为亚洲、欧洲和中东的生产商供应来自西非可信农场的可可豆、可可壳、可可脂、可可碎、可可粉和可可饼。",
+      "在HB33，我们不赌运气。我们相信计划、检验，并有把握地交付。",
+      "感谢您信任我们作为采购伙伴。我期待以十足的信心，助力您的业务成长。",
+    ],
+    name: "Hugo Obed",
+    role: "创始人，HB33",
   },
   processPreview: {
     eyebrow: "订购流程",
@@ -84,11 +135,38 @@ const zh: DictionaryPatch = {
     ],
     cta: "查看完整流程",
   },
+  logistics: {
+    eyebrow: "包装与物流",
+    title: "为集装箱而包装。为清关而建档。",
+    items: [
+      { title: "整柜装载", text: "20英尺和40英尺装载。最终装载量按产品和集装箱类型确认。" },
+      { title: "出口单证", text: "每批货附带植物检疫证书、原产地证书和提单。" },
+      { title: "FOB / CIF", text: "按您偏好的贸易条款和港口 — 附带可推动行动的进展更新。" },
+    ],
+  },
   faqPreview: {
     eyebrow: "常见问题",
     title: "首单出货前买家最关心的问题。",
     cta: "如何下单",
   },
+  homeFaqs: [
+    {
+      q: "HB33供应什么？",
+      a: "我们以集装箱为单位向生产商、加工商与大宗买家供应可可豆、可可壳、可可脂、可可碎、可可粉和可可饼，以及大豆和椰糠。",
+    },
+    {
+      q: "最小起订量是多少？",
+      a: "每个订单至少一个整柜。我们只做大宗订单，并在出货前与您确认最佳集装箱尺寸和装载量。",
+    },
+    {
+      q: "你们以FOB还是CIF发运？",
+      a: "两者都可以。我们会按您的运营、港口和供应链，报出最合适的FOB或CIF。",
+    },
+    {
+      q: "如何获取价格和规格？",
+      a: "发送询盘并注明产品、数量和目的地。我们会回复规格、价格和交期 — 不玩推销话术。",
+    },
+  ],
   homeCta: {
     title: "下一票货，不该是一场赌博。",
     lead: "告诉我们您的需求。我们将以书面形式确认库存、规格和船运。",
@@ -106,7 +184,7 @@ const zh: DictionaryPatch = {
     categories: {
       cocoa: "可可制品",
       oilseeds: "油籽",
-      "growing-media": "栽培基质",
+      "growing-media": "椰子产品",
     },
     sortLabel: "排序",
     sortOptions: {
@@ -125,8 +203,10 @@ const zh: DictionaryPatch = {
   productDetail: {
     overview: "概述",
     background: "背景与商业意义",
+    educationalNote: "以下为原料的通用说明，仅供参考。HB33每批货的具体信息按询盘确认。",
     uses: "用途",
     specs: "规格",
+    specsNote: "规格为参考值。最终等级、水分和包装按每批确认，并在出货前检验。",
     quality: "质量、搬运与储存",
     packaging: "包装与大宗出货",
     buyers: "典型买家与行业",
@@ -135,6 +215,57 @@ const zh: DictionaryPatch = {
     quoteCta: "索取该产品报价",
     quoteButton: "索取报价",
     whatsappButton: "WhatsApp咨询",
+    whatsappUnavailable:
+      "WhatsApp下单尚未配置 — 为确保询盘不丢失，请使用报价表单或电子邮件。",
+    toBeConfirmed: "按批次确认",
+  },
+  aboutPage: {
+    eyebrow: "关于HB33",
+    title: "不只是供应商，更是采购伙伴。",
+    lead: "HB33源于一个简单的信念：全球生产商应当获得值得信赖的可可与农产品货物。",
+    storyTitle: "我们的故事",
+    story: [
+      "HB33源于亲身经历的农产品贸易风险 — 一个物流伙伴为省成本擅自更改路线，雨水毁掉了整批货物。这次教训的代价，塑造了我们今天做事的方式。",
+      "光有品质还不够。可靠的采购必须建立在可靠的物流、清晰的文件和透明的沟通之上。正因如此，HB33的每一批货在离港前都要经过检验、建档和检测。",
+      "如今，HB33为亚洲、欧洲和中东的生产商供应来自西非可信农场与合作社的可可制品、大豆和椰糠。",
+    ],
+    valuesEyebrow: "我们的价值观",
+    valuesTitle: "我们坚持的价值",
+    values: [
+      { title: "先检验", text: "在产地完成检验与水分检测 — 在包装和装箱之前，而不是到港时。" },
+      { title: "直接采购", text: "与我们叫得出名字的农场和合作社建立长期关系。" },
+      { title: "透明沟通", text: "书面确认、有实质内容的发运更新，以及每个集装箱的单证。" },
+    ],
+    factsEyebrow: "一览",
+    factsTitle: "业务事实",
+    factsNote: "这里只列经核实的事实。认证、目的地和产能均按询盘确认，绝不猜测。",
+    facts: [
+      { label: "基地", value: "西非" },
+      { label: "产品", value: "8种大宗产品" },
+      { label: "月产能", value: "最高1,000吨" },
+      { label: "贸易条款", value: "FOB / CIF" },
+      { label: "最小起订量", value: "一个海运集装箱" },
+    ],
+    ctaTitle: "与HB33合作",
+    ctaText: "告诉我们您的数量和目的地 — 我们会回复规格、价格和交期。",
+    ctaPrimary: "索取报价",
+    ctaSecondary: "联系我们",
+  },
+  howPage: {
+    eyebrow: "订购流程",
+    title: "五个步骤，到手检验合格的集装箱。",
+    lead: "发送询盘并不自动构成订单、库存预留或最终价格。所有订单都在出货前以书面确认。",
+    steps: [
+      { title: "浏览目录", text: "查看产品、规格与包装。所有销售均以一个整柜为单位。" },
+      { title: "选择原料与数量", text: "选择产品和集装箱数。每单最少一个海运集装箱。" },
+      { title: "发送询盘", text: "通过报价表单、邮件或WhatsApp发送联系方式、交货与需求详情。" },
+      { title: "确认条款", text: "HB33确认库存、价格、规格、装箱、发运和付款。" },
+      { title: "履约与跟进", text: "检验、单证、发运 — 从始至终，每个节点都有进展更新。" },
+    ],
+    noteTitle: "请注意",
+    noteText:
+      "询盘是意向，不是订单。库存、最终价格、规格、装箱、发运和付款条件，都要在任何承诺之前与HB33商定。",
+    cta: "从索取报价开始",
   },
   quotePage: {
     eyebrow: "大宗订单询盘",
@@ -144,8 +275,12 @@ const zh: DictionaryPatch = {
       fullName: "姓名",
       company: "公司名称",
       email: "商务邮箱",
-      phone: "电话（含国家区号）",
+      countryCode: "国家区号",
+      selectCode: "选择区号",
+      phone: "电话",
       country: "国家",
+      searchCountryPlaceholder: "输入国家名…",
+      noCountryMatch: "没有匹配的国家 — 请继续输入。",
       destination: "交货地/港口",
       timeframe: "期望交期",
       timeframeOptions: {
@@ -185,6 +320,9 @@ const zh: DictionaryPatch = {
       "双方商定装箱、包装与FOB/CIF船运。",
       "执行前确认付款条款。",
     ],
+    emailStatusOn: "已将副本通过邮件发送给我们的销售团队。",
+    emailStatusOff:
+      "此环境未启用邮件转发。为获得最快回复，请使用下方按钮通过邮件或WhatsApp发送询盘 — 并附上您的参考编号。",
     sendEmail: "通过邮件发送",
     sendWhatsapp: "前往WhatsApp",
     newInquiry: "新的询盘",
@@ -203,6 +341,7 @@ const zh: DictionaryPatch = {
       message: "留言",
       messagePlaceholder: "产品、数量、目的地…",
       submit: "发送留言",
+      sent: "已发送。",
     },
     errors: {
       required: "此项为必填。",
@@ -214,8 +353,90 @@ const zh: DictionaryPatch = {
     channelsTitle: "直接渠道",
     emailLabel: "邮箱",
     whatsappLabel: "WhatsApp",
+    whatsappHint: "进行中的询盘最快 — 如有参考编号请一并告知。",
+    whatsappUnavailable:
+      "WhatsApp尚未配置。请通过邮件联系我们 — 我们会回复规格、价格和交期。",
     locationLabel: "基地",
     responseNote: "大宗询盘将在1–2个工作日内回复。",
+    failText: "留言发送失败。请重试 — 或直接邮件联系我们。",
+  },
+  privacyPage: {
+    eyebrow: "法律",
+    title: "隐私政策",
+    updated: "最后更新",
+    intro:
+      "HB33尽可能少地收集个人信息。您在询盘或留言中提供的联系方式仅用于回复。本站没有账户、简报或广告追踪。",
+    sections: [
+      {
+        title: "您提供的信息",
+        text: "报价询盘：姓名、公司、邮箱、电话、国家、交货地、期望交期、期望包装、产品与集装箱数量，以及任何补充说明。联系留言：姓名、邮箱、主题和正文。我们不收集其他任何信息 — 没有账户、评论或简报功能。",
+      },
+      {
+        title: "用途",
+        text: "仅用于回复您的询盘：确认库存和价格、准备规格与发运，并就您的需求与您沟通。我们绝不出售个人信息，也不发送营销邮件。",
+      },
+      {
+        title: "存储与共享",
+        text: "提交内容会记录在本站服务器日志中，以确保询盘不丢失。若已配置，副本会通过邮件或私密webhook转发给HB33销售收件箱 — 确认界面始终如实告知邮件转发是否启用。邮件和WhatsApp按钮在您自己的应用内运行，我们只会收到您选择发送的内容。",
+      },
+      {
+        title: "Cookie与分析",
+        text: "本站默认不设置Cookie，也不进行分析或追踪。若启用分析，也只有在您在同意横幅中接受后才会加载，您的选择保存在本地浏览器中。",
+      },
+      {
+        title: "保留期限与您的权利",
+        text: "询盘记录会为正当的业务与记录目的而保留。您可随时使用本站的联系邮箱，索取您信息的副本、更正或删除。",
+      },
+      {
+        title: "草案说明",
+        text: "本政策说明了网站实际的数据流向，但在商业使用前，应由HB33的律师审阅，包括适用法律、数据处理角色以及托管和邮件服务商。",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "法律",
+    title: "使用条款",
+    updated: "最后更新",
+    intro: "使用本站即表示您同意以下条款。若不同意，请勿使用本站。",
+    sections: [
+      {
+        title: "询盘不是订单",
+        text: "发送报价询盘或留言并不构成合同、库存预留或价格锁定。本站没有支付功能。所有订单都连同规格、装箱、发运和付款条款以书面另行确认。",
+      },
+      {
+        title: "最小起订量",
+        text: "HB33只做大宗订单，最少每个订单一个整柜。低于此量的询盘我们无法受理。",
+      },
+      {
+        title: "产品信息",
+        text: "本站展示的规格为参考值。最终等级、水分、包装与装箱按每批确认，并在出货前检验。",
+      },
+      {
+        title: "可接受的使用",
+        text: "请诚信使用询盘表单，仅用于真实的大宗需求。请勿发送垃圾信息、虚假信息、违法内容，或滥用服务的自动化批量提交。",
+      },
+      {
+        title: "内容与责任",
+        text: "本站文字与设计归HB33所有，产品照片归各页面注明的第三方贡献者所有。在法律允许的最大范围内，HB33对基于本站参考信息所做的决定不承担责任 — 已确认的书面条款才是所有订单的依据。",
+      },
+      {
+        title: "草案说明",
+        text: "这是初始内容，在商业使用前应由HB33的律师审阅，包括适用法律、责任上限和争议解决条款。",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "该页面没赶上集装箱。",
+    text: "页面不存在或已移动。",
+    home: "返回首页",
+    products: "浏览产品",
+  },
+  consent: {
+    title: "Cookie与分析同意",
+    text: "我们使用注重隐私的分析来改进本站。只有在您同意后才会加载。拒绝则不追踪任何内容。",
+    accept: "允许分析",
+    decline: "拒绝",
   },
   footer: {
     tagline: "可可、大豆、椰糠大宗供应 — 原产地验证，全球发货。",
@@ -227,13 +448,7 @@ const zh: DictionaryPatch = {
     contactTitle: "联系",
     language: "语言",
     minOrder: "最小起订量：1个集装箱。",
-  },
-  notFound: {
-    eyebrow: "404",
-    title: "该页面没赶上集装箱。",
-    text: "页面不存在或已移动。",
-    home: "返回首页",
-    products: "浏览产品",
+    photoCredit: "照片来自Wikimedia Commons — 署名见各产品页。",
   },
 };
 

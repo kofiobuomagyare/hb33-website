@@ -109,6 +109,7 @@ export default async function ProductDetailPage({
               width={1200}
               height={900}
               priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
             />
           </div>

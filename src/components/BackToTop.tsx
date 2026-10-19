@@ -42,10 +42,13 @@ export default function BackToTop({ label }: { label: string }) {
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
       className={cn(
-        "fixed bottom-6 end-6 z-40 flex size-12 items-center justify-center rounded-full border border-line bg-bark text-cream shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-cocoa",
+        "fixed z-40 flex size-12 items-center justify-center rounded-full border border-line bg-bark text-cream shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-cocoa",
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0",
+        "bottom-6 start-6 [dir='rtl']:start-auto [dir='rtl']:end-6",
+        "md:bottom-8 md:end-8 [dir='rtl'].md:start-auto [dir='rtl'].md:end-8",
+        "lg:bottom-10 lg:end-10 [dir='rtl'].lg:start-auto [dir='rtl'].lg:end-10",
       )}
     >
       <ArrowUp className="size-5" aria-hidden />

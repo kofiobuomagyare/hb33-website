@@ -1,10 +1,37 @@
 import type { DictionaryPatch } from "../dictionaries";
 
 /**
- * Igbo starter pack — core UI translated, long-form content
- * falls back to English pending native-speaker review.
+ * Igbo — full UI translation. Long-form product copy lives in `lib/products.ts`
+ * and currently falls back to English/French.
  */
 const ig: DictionaryPatch = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — Koko, Soybean na Cocopeat nke Ọdịda anyanwụ Afrịka (Nnukwu)",
+    homeDescription:
+      "HB33 na-enye ndị na-emepụta ihe na ndị na-azụ nnukwu ihe n'ụwa niile koko bean, koko shell, koko bọta, koko nib, koko potash, koko cake, soybean na cocopeat. Iwu site na kọntịnà, enyochara site na mmalite.",
+    productsTitle: "Ngwaahịa — Nnukwu ngwaahịa ugbo",
+    productsDescription:
+      "Katalọgụ nnukwu ngwaahịa HB33: koko bean, koko shell, koko bọta, koko nib, koko potash, koko cake, soybean na cocopeat. Iwu kacha nta bụ otu kọntịnà ụgbọ mmiri.",
+    aboutTitle: "Gbasara HB33",
+    aboutDescription:
+      "HB33 bụ onye na-eweta ngwaahịa ugbo Ọdịda anyanwụ Afrịka, na-eji kọntịnà enyochara ejere ndị na-emepụta ihe, ndị na-edozi na ndị na-azụ nnukwu ihe ozi.",
+    howTitle: "Otu o si arụ ọrụ — Usoro iwu nnukwu ihe",
+    howDescription:
+      "Otu esi azụ ihe n'ụzọ nnukwu na HB33: lee katalọgụ, rịọ ọnụahịa, kwado nnweta, wee bupụ na FOB ma ọ bụ CIF. Opekata mpe otu kọntịnà.",
+    quoteTitle: "Rịọ ọnụahịa — Arịrịọ iwu nnukwu ngwaahịa",
+    quoteDescription:
+      "Zitere HB33 arịrịọ iwu nnukwu ngwaahịa. Iwu kacha nta bụ otu kọntịnà ụgbọ mmiri. Anyị na-akwado nnweta, ọnụahịa na mbupu.",
+    contactTitle: "Kpọtụrụ HB33",
+    contactDescription:
+      "Kpọtụrụ HB33 banyere nnukwu ngwaahịa site na email ma ọ bụ WhatsApp. Anyị na-aza nkọwa, ọnụahịa na oge nnyefe.",
+    privacyTitle: "Nzuzo nkọwa",
+    privacyDescription:
+      "HB33 na-anakọta obere nkọwa onwe onye dị mkpa — naanị ihe ị zitere n'arịrịọ ma ọ bụ ozi, iji zaa ya. Enweghị akaụntụ, akwụkwọ akụkọ, ma ọ bụ nsochi mgbasa ozi.",
+    termsTitle: "Usoro ojiji",
+    termsDescription:
+      "Iziga arịrịọ ma ọ bụ ozi anaghị emepụta nkwekọrịta, idebe ngwaahịa, ma ọ bụ idobe ọnụahịa. Iwu kacha nta: otu kọntịnà ụgbọ mmiri. Usoro a metụtara naanị ezi arịrịọ nnukwu ngwaahịa.",
+  },
   nav: {
     home: "Ụlọ",
     products: "Ngwaahịa",
@@ -18,8 +45,12 @@ const ig: DictionaryPatch = {
     language: "Asụsụ",
     languageGroups: {
       global: "Ụwa niile",
+      europe: "Europe",
+      asia: "Eshia",
+      "middle-east": "Middle East",
       ghana: "Ghana",
       nigeria: "Naịjirịa",
+      "east-africa": "Ọwụwa anyanwụ Afrịka",
       francophone: "Ọdịda anyanwụ Afrịka (French)",
     },
   },
@@ -40,6 +71,7 @@ const ig: DictionaryPatch = {
     tonnageNote:
       "Ibu ikpeazụ dabere na njupụta ngwaahịa na ụdị kọntịnà — a ga-akwado ya tupu mbupu.",
     allRightsReserved: "Echekwara ikike niile.",
+    backToTop: "Laghachi n'elu",
     placeholderNote:
       "A ga-eji HB33 kwado nkọwa ndị akara “a ga-akwado” tupu mbupu ọ bụla.",
   },
@@ -64,11 +96,45 @@ const ig: DictionaryPatch = {
       { value: "FOB / CIF", label: "Mbupu ụwa niile" },
     ],
   },
+  trust: {
+    eyebrow: "Ihe kpatara ịhọrọ HB33",
+    title: "Eji maka ndị na-azụ ihe na-enweghị ike ịnabata izu ọjọọ.",
+    items: [
+      {
+        title: "Nyocha mbụ",
+        text: "Nyocha nke atọ tupu kọntịnà ọ bụla apụ. A na-enyocha mmiri n'ugbo, ọ bụghị mgbe o rutere.",
+      },
+      {
+        title: "Enweghị onye etiti",
+        text: "Mmekọrịta kpọmkwem na ugbo na òtù Ọdịda anyanwụ Afrịka. Anyị na-ejide usoro ahịa, ọ bụghị naanị ijikọ.",
+      },
+      {
+        title: "Anyị anaghị agba nkịtị",
+        text: "Nkwukọrịta bara uru mgbe nkwekọrịta gasịrị, na-eme ka akwụkwọ, ibu na mbupu bụrụ omume n'akụkụ ọ bụla.",
+      },
+    ],
+  },
   homeProducts: {
     eyebrow: "Ngwaahịa anyị",
     title: "Ngwaahịa ugbo asatọ buru ibu. Otu ụkpụrụ.",
-    lead: "Ngwaahịa koko, mmanụ mmanụ na ihe ọkụkụ — akwakọrọ maka kọntịnà, a na-enyocha nke ọ bụla.",
+    lead: "Ngwaahịa koko, mmanụ mmanụ na ngwaahịa aki — akwakọrọ maka kọntịnà, a na-enyocha nke ọ bụla.",
     cta: "Lee katalọgụ niile",
+  },
+  founder: {
+    eyebrow: "Site n'aka onye nchoputa",
+    title: "Nnọọ na",
+    titleAccent: "HB33.",
+    imageAlt: "Onye nchoputa HB33 Hugo Obed",
+    paragraphs: [
+      "HB33 malitere site n'otu nkwenye dị mfe: ndị na-emepụta ihe n'ụwa niile kwesịrị inweta mbupu a pụrụ ịtụkwasị obi.",
+      "Nkwenye a sitere na ahụmịhe. N'oge mbido ọrụ m, otu onye mmekọ logistics gbanwere ụzọ njem na-enweghị nkwenye m iji belata ụgwọ. Ihe si na ya pụta jọgburu onwe ya — mmiri mebiri ibu ahụ, m tara ahụhụ mfu ahụ dum. Ọ bụ ihe mmụta siri ike, ma gbanwere kpamkpam otu m si arụ azụmahịa mbupụ.",
+      "O kuziri m na naanị ogo ezughị. Nnweta a pụrụ ịtụkwasị obi ga-eguzo n'elu logistics a pụrụ ịtụkwasị obi, akwụkwọ doro anya na nkwukọrịta nghọta. Ya mere, a na-enyocha, na-edeba akwụkwọ ma jiri SGS nyochaa mbupu ọ bụla anyị na-ejikwa tupu ọ hapụ ọdụ ụgbọ mmiri.",
+      "Taa, HB33 na-enye ndị na-emepụta ihe na Eshia, Europe na Middle East koko bean, koko shell, koko bọta, koko nib, koko potash na koko cake sitere n'ugbo ntụkwasị obi nke Ọdịda anyanwụ Afrịka.",
+      "Na HB33, anyị anaghị eburu ibu na-atụ anya ihu ọma. Anyị kwenyere na atụmatụ, nyocha na nnyefe ntụkwasị obi.",
+      "Daalụ maka ịtụkwasị anyị obi dịka onye mmekọ nnweta. Atụrụ m anya inyere azụmahịa gị aka ito na ntụkwasị obi zuru oke.",
+    ],
+    name: "Hugo Obed",
+    role: "Onye nchoputa, HB33",
   },
   processPreview: {
     eyebrow: "Otu o si arụ ọrụ",
@@ -80,11 +146,38 @@ const ig: DictionaryPatch = {
     ],
     cta: "Lee usoro niile",
   },
+  logistics: {
+    eyebrow: "Nkwakọ na Logistics",
+    title: "Akpakọrọ maka kọntịnà. Edebere akwụkwọ maka mbupụ.",
+    items: [
+      { title: "Ibu kọntịnà", text: "Ibu 20-ụkwụ na 40-ụkwụ. A na-akwado ibu ikpeazụ kwa ngwaahịa na ụdị kọntịnà." },
+      { title: "Akwụkwọ mbupụ", text: "Akwụkwọ nkwenye osisi, akwụkwọ mmalite na akwụkwọ ibu na-eso mbupu ọ bụla." },
+      { title: "FOB / CIF", text: "N'okpuru usoro na ọdụ ụgbọ mmiri ị họọrọ — na mmelite na-akpali omume." },
+    ],
+  },
   faqPreview: {
     eyebrow: "Ajụjụ ndị a na-ajụkarị",
     title: "Ihe ndị na-azụ ahịa na-ajụ tupu mbupu mbụ ha.",
     cta: "Otu esi enye iwu",
   },
+  homeFaqs: [
+    {
+      q: "Gịnị ka HB33 na-enye?",
+      a: "Anyị na-enye koko bean, koko shell, koko bọta, koko nib, koko potash na koko cake n'ụzọ nnukwu, tinyere soybean na cocopeat, na kọntịnà, nye ndị na-emepụta ihe, ndị na-edozi na ndị na-azụ nnukwu ihe.",
+    },
+    {
+      q: "Gịnị bụ iwu kacha nta?",
+      a: "Otu kọntịnà zuru ezu n'iwu ọ bụla. Anyị na-eme naanị nnukwu iwu, anyị na-akwado nha kọntịnà na ibu kacha mma na gị tupu mbupu.",
+    },
+    {
+      q: "Ị na-ebupụ na FOB ka CIF?",
+      a: "Ha abụọ. Anyị na-enye ọnụahịa FOB ma ọ bụ CIF kacha mma maka arụmọrụ, ọdụ ụgbọ mmiri na usoro ahịa gị.",
+    },
+    {
+      q: "Otu m ga-esi nweta ọnụahịa na nkọwa?",
+      a: "Ziga arịrịọ na ngwaahịa, ọnụọgụgụ na ebe aga. Anyị ga-aza na nkọwa, ọnụahịa na oge nnyefe — enweghị okwu ire ere.",
+    },
+  ],
   homeCta: {
     title: "Mbupu gị na-esote ekwesịghị ịdị ka ịgba chaa chaa.",
     lead: "Gwa anyị ihe ị chọrọ. Anyị ga-akwado nnweta, nkọwa na mbupu — na ederede.",
@@ -102,7 +195,7 @@ const ig: DictionaryPatch = {
     categories: {
       cocoa: "Ngwaahịa koko",
       oilseeds: "Mmanụ mmanụ",
-      "growing-media": "Ihe ọkụkụ",
+      "growing-media": "Ngwaahịa aki",
     },
     sortLabel: "Hazie",
     sortOptions: {
@@ -121,8 +214,12 @@ const ig: DictionaryPatch = {
   productDetail: {
     overview: "Nkọwa",
     background: "Mmalite na mkpa azụmahịa",
+    educationalNote:
+      "Nkọwa izugbe nke ihe ndị a bụ naanị maka mmụta. A na-akwado nkọwa akọwapụtara nke ọ bụla n'HB33 kwa arịrịọ.",
     uses: "Ojiji na ngwa",
     specs: "Nkọwa",
+    specsNote:
+      "Nkọwa bụ ntụaka. A na-akwado ọkwa ikpeazụ, mmiri na nkwakọ kwa lot, a na-enyochakwa ya tupu mbupu.",
     quality: "Ogo, njikwa na nchekwa",
     packaging: "Nkwakọ na mbupu nnukwu ngwaahịa",
     buyers: "Ndị na-azụ na ụlọ ọrụ",
@@ -131,6 +228,58 @@ const ig: DictionaryPatch = {
     quoteCta: "Rịọ ọnụahịa maka ngwaahịa a",
     quoteButton: "Rịọ Ọnụahịa",
     whatsappButton: "Jụọ na WhatsApp",
+    whatsappUnavailable:
+      "Edebebeghị iwu WhatsApp — iji hụ na anyị anaghị efunahụ arịrịọ, biko jiri fọm arịrịọ ọnụahịa ma ọ bụ email.",
+    toBeConfirmed: "A ga-akwado kwa lot",
+  },
+  aboutPage: {
+    eyebrow: "Gbasara HB33",
+    title: "Ọ bụghị naanị onye na-eweta — onye mmekọ nnweta.",
+    lead: "HB33 malitere site n'otu nkwenye dị mfe: ndị na-emepụta ihe n'ụwa niile kwesịrị inweta mbupu koko na ngwaahịa ugbo a pụrụ ịtụkwasị obi.",
+    storyTitle: "Akụkọ anyị",
+    story: [
+      "HB33 malitere site n'ahụmịhe nke ihe egwu azụmahịa ugbo pụrụ ịdị — otu onye mmekọ logistics gbanwere ụzọ na-enweghị nkwenye iji belata ụgwọ, mmiri mebikwara ibu ahụ dum. Ọnụ ahụ nke mmụta ahụ kpụrụ otu anyị si arụ ọrụ taa.",
+      "Naanị ogo ezughị. Nnweta a pụrụ ịtụkwasị obi ga-eguzo n'elu logistics a pụrụ ịtụkwasị obi, akwụkwọ doro anya na nkwukọrịta nghọta. Ya mere, a na-enyocha, na-edeba akwụkwọ ma nyochaa mbupu ọ bụla HB33 tupu ọ hapụ ọdụ ụgbọ mmiri.",
+      "Taa, HB33 na-enye ndị na-emepụta ihe na Eshia, Europe na Middle East ngwaahịa koko, soybean na cocopeat sitere n'ugbo na òtù ntụkwasị obi nke Ọdịda anyanwụ Afrịka.",
+    ],
+    valuesEyebrow: "Ụkpụrụ anyị",
+    valuesTitle: "Ụkpụrụ anyị ji akpọrọ ihe",
+    values: [
+      { title: "Nyocha mbụ", text: "Nyocha na nlele mmiri n'ugbo — tupu nkwakọ na ibu, ọ bụghị mgbe o rutere." },
+      { title: "Nnweta kpọmkwem", text: "Mmekọrịta ogologo oge na ugbo na òtù anyị maara aha ha." },
+      { title: "Nkwukọrịta nghọta", text: "Nkwenye n'ederede, mmelite mbupu bara uru na akwụkwọ maka kọntịnà ọ bụla." },
+    ],
+    factsEyebrow: "Na nkenke",
+    factsTitle: "Eziokwu azụmahịa",
+    factsNote:
+      "Naanị eziokwu enyochara ka anyị na-edepụta ebe a. A na-akwado asambodo, ebe aga na ike ọnwa kwa arịrịọ, anyị anaghị eche echiche.",
+    facts: [
+      { label: "Ntọala", value: "Ọdịda anyanwụ Afrịka" },
+      { label: "Ngwaahịa", value: "Nnukwu ngwaahịa 8" },
+      { label: "Ike ọnwa", value: "Ruo 1,000 MT" },
+      { label: "Usoro nnyefe", value: "FOB / CIF" },
+      { label: "Iwu kacha nta", value: "Otu kọntịnà ụgbọ mmiri" },
+    ],
+    ctaTitle: "Zụọ ahịa na HB33",
+    ctaText: "Gwa anyị ọnụọgụgụ na ebe aga gị — anyị ga-aza na nkọwa, ọnụahịa na oge nnyefe.",
+    ctaPrimary: "Rịọ Ọnụahịa",
+    ctaSecondary: "Kpọtụrụ anyị",
+  },
+  howPage: {
+    eyebrow: "Otu o si arụ ọrụ",
+    title: "Nzọụkwụ ise iji nweta kọntịnà enyochara.",
+    lead: "Iziga arịrịọ anaghị emepụta iwu, idebe ngwaahịa ma ọ bụ ọnụahịa ikpeazụ. A na-akwado iwu niile n'ederede tupu mbupu.",
+    steps: [
+      { title: "Lee katalọgụ", text: "Lelee ngwaahịa, nkọwa na nkwakọ. A na-ere ihe niile n'otu kọntịnà zuru ezu." },
+      { title: "Họrọ ngwaahịa na ọnụọgụgụ", text: "Họrọ ngwaahịa na ọnụọgụgụ kọntịnà. Opekata mpe otu kọntịnà ụgbọ mmiri n'iwu ọ bụla." },
+      { title: "Ziga arịrịọ gị", text: "Ziga nkọwa kpọtụrụ, nnyefe na ihe achọrọ site na fọm arịrịọ, email ma ọ bụ WhatsApp." },
+      { title: "Kwado usoro", text: "HB33 na-akwado nnweta, ọnụahịa, nkọwa, ibu kọntịnà, mbupu na ịkwụ ụgwọ." },
+      { title: "Mmezu na nsochi", text: "Nyocha, akwụkwọ, mbupu — mmelite n'akụkụ ọ bụla ruo nnyefe." },
+    ],
+    noteTitle: "Biko mara",
+    noteText:
+      "Arịrịọ bụ ebumnuche, ọ bụghị iwu. A ga-akwado nnweta, ọnụahịa ikpeazụ, nkọwa, ibu kọntịnà, mbupu na ọnọdụ ịkwụ ụgwọ na HB33 tupu nkwa ọ bụla.",
+    cta: "Malite site n'ịrịọ ọnụahịa",
   },
   quotePage: {
     eyebrow: "Arịrịọ iwu nnukwu ngwaahịa",
@@ -140,8 +289,12 @@ const ig: DictionaryPatch = {
       fullName: "Aha zuru ezu",
       company: "Aha ụlọ ọrụ",
       email: "Email azụmahịa",
-      phone: "Ekwentị (na koodu obodo)",
+      countryCode: "Koodu obodo",
+      selectCode: "Họrọ koodu",
+      phone: "Ekwentị",
       country: "Obodo",
+      searchCountryPlaceholder: "Pịnye aha obodo…",
+      noCountryMatch: "Ọ dịghị obodo dabara — nọgide na-ede.",
       destination: "Ebe aga-ebuga / ọdụ ụgbọ mmiri",
       timeframe: "Oge nnyefe a tụrụ anya",
       timeframeOptions: {
@@ -181,6 +334,9 @@ const ig: DictionaryPatch = {
       "A ga-ekwenye na ibu kọntịnà, nkwakọ na mbupu FOB/CIF.",
       "A ga-akwado usoro ịkwụ ụgwọ tupu arụ ọrụ.",
     ],
+    emailStatusOn: "E zitere ndị otu ahịa anyị otu site na email.",
+    emailStatusOff:
+      "Enweghị email na mpaghara a. Maka azịza kacha ọsọ, zitere arịrịọ gị site na email ma ọ bụ WhatsApp site na bọtịnụ dị n'okpuru — tinyere nọmba ntụaka gị.",
     sendEmail: "Ziga site na email",
     sendWhatsapp: "Gaa n'ihu na WhatsApp",
     newInquiry: "Arịrịọ ọhụrụ",
@@ -199,6 +355,7 @@ const ig: DictionaryPatch = {
       message: "Ozi",
       messagePlaceholder: "Ngwaahịa, ọnụọgụgụ, ebe aga-ebuga…",
       submit: "Ziga ozi",
+      sent: "E zitere.",
     },
     errors: {
       required: "Ubi a dị mkpa.",
@@ -210,8 +367,89 @@ const ig: DictionaryPatch = {
     channelsTitle: "Ụzọ ozugbo",
     emailLabel: "Email",
     whatsappLabel: "WhatsApp",
+    whatsappHint: "Ọsọ kacha ọsọ maka arịrịọ na-aga n'ihu — gụnye nọmba ntụaka gị ma ọ bụrụ na ị nwere ya.",
+    whatsappUnavailable: "Edebebeghị WhatsApp. Biko kpọtụrụ anyị site na email — anyị ga-aza na nkọwa, ọnụahịa na oge nnyefe.",
     locationLabel: "Ntọala",
     responseNote: "Anyị na-agba mbọ ịza arịrịọ nnukwu ngwaahịa n'ime ụbọchị ọrụ 1–2.",
+    failText: "Enweghị ike iziga ozi gị. Nwale ọzọ — ma ọ bụ kpọtụrụ anyị ozugbo site na email.",
+  },
+  privacyPage: {
+    eyebrow: "Iwu",
+    title: "Nzuzo nkọwa",
+    updated: "Emelitere ikpeazụ",
+    intro:
+      "HB33 na-anakọta nkọwa onwe onye ole na ole o kwere. Naanị ihe ị zitere n'arịrịọ ma ọ bụ ozi ka a na-eji, iji zaa ya. Weebụsaịtị a enweghị akaụntụ, akwụkwọ akụkọ ma ọ bụ nsochi mgbasa ozi.",
+    sections: [
+      {
+        title: "Ihe ị na-enye",
+        text: "Arịrịọ: aha, ụlọ ọrụ, email, ekwentị, obodo, ebe aga, oge nnyefe, nkwakọ achọrọ, ngwaahịa na ọnụọgụgụ kọntịnà, na ndetu ọzọ ọ bụla. Ozi kpọtụrụ: aha, email, isiokwu na ozi. Anyị anaghị anakọta ihe ọzọ — enweghị akaụntụ, nkọwa ma ọ bụ akwụkwọ akụkọ.",
+      },
+      {
+        title: "Ojiji",
+        text: "Naanị ịza arịrịọ gị: ikwado nnweta na ọnụahịa, ịkwadebe nkọwa na mbupu, na ịkpọtụrụ gị banyere ihe ị chọrọ. Anyị anaghị ere nkọwa onwe onye, anyị anaghịkwa ezipu email mgbasa ozi.",
+      },
+      {
+        title: "Nchekwa na òkè",
+        text: "A na-edeba ihe ezigara na ndekọ sava nke weebụsaịtị a iji hụ na efunahụghị arịrịọ. Ọ bụrụ na edobere ya, a na-eziga otu site na email ma ọ bụ webhook nzuzo n'igbe ndị ahịa HB33 — ihuenyo nkwenye na-egosi mgbe niile ma email dị. Bọtịnụ email na WhatsApp na-arụ ọrụ n'ime ngwa gị, anyị na-anata naanị ihe ị họọrọ iziga.",
+      },
+      {
+        title: "Kuki na nyocha",
+        text: "Weebụsaịtị a anaghị etinye kuki ma ọ bụ nyocha na nsochi site na ntọala. Ọ bụrụ na enyere nyocha ike, a na-ebugo ya naanị mgbe i kwetara na ọkwa nkwenye, a na-echekwa nhọrọ gị na brawza gị.",
+      },
+      {
+        title: "Oge idebe na ikike gị",
+        text: "A na-edebe ndekọ arịrịọ maka ebumnuche azụmahịa na ndekọ ziri ezi. Ị nwere ike ịrịọ otu, mmezi ma ọ bụ ihichapụ nkọwa gị mgbe ọ bụla site na email kpọtụrụ weebụsaịtị a.",
+      },
+      {
+        title: "Mkọwa akwụkwọ",
+        text: "Amụma a na-akọwa usoro data n'ezie nke weebụsaịtị a, ma tupu ojiji azụmahịa, onye ọka iwu HB33 ga-enyocha ya, tinyere iwu metụtara, ọrụ nhazi data na ndị na-akwado ya na email.",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "Iwu",
+    title: "Usoro ojiji",
+    updated: "Emelitere ikpeazụ",
+    intro: "Iji weebụsaịtị a pụtara na ị kwenyere na usoro ndị a. Ọ bụrụ na ị kwetaghị, biko ejirila saịtị a.",
+    sections: [
+      {
+        title: "Arịrịọ abụghị iwu",
+        text: "Iziga arịrịọ ma ọ bụ ozi anaghị emepụta nkwekọrịta, idebe ngwaahịa ma ọ bụ idobe ọnụahịa. Enweghị ịkwụ ụgwọ na saịtị a. A na-akwado iwu niile iche n'ederede tinyere nkọwa, ibu, mbupu na ọnọdụ ịkwụ ụgwọ.",
+      },
+      {
+        title: "Iwu kacha nta",
+        text: "HB33 na-eme naanị nnukwu iwu, na opekata mpe otu kọntịnà zuru ezu n'iwu ọ bụla. Anyị enweghị ike ịnabata arịrịọ dị ala karịa nke a.",
+      },
+      {
+        title: "Nkọwa ngwaahịa",
+        text: "Nkọwa egosiri na saịtị a bụ ntụaka. A na-akwado ọkwa ikpeazụ, mmiri, nkwakọ na ibu kwa lot, a na-enyochakwa ya tupu mbupu.",
+      },
+      {
+        title: "Ojiji anabatara",
+        text: "Biko jiri fọm arịrịọ n'ezi obi naanị maka ezi mkpa nnukwu ngwaahịa. Ezigala spam, nkọwa ụgha, ọdịnaya iwu na-akwadoghị ma ọ bụ nnukwu ntinye akpaka na-emegbu ọrụ ahụ.",
+      },
+      {
+        title: "Ọdịnaya na ụgwọ",
+        text: "Ederede na imewe saịtị a bụ nke HB33, foto ngwaahịa bụ nke ndị nyere aka nke atọ e kwuru na ibe ọ bụla. N'ókè iwu kwere, HB33 anaghị ebu ụgwọ maka mkpebi sitere na nkọwa ntụaka na saịtị a — usoro ederede enyochara na-achịkwa iwu niile.",
+      },
+      {
+        title: "Mkọwa akwụkwọ",
+        text: "Nke a bụ ọdịnaya mbido, onye ọka iwu HB33 ga-enyocha ya tupu ojiji azụmahịa, tinyere iwu metụtara, oke ụgwọ na usoro idozi esemokwu.",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "Ibe a abataghị na kọntịnà.",
+    text: "Ibe ị na-achọ adịghị ma ọ bụ ebugharịala ya.",
+    home: "Laghachi n'ụlọ",
+    products: "Lee ngwaahịa",
+  },
+  consent: {
+    title: "Nkwenye Kuki na nyocha",
+    text: "Anyị na-eji nyocha na-asọpụrụ nzuzo iji melite saịtị a. Ọ na-ebugo naanị mgbe i kwetara. Ọ bụrụ na ị jụ, a naghị enyocha ihe ọ bụla.",
+    accept: "Kwe ka nyocha",
+    decline: "Jụ",
   },
   footer: {
     tagline: "Koko, soybean na cocopeat buru ibu — enyochara site na mmalite, ebupụ n'ụwa niile.",
@@ -223,13 +461,7 @@ const ig: DictionaryPatch = {
     contactTitle: "Kpọtụrụ",
     language: "Asụsụ",
     minOrder: "Iwu kacha nta: 1 kọntịnà.",
-  },
-  notFound: {
-    eyebrow: "404",
-    title: "Ibe a abataghị na kọntịnà.",
-    text: "Ibe ị na-achọ adịghị ma ọ bụ ebugharịala ya.",
-    home: "Laghachi n'ụlọ",
-    products: "Lee ngwaahịa",
+    photoCredit: "Foto sitere na Wikimedia Commons — ị ga-ahụ otito n'ibe ngwaahịa ọ bụla.",
   },
 };
 

@@ -94,14 +94,13 @@ export default function SiteHeader({
             </Link>
           </div>
 
-          <div className="flex items-center gap-1 lg:hidden">
-            <LanguageSwitcher locale={locale} dict={dict} id="lang-mobile" />
+          <div className="flex shrink-0 items-center gap-1 lg:hidden">
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-label={open ? dict.nav.close : dict.nav.menu}
-              className="inline-flex size-11 items-center justify-center rounded-full border border-line bg-white/60 text-bark"
+              className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-white/60 text-bark"
             >
               {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
             </button>
@@ -128,6 +127,17 @@ export default function SiteHeader({
                   </Link>
                 </li>
               ))}
+              <li className="mt-2 border-t border-line pt-4">
+                <p className="px-1 pb-1 text-xs font-semibold tracking-wider text-ink-muted uppercase">
+                  {dict.nav.language}
+                </p>
+                <LanguageSwitcher
+                  locale={locale}
+                  dict={dict}
+                  id="lang-mobile"
+                  className="w-full justify-between rounded-2xl border border-line bg-white/60 px-3 text-bark"
+                />
+              </li>
               <li className="pt-3">
                 <Link
                   href={localizedPath(locale, "/request-quote")}

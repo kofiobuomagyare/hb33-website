@@ -115,6 +115,22 @@ const fr: Dictionary = {
     lead: "Produits du cacao, oléagineux et supports de culture — conditionnés pour conteneurs et vérifiés lot par lot.",
     cta: "Voir tout le catalogue",
   },
+  founder: {
+    eyebrow: "Le mot du fondateur",
+    title: "Bienvenue chez",
+    titleAccent: "HB33.",
+    imageAlt: "Hugo Obed, fondateur de HB33",
+    paragraphs: [
+      "HB33 est née d’une conviction simple : les industriels du monde entier méritent des expéditions fiables.",
+      "Cette conviction est née de l’expérience. Au début de mon parcours, un partenaire logistique a modifié les routes maritimes à mon insu pour réduire les coûts. Le résultat a été dévastateur. La pluie a endommagé l’expédition et j’ai supporté l’intégralité de la perte. Ce fut une leçon difficile, mais elle a transformé ma façon d’aborder l’export.",
+      "Cette expérience m’a appris que la qualité seule ne suffit pas. Un approvisionnement fiable doit s’appuyer sur une logistique fiable, des documents clairs et une communication transparente. C’est pourquoi chaque expédition que nous traitons est vérifiée, documentée et inspectée par SGS avant de quitter le port.",
+      "Aujourd’hui, HB33 sert des industriels en Asie, en Europe et au Moyen-Orient, en fournissant en vrac des fèves de cacao, des coques, du beurre, des nibs, de la potasse et du tourteau issus de fermes ouest-africaines de confiance.",
+      "Chez HB33, nous ne croyons pas à l’expédition à l’aveugle. Nous croyons à la planification, à la vérification et à la livraison en toute confiance.",
+      "Merci de nous faire confiance comme partenaire d’approvisionnement. Nous sommes impatients de contribuer à la croissance de votre entreprise en toute confiance.",
+    ],
+    name: "Hugo Obed",
+    role: "Fondateur, HB33",
+  },
   processPreview: {
     eyebrow: "Comment ça marche",
     title: "De la ferme à votre usine.",
@@ -174,7 +190,7 @@ const fr: Dictionary = {
     categories: {
       cocoa: "Produits du cacao",
       oilseeds: "Oléagineux",
-      "growing-media": "Supports de culture",
+      "growing-media": "Produit de coco",
     },
     sortLabel: "Trier",
     sortOptions: {
@@ -221,12 +237,14 @@ const fr: Dictionary = {
       "La qualité seule ne suffit pas. Un approvisionnement fiable exige une logistique fiable, une documentation claire et une communication transparente. C’est pourquoi chaque expédition HB33 est vérifiée, documentée et inspectée avant de quitter le port.",
       "Aujourd’hui, HB33 fournit en vrac produits du cacao, soja et cocopeat issus de fermes et coopératives ouest-africaines de confiance, à des fabricants en Asie, en Europe et au Moyen-Orient.",
     ],
+    valuesEyebrow: "Nos valeurs",
     valuesTitle: "Nos engagements",
     values: [
       { title: "La vérification d’abord", text: "Inspection et contrôles d’humidité à l’origine — avant ensachage et chargement, pas à l’arrivée." },
       { title: "Approvisionnement direct", text: "Des relations durables avec des fermes et coopératives que nous connaissons par leur nom." },
       { title: "Communication transparente", text: "Confirmations écrites, vraies mises à jour d’expédition et documents pour chaque conteneur." },
     ],
+    factsEyebrow: "En un coup d’œil",
     factsTitle: "Faits vérifiés",
     factsNote:
       "Seuls des faits vérifiés figurent ici. Certifications, destinations et capacités sont confirmées par demande — jamais supposées.",

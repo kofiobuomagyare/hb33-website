@@ -48,6 +48,7 @@ export default function ProductCard({
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           loading="lazy"
+          priority={false}
         />
         <span className="absolute top-3 start-3 rounded-full bg-espresso/85 px-3 py-1.5 text-[11px] font-bold tracking-[0.14em] text-cream uppercase backdrop-blur-sm">
           {categoryLabel}

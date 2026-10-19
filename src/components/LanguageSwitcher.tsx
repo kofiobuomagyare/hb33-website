@@ -57,7 +57,7 @@ export default function LanguageSwitcher({
         value={locale}
         onChange={(e) => handleChange(e.target.value)}
         aria-label={dict.nav.language}
-        className="max-w-44 cursor-pointer truncate bg-transparent py-2 pe-1 text-sm font-semibold text-inherit"
+        className="max-w-[12rem] cursor-pointer bg-transparent py-2 pe-2 ps-2 text-sm font-semibold text-inherit"
       >
         {groupOrder.map((group) => {
           const members = localeRegistry.filter((l) => l.group === group);

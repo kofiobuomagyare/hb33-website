@@ -1,10 +1,37 @@
 import type { DictionaryPatch } from "../dictionaries";
 
 /**
- * Ga starter pack — core UI translated, long-form content
- * falls back to English pending native-speaker review.
+ * Ga — full UI translation. Long-form product copy lives in
+ * `lib/products.ts` and currently falls back to English/French.
  */
 const gaa: DictionaryPatch = {
+  meta: {
+    siteName: "HB33",
+    homeTitle: "HB33 — Afrika Wɛii Koko, Soyabeans kɛ Cocopeat (Nɔ̃nii Babaoo)",
+    homeDescription:
+      "HB33 kɛ koko wɔi, koko kotoku, koko mu, koko nib, koko potash, koko cake, soyabeans kɛ cocopeat yaa tsumnii kɛ hebilɔi agboi ŋɔɔ wɔ jeŋmuu fɛɛ. Kontenna nɔ tsɔ̃mɔ, atao mli dawuro kɛjɛ shweshweeshwe.",
+    productsTitle: "Nɔ̃nii — Huɛm Nɔ̃nii Babaoo",
+    productsDescription:
+      "HB33 nɔ̃nii babaoo atoi: koko wɔi, koko kotoku, koko mu, koko nib, koko potash, koko cake, soyabeans kɛ cocopeat. Nɔ ni abiɛ fioo ji ŋshɔ kontenna 1.",
+    aboutTitle: "HB33 he saji",
+    aboutDescription:
+      "HB33 ji Afrika Wɛii huɛm jaramɔ he ni kɛ kontenna ni atao mli dawuro sɔmɔɔ tsumnii, nitsulɔi kɛ hebilɔi agboi.",
+    howTitle: "Bɔni Etsumɔ — Nɔ̃nii Babaoo Tsɔ̃mɔ Gbɛjianɔ",
+    howDescription:
+      "Bɔni ooofɔ̃ nɔ̃nii babaoo kɛjɛ HB33: kwɛmɔ nɔ̃nii, bi toi, to nɔ ni yɔɔ he dawuro, ni tsɔmɔ yɛ FOB loo CIF. Kontenna 1 fioo.",
+    quoteTitle: "Bi Toi — Nɔ̃nii Babaoo Nɔbisa",
+    quoteDescription:
+      "Tsɔmɔ nɔ̃nii babaoo nɔbisa kɛya HB33. Nɔ ni abiɛ fioo ji ŋshɔ kontenna 1. Wɔtɔ̃ɔ nɔ ni yɔɔ, toi kɛ tsɔ̃mɔ he dawuro.",
+    contactTitle: "Tsɛmɔ HB33",
+    contactDescription:
+      "Tsɛmɔ HB33 yɛ nɔ̃nii babaoo hewɔ yɛ email loo WhatsApp nɔ. Wɔbaatua kɛ egbɛii, toi kɛ be.",
+    privacyTitle: "Saneyii Teemɔ",
+    privacyDescription:
+      "HB33 kwɛɔ saneyii teemɔ fioo pɛ — nɔ ni otsɔmɔ yɛ obisa loo sɛmɔ mli pɛ wɔkɛtɔ̃ɔ, koni wɔaatua. Akɔɔnte ko bɛ, sanebimɔ wolo ko bɛ, loo ɔdɔmɔ ko bɛ.",
+    termsTitle: "Nɔ ni Akɛtɔ̃ɔ He Mla",
+    termsDescription:
+      "Sɛ otsɔmɔ obisa loo sɛmɔ lɛ, ejeee kpaŋmɔ, ekwɛɔ nɔ ko, ni ewoɔ toi mli. Shika tua ko bɛ yɛ biɛ. Atao tsɔ̃mɔ fɛɛ dawuro yɛ wolo nɔ kɛ egbɛii, mli wo, tsɔ̃mɔ kɛ shika tua he saji. Mla nɛɛ kɔɔ nɔ̃nii babaoo nɔbisa nɔɔŋ pɛ.",
+  },
   nav: {
     home: "Shĩa",
     products: "Nɔ̃nii",
@@ -18,8 +45,12 @@ const gaa: DictionaryPatch = {
     language: "Wiemɔ",
     languageGroups: {
       global: "Jeŋ",
+      europe: "Yurop",
+      asia: "Asia",
+      "middle-east": "Jeŋ Teŋ Wɛii",
       ghana: "Ghana",
       nigeria: "Nigeria",
+      "east-africa": "Afrika Wɛii Nɔ",
       francophone: "Afrika Wɛii Gbe (Frɛnch)",
     },
   },
@@ -40,6 +71,7 @@ const gaa: DictionaryPatch = {
     tonnageNote:
       "Naagbee ni baatsɔ̃mɔ ji nɔ̃ nɛ mli yɛmɔ kɛ kontenna su — abaatsɔ̃ he dawuro dani atsɔ̃mɔ.",
     allRightsReserved: "Atao hegbɛi fɛɛ ato.",
+    backToTop: "Kuɔ sɛɛ kɛya nɔ",
     placeholderNote:
       "Aaatɔ̃ saneyii ni ato “atɔ̃ɔi” kɛ HB33 dani atsɔ̃mɔ nɔ ko.",
   },
@@ -64,11 +96,45 @@ const gaa: DictionaryPatch = {
       { value: "FOB / CIF", label: "Jeŋmuu tsɔ̃mɔ" },
     ],
   },
+  trust: {
+    eyebrow: "He ni wohalaa HB33",
+    title: "Hã hebilɔi ni nyɛŋ akpa fɔŋ ni yɔɔ nɔ.",
+    items: [
+      {
+        title: "Ato he dawuro dani",
+        text: "Gbɛjianɔ ni jeee wɔ nɔɔ kwɛɔ mɔ dani kontenna fɛɛ tee. Atoɔ nu mli yɛmɔ yɛ huɛm, jeee be ni eba.",
+      },
+      {
+        title: "Jramɔ mɔ ko bɛ",
+        text: "Kɛ Afrika Wɛii huɛm kɛ kuu wɔ kpaŋmɔ mli tee. Wɔnyaaɔ jaramɔ gbɛi doo, jeee fɔ̃ɔ ko.",
+      },
+      {
+        title: "Wɔwoɔ nii fee o",
+        text: "Saneyii ni he hiaa yɛ kpaŋmɔ sɛɛ wɔtoɔ wolo, mli wo kɛ tsɔ̃mɔ he dawuro yɛ gbɛjianɔ fɛɛ mli.",
+      },
+    ],
+  },
   homeProducts: {
     eyebrow: "Wɔ nɔ̃nii",
     title: "Huɛm nɔ̃nii kpawo ni ji babaoo. Toisɛɛ kome.",
-    lead: "Koko nɔ̃nii, mu nɔ̃nii kɛ nɔ̃nii ni atsɔ̃ aduadui — ato he hã kontenna, atao mli fɛɛ dawuro.",
+    lead: "Koko nɔ̃nii, mu nɔ̃nii kɛ coconut nɔ̃nii — ato he hã kontenna, atao mli fɛɛ dawuro.",
     cta: "Kwɛmɔ nɔ̃nii fɛɛ",
+  },
+  founder: {
+    eyebrow: "Kɛjɛ shweshweeshwe he nɔ̃ he",
+    title: "Ojekoo",
+    titleAccent: "HB33.",
+    imageAlt: "HB33 shweshweeshwe he nɔ̃ Hugo Obed",
+    paragraphs: [
+      "HB33 je shweshweeshwe kɛ hemɔ ko ni wa: jeŋmuu tsumnii aaana nɔ̃nii ni akwɛɔ nɔ akɛtɔ̃ɔ.",
+      "Hemɔ nɛɛ je kuku ko mli. Yɛ mi nitsumɔ shweshweeshwe, logistics naanyo ko tsakemɔ gbɛ ni atsɔ̃ yaa lɛ akɛ mi leee, ni nu agbo fo nɔ̃ lɛ nɔ. Eha yɛ mi nitsumɔ nɔ awerɛho adɔɔ — nu lɛ tsɛ shi nɔ̃nii lɛ fɛɛ nɔ. Eji adesa adesai, shi etsake bɔni mijɛɔ maŋsɛɛ jaramɔ lɛ kɛmɔ fɛɛ.",
+      "Etsɔɔ mi akɛ kpakpa pɛ esaaa. Jaramɔ ni akwɛɔ nɔ esa akɛ ehi logistics ni akwɛɔ nɔ, wolo ni mli pee kɛ saneyii ni mli pee anɔ. No hewɔ lɛ wɔkwɛɔ nɔ, wɔŋmãa saneyii ni sɛɔ mli bɔɔ kɛ wɔɔ musu wɔwɔɔ FOB.",
+      "Ŋmɛnɛ, HB33 kɛ koko wɔi, koko kotoku, koko mu, koko nib, koko potash kɛ koko cake kɛjɛ Afrika Wɛii huɛm ni atao he dawuro lɛ mli yaa tsumnii ni yɔɔ Asia, Yurop kɛ Jeŋ Teŋ Wɛii.",
+      "Yɛ HB33 mli, wɔtsɔɔ nɔ̃nii mli yaa ni wɔato he dawuro. Wɔheɔ nɔ akɛ gbɛjianɔ, nɔkwɛmɔ kɛ tsɔ̃mɔ ni akwɛɔ nɔ ji nɔ fɛɛ.",
+      "Oyiwalɛdɔŋ akɛ owo ohe yɛ wɔ nɔ akɛ jaramɔ naanyo. Miitao mabaye abua ma o jaramɔ akɔ nɔ ni anyɔ yɛ hemɔ babaoo mli.",
+    ],
+    name: "Hugo Obed",
+    role: "Shweshweeshwe he nɔ̃, HB33",
   },
   processPreview: {
     eyebrow: "Bɔni etsumɔ",
@@ -80,11 +146,38 @@ const gaa: DictionaryPatch = {
     ],
     cta: "Kwɛmɔ gbɛjianɔ fɛɛ",
   },
+  logistics: {
+    eyebrow: "Kpãmɔ kɛ Logistics",
+    title: "Ato he hã kontenna. Aŋmã wolo hã customs.",
+    items: [
+      { title: "Kontenna mli wo", text: "Afa 20 kɛ afa 40 mli wo. Atoɔ naagbee ni yɔɔ hã nɔ̃ kɛ kontenna su fɛɛ." },
+      { title: "Maŋsɛɛ wolo", text: "Nitsumɔ hewalɛ wolo, shweshweeshwe he wolo kɛ cargo wolo kɛ tsɔ̃mɔ fɛɛ baaa." },
+      { title: "FOB / CIF", text: "Wɔ gbɛjianɔ kɛ ŋshɔ naa ni osumɔɔ mli — kɛ saneyii ni haa nitsumɔ teeɔ." },
+    ],
+  },
   faqPreview: {
     eyebrow: "Sanimɔ ni abiɔi pii",
     title: "Nɔ ni hebilɔi biɔi dani amɛ tsɔ̃mɔ klɛŋklɛŋ ba.",
     cta: "Bɔni atɔ̃ɔ nɔ̃",
   },
+  homeFaqs: [
+    {
+      q: "Mɛni HB33 tsɔ̃ɔ?",
+      a: "Wɔtsɔ̃ɔ koko wɔi, koko kotoku, koko mu, koko nib, koko potash kɛ koko cake yɛ nɔ̃nii babaoo mli, kɛ soyabeans kɛ cocopeat baaa, yɛ kontenna mli, hã tsumnii, nitsulɔi kɛ hebilɔi agboi.",
+    },
+    {
+      q: "Mɛni ji nɔ ni abiɛ fioo?",
+      a: "Kontenna kome ni eyi obɔ yɛ tsɔ̃mɔ fɛɛ mli. Nɔ̃nii babaoo pɛ wɔtɔ̃ɔ, ni wɔtoɔ kontenna agbo kɛ mli wo ni da wu he dawuro hã o dani atsɔ̃mɔ.",
+    },
+    {
+      q: "Nyɛtsɔ̃ɔ yɛ FOB loo CIF?",
+      a: "Kome too. Wɔhãa FOB loo CIF toi ni sa o nitsumɔ, ŋshɔ naa kɛ gbɛ nɔ.",
+    },
+    {
+      q: "Bɔni wɔaana toi kɛ egbɛii?",
+      a: "Tsɔmɔ obisa kɛ nɔ̃, yibɔ kɛ he ni yaa. Wɔbaatua kɛ egbɛii, toi kɛ be — jeee jaramɔ wiemɔ.",
+    },
+  ],
   homeCta: {
     title: "O tsɔ̃mɔ ni baaba esaaa akɛ efeɔ tamɔ boo.",
     lead: "Gba wɔ nɔ ni ohiaa. Aabaato nɔ ni yɔɔ, egbɛi kɛ tsɔ̃mɔ he dawuro — wolo mli.",
@@ -102,7 +195,7 @@ const gaa: DictionaryPatch = {
     categories: {
       cocoa: "Koko nɔ̃nii",
       oilseeds: "Mu nɔ̃nii",
-      "growing-media": "Nɔ̃nii ni atsɔ̃ aduadui",
+      "growing-media": "Coconut nɔ̃nii",
     },
     sortLabel: "Toomɔ",
     sortOptions: {
@@ -121,8 +214,12 @@ const gaa: DictionaryPatch = {
   productDetail: {
     overview: "Mli kwɛmɔ",
     background: "Shweshweeshwe kɛ jaramɔ mli hewalɛ",
+    educationalNote:
+      "Nɔ̃ nɛ he saneyii nɛ ji hã nile kasemɔ pɛ. Atoɔ HB33 lot fɛɛ he dawuro hã obisa fɛɛ.",
     uses: "Nɔ ni akɛtɔ̃ɔ kɛ bɔni atsɔ̃ɔ",
     specs: "Egbɛii",
+    specsNote:
+      "Egbɛii ji gbɛtsɔɔmɔ pɛ. Atoɔ naagbee gbɛii, nu mli yɛmɔ kɛ heto he dawuro hã lot fɛɛ, ni atao mli dawuro dani atsɔ̃mɔ.",
     quality: "Kpakpa, nɔkwɛmɔ kɛ nɔto",
     packaging: "Eheto kɛ nɔ̃nii babaoo tsɔ̃mɔ",
     buyers: "Hebilɔi kɛ tsumnii",
@@ -131,6 +228,58 @@ const gaa: DictionaryPatch = {
     quoteCta: "Bi toi kɛ nɔ̃ nɛ hewɔ",
     quoteButton: "Bi Toi",
     whatsappButton: "Biamɔ yɛ WhatsApp nɔ",
+    whatsappUnavailable:
+      "Ato WhatsApp gbɛjianɔ ko bɛ o — koni wɔhiɛ obisa o, ofainɛ kɛ bi toi fɔm loo email tsu nii.",
+    toBeConfirmed: "Abaato he dawuro hã lot fɛɛ",
+  },
+  aboutPage: {
+    eyebrow: "HB33 he saji",
+    title: "Jeee jaramɔ he pɛ — jaramɔ naanyo.",
+    lead: "HB33 je shweshweeshwe kɛ hemɔ ko ni wa: jeŋmuu tsumnii aaana koko kɛ huɛm nɔ̃nii ni akwɛɔ nɔ akɛtɔ̃ɔ.",
+    storyTitle: "Wɔ jaramɔ he sane",
+    story: [
+      "HB33 je shweshweeshwe kɛ huɛm jaramɔ kuku ni miyaje mli — logistics naanyo ko tsakemɔ gbɛ akɛ mi leee, ni nu agbo tsɛ shi nɔ̃nii lɛ fɛɛ nɔ. Kuku lɛ nɔ adesai lɛ ha bɔni wɔtsumɔɔ nitsumɔ lɛ tsɔ ŋmɛnɛ.",
+      "Kpakpa pɛ esaaa. Jaramɔ ni akwɛɔ nɔ esa akɛ ehi logistics ni akwɛɔ nɔ, wolo ni mli pee kɛ saneyii ni mli pee anɔ. No hewɔ lɛ wɔkwɛɔ nɔ, wɔŋmãa saneyii ni sɛɔ mli, ni wɔkwɛɔ HB33 nɔ̃nii fɛɛ dani efoɔ ŋshɔ naa.",
+      "Ŋmɛnɛ, HB33 kɛ koko nɔ̃nii, soyabeans kɛ cocopeat kɛjɛ Afrika Wɛii huɛm kɛ kuu ni atao he dawuro lɛ mli yaa tsumnii ni yɔɔ Asia, Yurop kɛ Jeŋ Teŋ Wɛii.",
+    ],
+    valuesEyebrow: "Wɔ susumɔ",
+    valuesTitle: "Nɔ ni wɔkwɛɔ nɔ",
+    values: [
+      { title: "Ato he dawuro dani", text: "Nɔkwɛmɔ kɛ nu mli yɛmɔ yɛ huɛm — dani ato heto kɛ mli wo, jeee be ni eba." },
+      { title: "Pɛpɛɛpɛ jaramɔ", text: "Kpaŋmɔ ni yaa jɛŋ kɛ huɛm kɛ kuu ni wɔle amɛ gbɛi." },
+      { title: "Saneyii ni mli pee", text: "Ato nɔto yɛ wolo nɔ, tsɔɔmɔ saneyii ni he hia kɛ wolo hã kontenna fɛɛ." },
+    ],
+    factsEyebrow: "Yɛ fioo mli",
+    factsTitle: "Nitsumɔ anɔɔŋ",
+    factsNote:
+      "Anɔɔŋ ni atao mli dawuro pɛ wɔŋmãɔ yɛ biɛ. Atoɔ kpaŋmɔ too, he ni yaa kɛ nyɔŋtsere hewalɛ he dawuro hã obisa fɛɛ, wɔkaaa nɔ ko o.",
+    facts: [
+      { label: "Hesumo", value: "Afrika Wɛii" },
+      { label: "Nɔ̃nii", value: "Nɔ̃nii babaoo 8" },
+      { label: "Nyɔŋtsere hewalɛ", value: "Kɛyaa 1,000 MT" },
+      { label: "Tsɔ̃mɔ gbɛjianɔ", value: "FOB / CIF" },
+      { label: "Nɔ ni abiɛ fioo", value: "Ŋshɔ kontenna 1" },
+    ],
+    ctaTitle: "Kɛ HB33 tsuɔ nii",
+    ctaText: "Gba wɔ o yibɔ kɛ he ni yaa hã wɔ — wɔbaatua kɛ egbɛii, toi kɛ be.",
+    ctaPrimary: "Bi Toi",
+    ctaSecondary: "Tsɛmɔ wɔ",
+  },
+  howPage: {
+    eyebrow: "Bɔni etsumɔ",
+    title: "Gbɛjianɔ fɛɛ kɛyaa kontenna ni atao mli dawuro.",
+    lead: "Sɛ otsɔmɔ obisa lɛ, ejeee kpaŋmɔ, ewooo toi mli loo ewooo naagbee mli. Atoɔ tsɔ̃mɔ fɛɛ dawuro yɛ wolo nɔ dani atsɔ̃mɔ.",
+    steps: [
+      { title: "Kwɛmɔ nɔ̃nii", text: "Kwɛmɔ nɔ̃nii, egbɛii kɛ eheto. Atoɔ nɔ fɛɛ yɛ kontenna kome ni eyi obɔ mli." },
+      { title: "Halamɔ nɔ̃ kɛ yibɔ", text: "Halamɔ nɔ̃ kɛ kontenna yibɔ. Ŋshɔ kontenna 1 fioo yɛ tsɔ̃mɔ fɛɛ mli." },
+      { title: "Tsɔmɔ obisa", text: "Tsɔmɔ kpaŋmɔ saneyii, he ni yaa kɛ ohiaa saneyii yɛ bi toi fɔm, email loo WhatsApp nɔ." },
+      { title: "To gbɛjianɔ he dawuro", text: "HB33 ato nɔ ni yɔɔ, toi, egbɛii, kontenna mli wo, tsɔ̃mɔ kɛ shika tua he dawuro." },
+      { title: "Nitsumɔ kɛ kɛ̃ɔ", text: "Nɔkwɛmɔ, wolo, tsɔ̃mɔ — saneyii yɛ gbɛjianɔ fɛɛ mli kɛyaa tsɔ̃mɔ." },
+    ],
+    noteTitle: "Ofainɛ kwɛmɔ nɔ",
+    noteText:
+      "Bisa ji kpaŋmɔ, jeee tsɔ̃mɔ. Nɔ ni yɔɔ, naagbee toi, egbɛii, kontenna mli wo, tsɔ̃mɔ kɛ shika tua he saji fɛɛ atoɔ hã kɛ HB33 dani awo fɔ̃ ko mli.",
+    cta: "Bɔi yɛ bi toi mli",
   },
   quotePage: {
     eyebrow: "Nɔ̃nii babaoo nɔbisa",
@@ -140,8 +289,12 @@ const gaa: DictionaryPatch = {
       fullName: "Gbɛi muu",
       company: "Dɔɔmɔ gbɛi",
       email: "Dɔɔmɔ email",
-      phone: "Telefon (kɛ maŋ nɔmba)",
+      countryCode: "Maŋ nɔmba",
+      selectCode: "Halamɔ nɔmba",
+      phone: "Telefon",
       country: "Maŋ",
+      searchCountryPlaceholder: "Ŋmã maŋ gbɛi…",
+      noCountryMatch: "Maŋ ko bɛ ni kɛ lɛ sa — ya nɔ ŋmã.",
       destination: "He ni yaa / ŋshɔ naa",
       timeframe: "Be ni abaaba ni akpa ha",
       timeframeOptions: {
@@ -181,6 +334,9 @@ const gaa: DictionaryPatch = {
       "Aaakpã gbee yɛ kontenna mli wo, eheto kɛ FOB/CIF tsɔ̃mɔ nɔ.",
       "Aaato shika tua gbɛjianɔ he dawuro dani atsumɔ nitsumɔ.",
     ],
+    emailStatusOn: "Wɔtsɔɔ mli ko yɛ wɔ nɔ̃nii jaramɔ he kuu lɛ email nɔ.",
+    emailStatusOff:
+      "Ato email tsɔ̃mɔ ko bɛ yɛ biɛ o. Hã hetoo ofee, tsɔmɔ obisa yɛ email loo WhatsApp nɔ kɛ botɔne ni yɔɔ shishi lɛ — kɛ o nɔmba ni atsɔ̃ oleɔ ba mli.",
     sendEmail: "Tsɔmɔ yɛ email nɔ",
     sendWhatsapp: "Ya nɔ yɛ WhatsApp nɔ",
     newInquiry: "Obisa hee",
@@ -199,6 +355,7 @@ const gaa: DictionaryPatch = {
       message: "Sɛmɔ",
       messagePlaceholder: "Nɔ̃, yibɔ, he ni yaa…",
       submit: "Tsɔmɔ sɛmɔ",
+      sent: "Atsɔmɔ.",
     },
     errors: {
       required: "Esa akɛ oŋmã he.",
@@ -210,8 +367,89 @@ const gaa: DictionaryPatch = {
     channelsTitle: "Gbɛjianɔ pɛpɛɛpɛ",
     emailLabel: "Email",
     whatsappLabel: "WhatsApp",
+    whatsappHint: "Efee wu hã bisa ni yaa nɔ — kɛ o nɔmba ni atsɔ̃ oleɔ ba mli sɛ oyɔɔ.",
+    whatsappUnavailable: "Ato WhatsApp gbɛjianɔ ko bɛ o. Ofainɛ tsɛmɔ wɔ yɛ email nɔ — wɔbaatua kɛ egbɛii, toi kɛ be.",
     locationLabel: "Hesumo",
     responseNote: "Wɔbɔɔ mɔdɛŋ atsɔɔ nɔ̃nii babaoo bisamɔ hetoo wɔ nitsumɔ gbii 1–2 mli.",
+    failText: "Anyɛŋ atsɔ̃ o sɛmɔ. Ka ekroko taomɔ — loo tsɛmɔ wɔ pɛpɛɛpɛ yɛ email nɔ.",
+  },
+  privacyPage: {
+    eyebrow: "Mla",
+    title: "Saneyii Teemɔ",
+    updated: "Tsakemɔ naagbee",
+    intro:
+      "HB33 kwɛɔ saneyii teemɔ fioo ni esa pɛ. Nɔ ni otsɔmɔ yɛ obisa loo sɛmɔ mli pɛ wɔkɛtɔ̃ɔ, koni wɔaatua. Website nɛ mli akɔɔnte ko bɛ, sanebimɔ wolo ko bɛ loo ɔdɔmɔ ko bɛ.",
+    sections: [
+      {
+        title: "Saneyii ni ohaa",
+        text: "Obisa: gbɛi, dɔɔmɔ, email, telefon, maŋ, he ni yaa, be ni abaaba ni akpa ha, he ni osumɔɔ, nɔ̃nii kɛ kontenna yibɔ, kɛ wiemɔ kroko fɛɛ. Sɛmɔ: gbɛi, email, sujeti kɛ sɛmɔ. Wɔkɛ saneyii kroko tɔ̃ɔ o — akɔɔnte, saneyii loo sanebimɔ wolo ko bɛ.",
+      },
+      {
+        title: "Bɔni akɛtɔ̃ɔ",
+        text: "Koni wɔaatua o bisa pɛ: ato nɔ ni yɔɔ kɛ toi he dawuro, to egbɛii kɛ tsɔ̃mɔ, ni kɛ o wiemɔ yɛ ohiaa he. Wɔjaraa saneyii teemɔ o, ni wɔtsɔ̃ɔ jaramɔ email o.",
+      },
+      {
+        title: "Nɔto kɛ nɔkpamɔ",
+        text: "Atoɔ nɔ ni otsɔmɔ yɛ website nɛ nɔ yɛ server mli koni wɔhiɛ bisa o. Sɛ ato he dawuro lɛ, wɔtsɔɔ mli ko yɛ email loo webhook teemɔ nɔ yaa HB33 jaramɔ akpata mli — kpamɔ gbɛtsɔɔmɔ tsɔɔɔ anɔɔŋ be fɛɛ be sɛ email tsɔ̃mɔ yaa nɔ loo o. Email kɛ WhatsApp botɔnei tsuɔ nii yɛ o app mli, nɔ ni ohala lɛ pɛ wɔheɔ.",
+      },
+      {
+        title: "Cookie kɛ nɔmɔ",
+        text: "Website nɛ kɛɔ cookie o ni etsumɔɔ nɔmɔ loo kpamɔ yɛ shweshweeshwe o. Sɛ atsumɔ nɔmɔ lɛ, abaatsɔ kɛ o kpamɔ be ni ojo fɔ lɛ pɛ, ni abaakwɛ o halamɔ yɛ o browser mli.",
+      },
+      {
+        title: "Nɔto be kɛ o hegbɛi",
+        text: "Akwɛɔ bisa saneyii nɔ hã nitsumɔ kɛ wolo fɛɛ. Obaanyɛ abi o saneyii lɛ, atsake lɛ loo atsu lɛ be fɛɛ be yɛ website nɛ kpaŋmɔ email nɔ.",
+      },
+      {
+        title: "Wolo ni tsɔɔ gbɛjianɔ",
+        text: "Mla nɛɛ tsɔɔ bɔni website nɛ data yaa nɔ, shi dani akɛtɔ̃ nii yɛ nitsumɔ mli, esa akɛ HB33 mla nuu nakwɛ mli, kɛ mla ni sa, data nɔkwɛmɔ nitsumɔ kɛ hosting kɛ email nɔkwɛlɔi ba mli.",
+      },
+    ],
+  },
+  termsPage: {
+    eyebrow: "Mla",
+    title: "Nɔ ni Akɛtɔ̃ɔ He Mla",
+    updated: "Tsakemɔ naagbee",
+    intro: "Sɛ okɛ website nɛ tsuɔ nii lɛ, etsɔɔ akɛ ohe mla nɛɛ nɔ. Sɛ oheee lɛ, ofainɛ kɛtɔ̃ nii o.",
+    sections: [
+      {
+        title: "Bisa jeee tsɔ̃mɔ",
+        text: "Sɛ otsɔmɔ bi toi loo sɛmɔ lɛ, ejeee kpaŋmɔ, ekwɛɔ nɔ̃ ko, ni ewooo toi mli. Shika tua ko bɛ yɛ biɛ. Ato tsɔ̃mɔ fɛɛ dawuro yɛ wolo nɔ kɛ egbɛii, mli wo, tsɔ̃mɔ kɛ shika tua gbɛjianɔ.",
+      },
+      {
+        title: "Nɔ ni abiɛ fioo",
+        text: "HB33 tɔ̃ɔ nɔ̃nii babaoo pɛ, ni kontenna kome ni eyi obɔ yɔɔ tsɔ̃mɔ fɛɛ mli. Wɔnyɛŋ ahe bisa ni ba shi wu enɛ o.",
+      },
+      {
+        title: "Nɔ̃nii he saneyii",
+        text: "Egbɛii ni atsɔɔ yɛ biɛ ji gbɛtsɔɔmɔ pɛ. Ato naagbee gbɛii, nu mli yɛmɔ, heto kɛ mli wo he dawuro hã lot fɛɛ, ni atao mli dawuro dani atsɔ̃mɔ.",
+      },
+      {
+        title: "Bɔni ni esa akɛ akɛtɔ̃ɔ nii",
+        text: "Ofainɛ kɛ bi toi fɔm tsuɔ nii yɛ anɔɔŋ mli hã huɛm nɔ̃nii nɔɔŋ pɛ. Kɛ spam, wiemɔ ni jeee anɔɔŋ, mla mli tɔ̃mɔ loo gbɛjianɔ ni sɛɛɔ nitsumɔ lɛ tsɔmɔ o.",
+      },
+      {
+        title: "Nɔ ni yɔɔ mli kɛ mɔɔmɔ",
+        text: "Website nɛ ŋmamɔ kɛ nɔ ni yɔɔ mli ji HB33 tɔ, kɛ mfoniri ni yɔɔ ji mɛi etɛ ni aŋmã amɛ gbɛi yɛ wolo fɛɛ nɔ. Yɛ mla ni mli kwɔ lɛ mli, HB33 nanɔ mɔɔmɔ yɛ saneyii ni yɔɔ website nɛ nɔ hã o — kpaŋmɔ ni ato yɛ wolo nɔ lɛ pɛ kudɔɔ tsɔ̃mɔ fɛɛ.",
+      },
+      {
+        title: "Wolo ni tsɔɔ gbɛjianɔ",
+        text: "Nɛɛ ji shweshweeshwe, esa akɛ HB33 mla nuu nakwɛ mli dani akɛtɔ̃ nii yɛ nitsumɔ mli, kɛ mla ni sa, mɔɔmɔ mla kɛ wiemɔ tɔ̃mɔ gbɛjianɔ ba mli.",
+      },
+    ],
+  },
+  notFound: {
+    eyebrow: "404",
+    title: "Wolo nɛ ebakɔ kontenna nɛ mli.",
+    text: "Wolo ni otaoa bɛ loo atsu lɛ.",
+    home: "Kuɔ sɛɛ kɛya shĩa",
+    products: "Kwɛmɔ nɔ̃nii",
+  },
+  consent: {
+    title: "Cookie kɛ Nɔmɔ Hegbɛ",
+    text: "Wɔkɛ nɔmɔ ni kwɛɔ teemɔ nɔ tsuɔ nii koni website nɛ anyɔ yɛ. Abaatsɔ kɛ o hegbɛ be ni ojo fɔ lɛ pɛ. Sɛ oheee lɛ, atsumɔɔ nɔ ko o.",
+    accept: "He nɔmɔ nɔ",
+    decline: "Heee",
   },
   footer: {
     tagline: "Koko, soyabeans kɛ cocopeat babaoo — ato he dawuro kɛjɛ shweshweeshwe, atsɔ̃ɔ kɛyaa jeŋmuu fɛɛ.",
@@ -223,13 +461,7 @@ const gaa: DictionaryPatch = {
     contactTitle: "Mli tsɛmɔ",
     language: "Wiemɔ",
     minOrder: "Nɔ ni abiɛ fioo: kontenna 1.",
-  },
-  notFound: {
-    eyebrow: "404",
-    title: "Wolo nɛ ebakɔ kontenna nɛ mli.",
-    text: "Wolo ni otaoa bɛ loo atsu lɛ.",
-    home: "Kuɔ sɛɛ kɛya shĩa",
-    products: "Kwɛmɔ nɔ̃nii",
+    photoCredit: "Mfoniri kɛjɛ Wikimedia Commons — kwɛmɔ gbɛi yɛ nɔ̃ wolo fɛɛ nɔ.",
   },
 };
 

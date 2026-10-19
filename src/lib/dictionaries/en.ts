@@ -113,6 +113,22 @@ const en = {
     lead: "Cocoa products, oilseeds and growing media — packed for containers and verified lot by lot.",
     cta: "Browse the full catalogue",
   },
+  founder: {
+    eyebrow: "From the Founder’s Desk",
+    title: "Welcome to",
+    titleAccent: "HB33.",
+    imageAlt: "Hugo Obed, founder of HB33",
+    paragraphs: [
+      "HB33 was built on a simple belief: global manufacturers deserve shipments they can trust.",
+      "That belief was shaped by experience. Early in my journey, a logistics partner changed shipping routes without my knowledge to reduce costs. The result was devastating. Rain damaged the shipment, and I bore the full cost of the loss. It was a difficult lesson, but it transformed how I approach the export business.",
+      "That experience taught me that quality alone is not enough. Reliable sourcing must be backed by reliable logistics, clear documentation, and transparent communication. That’s why every shipment we handle is verified, documented, and SGS-inspected before it leaves port.",
+      "Today, HB33 serves manufacturers across Asia, Europe, and the Middle East, supplying bulk cocoa beans, shells, butter, nibs, potash, and cake sourced from trusted West African farms.",
+      "At HB33, we don’t believe in shipping and hoping. We believe in planning, verifying, and delivering with confidence.",
+      "Thank you for trusting us as your sourcing partner. We look forward to helping your business grow with confidence.",
+    ],
+    name: "Hugo Obed",
+    role: "Founder, HB33",
+  },
   processPreview: {
     eyebrow: "How it works",
     title: "From farm gate to your factory floor.",
@@ -172,7 +188,7 @@ const en = {
     categories: {
       cocoa: "Cocoa products",
       oilseeds: "Oilseeds",
-      "growing-media": "Growing media",
+      "growing-media": "Coconut product",
     },
     sortLabel: "Sort",
     sortOptions: {
@@ -219,12 +235,14 @@ const en = {
       "Quality alone is not enough. Reliable sourcing must be backed by reliable logistics, clear documentation and transparent communication. That is why every HB33 shipment is verified, documented and inspected before it leaves port.",
       "Today, HB33 supplies bulk cocoa products, soybeans and cocopeat sourced from trusted West African farms and cooperatives to manufacturers across Asia, Europe and the Middle East.",
     ],
+    valuesEyebrow: "Our values",
     valuesTitle: "What we stand for",
     values: [
       { title: "Verification first", text: "Inspection and moisture checks at origin — before bagging and loading, not on arrival." },
       { title: "Direct sourcing", text: "Long-standing relationships with farms and cooperatives we know by name." },
       { title: "Transparent communication", text: "Written confirmations, real shipment updates and paperwork on every container." },
     ],
+    factsEyebrow: "At a glance",
     factsTitle: "Business facts",
     factsNote:
       "Only verified facts are listed here. Certifications, destinations and capacities are confirmed per inquiry — never assumed.",
