@@ -25,7 +25,8 @@ declare global {
  *   subsequent client-side route changes send manual pageviews.
  */
 export default function ConsentBanner({ dict }: { dict: Dictionary }) {
-  const [choice, setChoice] = useState<ConsentValue | null>(null);
+  // `undefined` = cookie not read yet, `null` = no stored choice (show banner).
+  const [choice, setChoice] = useState<ConsentValue | null | undefined>(undefined);
   const pathname = usePathname() ?? "/";
 
   useEffect(() => {
@@ -70,6 +71,8 @@ export default function ConsentBanner({ dict }: { dict: Dictionary }) {
     }
     setChoice(next);
   }
+
+  if (choice === undefined) return null;
 
   if (!analyticsConfigured || choice !== null) return null;
 
