@@ -9,13 +9,13 @@ export const site = {
   description:
     "HB33 supplies bulk cocoa products, soybeans and cocopeat from West Africa to manufacturers, processors and bulk buyers worldwide.",
   email:
-    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "hello@hb33.com",
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "info@hb33international.com",
   whatsappNumber:
     process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim().replace(/\D/g, "") || "",
   location:
     process.env.NEXT_PUBLIC_COMPANY_LOCATION?.trim() || "West Africa",
   monthlyCapacityMt: 1000,
-  url: (process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hb33.com").replace(
+  url: (process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://hb33international.com").replace(
     /\/$/,
     "",
   ),
