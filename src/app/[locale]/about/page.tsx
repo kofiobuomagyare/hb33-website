@@ -122,10 +122,10 @@ export default async function AboutPage({
           <Reveal variant="scale" className="lg:col-span-5">
             <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-bark ring-1 ring-cream/20">
               <Image
-                src="/founder-hugo-obed.png"
+                src="/founder-hugo-obed.jpeg"
                 alt={dict.founder.imageAlt}
-                width={798}
-                height={624}
+                width={768}
+                height={1152}
                 sizes="(max-width: 1024px) 100vw, 42vw"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center"
