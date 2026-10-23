@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Fraunces, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, locales, type Locale } from "@/lib/i18n";
 import { getLocaleInfo, isFrench, ogLocale } from "@/lib/i18n";
@@ -90,6 +91,7 @@ export default async function LocaleLayout({
         <ConsentBanner dict={dict} />
         <BackToTop label={dict.common.backToTop} />
         <Analytics />
+        <SpeedInsights />
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
