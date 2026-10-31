@@ -7,7 +7,9 @@ import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import { t, type Product } from "@/lib/products";
+import { productImageMedia } from "@/lib/product-media";
 import { MoqBadge } from "./ui";
+import MediaPill from "./MediaPill";
 import { useReveal } from "./Reveal";
 import { cn } from "@/lib/utils";
 
@@ -35,25 +37,35 @@ export default function ProductCard({
         "reveal card-warm group flex flex-col overflow-hidden p-3 transition-transform duration-200 hover:-translate-y-1",
         shown && "is-in",
       )}
-    >  <Link
-        href={detailHref}
-        className="relative block overflow-hidden rounded-[1.25rem] bg-parchment"
-        aria-label={`${dict.common.viewProduct}: ${t(product.name, locale)}`}
-      >
-        <Image
-          src={product.image}
-          alt={t(product.imageAlt, locale)}
-          width={800}
-          height={600}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-          loading="lazy"
-          priority={false}
-        />
-        <span className="absolute top-3 start-3 rounded-full bg-espresso/85 px-3 py-1.5 text-[11px] font-bold tracking-[0.14em] text-cream uppercase backdrop-blur-sm">
-          {categoryLabel}
+    >  <div className="relative overflow-hidden rounded-[1.25rem] bg-parchment">
+        <Link
+          href={detailHref}
+          className="group/image block"
+          aria-label={`${dict.common.viewProduct}: ${t(product.name, locale)}`}
+        >
+          <Image
+            src={product.image}
+            alt={t(product.imageAlt, locale)}
+            width={800}
+            height={600}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            loading="lazy"
+            priority={false}
+          />
+          <span className="absolute top-3 start-3 rounded-full bg-espresso/85 px-3 py-1.5 text-[11px] font-bold tracking-[0.14em] text-cream uppercase backdrop-blur-sm">
+            {categoryLabel}
+          </span>
+        </Link>
+        <span className="absolute bottom-2.5 start-2.5 z-10">
+          <MediaPill
+            media={productImageMedia(product)}
+            locale={locale}
+            compact
+            className="max-w-[calc(100%-0.5rem)]"
+          />
         </span>
-      </Link>
+      </div>
       <div className="flex flex-1 flex-col px-2 pt-4 pb-2">
         <MoqBadge label={dict.moq.badge} className="self-start" />
         <h3 className="font-display mt-2.5 text-[1.35rem] leading-snug font-semibold text-bark">

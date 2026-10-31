@@ -36,6 +36,7 @@ export function quoteEmailBody(ref: string, data: QuoteInquiry): string {
     `Phone: ${data.phone}`,
     `Country: ${data.country}`,
     `Destination: ${data.destination}`,
+    ...(data.destinationDetails ? [`Destination details: ${data.destinationDetails}`] : []),
     `Timeframe: ${data.timeframe}`,
     `Packaging: ${data.packaging || "—"}`,
     ``,
@@ -48,29 +49,41 @@ export function quoteEmailBody(ref: string, data: QuoteInquiry): string {
 }
 
 export function quoteWhatsAppMessage(
-  ref: string,
   data: QuoteInquiry,
   locale: Locale,
+  formType: "Enquiry" | "Request a Quote" = "Request a Quote",
 ): string {
   if (baseLanguage(locale) === "fr") {
     return [
-      `Bonjour HB33, demande de devis ${ref} :`,
-      itemSummary(data.items, locale),
+      `Bonjour HB33 — ${formType === "Enquiry" ? "Demande de renseignements" : "Demande de devis"}`,
       `Nom : ${data.fullName}`,
-      `Destination : ${data.destination} (${data.country})`,
+      ...(data.company ? [`Entreprise : ${data.company}`] : []),
+      `E-mail : ${data.email}`,
+      `Téléphone : ${data.phone}`,
+      `Pays : ${data.country}`,
+      `Destination : ${data.destination}`,
+      data.destinationDetails ? `Détails destination : ${data.destinationDetails}` : null,
       `Délai : ${data.timeframe}`,
-      data.notes ? `Détails : ${data.notes}` : null,
+      data.packaging ? `Conditionnement : ${data.packaging}` : null,
+      itemSummary(data.items, locale),
+      data.notes ? `Notes : ${data.notes}` : null,
     ]
       .filter(Boolean)
       .join("\n");
   }
   return [
-    `Hello HB33, bulk quote request ${ref}:`,
-    itemSummary(data.items, locale),
+    `Hello HB33 — ${formType}`,
     `Name: ${data.fullName}`,
-    `Destination: ${data.destination} (${data.country})`,
+    ...(data.company ? [`Company: ${data.company}`] : []),
+    `Email: ${data.email}`,
+    `Phone: ${data.phone}`,
+    `Country: ${data.country}`,
+    `Destination: ${data.destination}`,
+    data.destinationDetails ? `Destination details: ${data.destinationDetails}` : null,
     `Timeframe: ${data.timeframe}`,
-    data.notes ? `Details: ${data.notes}` : null,
+    data.packaging ? `Packaging: ${data.packaging}` : null,
+    itemSummary(data.items, locale),
+    data.notes ? `Notes: ${data.notes}` : null,
   ]
     .filter(Boolean)
     .join("\n");

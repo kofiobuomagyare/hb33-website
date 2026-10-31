@@ -19,6 +19,7 @@ export const site = {
     /\/$/,
     "",
   ),
+  googleSiteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim() || "",
   /**
    * Privacy-friendly analytics (Plausible) site domain, e.g. "hb33.com".
    * Empty = analytics disabled entirely and no consent banner is shown.

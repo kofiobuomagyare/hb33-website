@@ -5,8 +5,10 @@ import { isLocale, languageAlternates, localizedPath, type Locale } from "@/lib/
 import { socialMetadata } from "@/lib/seo";
 import { getDictionary } from "@/lib/dictionaries";
 import { site } from "@/lib/site";
+import { siteMedia } from "@/lib/product-media";
 import { Eyebrow, MoqNotice } from "@/components/ui";
 import Reveal from "@/components/Reveal";
+import MediaFrame from "@/components/MediaFrame";
 
 export async function generateMetadata({
   params,
@@ -61,6 +63,14 @@ export default async function HowItWorksPage({
         ))}
         </ol>
       </Reveal>
+
+      <MediaFrame
+        media={siteMedia.howItWorks}
+        locale={locale as Locale}
+        className="mt-10 aspect-[16/9] border border-line sm:aspect-[21/8]"
+        sizes="(max-width: 768px) 100vw, 1200px"
+        pillLabel={h.eyebrow}
+      />
 
       <aside aria-labelledby="how-note" className="mt-10 flex gap-3 border border-gold/50 bg-parchment p-5">
         <Info className="size-5 shrink-0 text-clay-deep" aria-hidden />

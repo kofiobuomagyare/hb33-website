@@ -3,8 +3,8 @@
 Multilingual (EN/FR) B2B e-commerce inquiry site for **HB33**, a West African
 supplier of bulk cocoa products, soybeans and cocopeat. Container-based
 ordering (minimum 1 shipping container), product catalogue with SEO-friendly
-detail pages, and a server-validated quote workflow with email + WhatsApp
-fallbacks.
+detail pages, and a validated quote workflow that currently opens WhatsApp
+with a pre-filled message for the visitor to review and send.
 
 Stack: **Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 ·
 React Hook Form + Zod · Lucide icons** — no database required for development.
@@ -21,6 +21,7 @@ npm run dev                  # http://localhost:3000 (redirects to /en)
 npm run build
 npm start
 npm run lint
+npm test
 ```
 
 ## Configuration
@@ -30,15 +31,50 @@ Copy `.env.example` to `.env.local`. Key variables:
 | Variable | Required | Purpose |
 |---|---|---|
 | `NEXT_PUBLIC_CONTACT_EMAIL` | yes | Public email shown site-wide + `mailto:` links |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | recommended | International format, no `+`/spaces (e.g. `15551234567`). Leave empty and the site hides WhatsApp CTAs with an honest explanatory note instead of fake buttons |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER` | yes (forms) | International format, no `+`/spaces (e.g. `15551234567`). Forms do not fall back to email when this is missing |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | for Search Console | Verification token from Google's HTML-tag method (the `content` value only) |
 | `NEXT_PUBLIC_COMPANY_LOCATION` | no | Base shown in footer (default `West Africa`) |
-| `NEXT_PUBLIC_SITE_URL` | yes (prod) | Canonical URL origin for SEO/sitemap (default `https://hb33.com`) |
+| `NEXT_PUBLIC_SITE_URL` | yes (prod) | Canonical URL origin for SEO/sitemap (default `https://hb33international.com`) |
 | `INQUIRY_TO_EMAIL` | for email alerts | Address receiving inquiry notifications |
-| `RESEND_API_KEY` | for email alerts | [Resend](https://resend.com) API key. If unset, inquiries are still **stored server-side** and the confirmation screen says so honestly, offering email/WhatsApp resend with the reference number |
+| `RESEND_API_KEY` | for email alerts | [Resend](https://resend.com) API key. A sent alert counts as a delivered inquiry |
 | `INQUIRY_WEBHOOK_URL` | optional | Generic POST webhook receiving every inquiry JSON |
+| `KV_REST_API_URL` + `KV_REST_API_TOKEN` | for Vercel prod | Upstash Redis / Vercel KV REST credentials. Durable inquiry storage on serverless hosts |
+| `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` | alternative | Same as above for direct Upstash projects |
+| `PHOTON_URL` | optional | Self-hosted [Photon](https://photon.komoot.io/) endpoint for location autocomplete (public instance needs no key) |
+| `LOCATION_SEARCH_EMAIL` | optional | Contact address sent in the Photon request User-Agent |
 
 Update business facts in one place: `src/lib/site.ts`. Product content lives in
 `src/lib/products.ts` (all 16 content languages, typed).
+
+The website's quote and contact forms currently open WhatsApp directly; the
+existing inquiry API and email delivery integrations are retained but are not
+used by these forms while WhatsApp-first submissions are active.
+
+## Google Search Console
+
+1. Add the production site in [Google Search Console](https://search.google.com/search-console).
+   A **Domain** property verified by DNS covers all protocols and subdomains;
+   alternatively, choose a **URL-prefix** property for the exact canonical
+   origin configured in `NEXT_PUBLIC_SITE_URL`.
+2. For URL-prefix verification, choose **HTML tag** verification and copy the
+   token from the tag's `content` attribute (not the whole `<meta>` element)
+   into `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`.
+3. Set `NEXT_PUBLIC_SITE_URL` to the canonical production origin, redeploy,
+   then return to Search Console and select **Verify**. The token is rendered
+   as Next.js `google-site-verification` metadata on every localized page.
+   DNS verification is also supported directly in Search Console and does not
+   require an application token.
+4. In Search Console, submit `https://<your-canonical-host>/sitemap.xml` under
+   **Sitemaps**, then use **URL inspection** to request indexing of important
+   product and landing pages. Keep the submitted host consistent with
+   `NEXT_PUBLIC_SITE_URL`.
+
+The site publishes localized canonical/hreflang links, unique product titles
+and descriptions, Open Graph/Twitter previews, `Product` and `BreadcrumbList`
+JSON-LD, an XML sitemap, and a `robots.txt` that references that sitemap and
+disallows the inquiry/location API endpoints. Product structured data does
+not invent prices or availability; add real offer data only if the business
+publishes confirmed terms on the site.
 
 ## Languages & locales
 
@@ -86,8 +122,9 @@ src/
     [locale]/            # en + fr routed pages (home, products, product detail,
                         # about, how-it-works, request-quote, contact, privacy, terms)
     api/inquiries/      # POST {kind: quote|contact} — zod validation, MOQ
-                        # enforcement, reference number, JSONL storage, email/webhook
-    sitemap.ts robots.ts
+                        # enforcement, reference number, KV/webhook/email/file delivery
+    api/locations/      # worldwide port/city/country/airport autocomplete
+    sitemap.xml/route.ts robots.ts
   components/           # Header, Footer, ProductCard, ProductCatalog (search/filter/sort),
                         # QuoteForm (multi-product, RHF+Zod), ContactForm, FaqList, ui
   lib/                  # site, i18n, dictionaries, products, validation, inquiries
@@ -100,12 +137,19 @@ data/inquiries.jsonl    # created at runtime — server-side inquiry log (git-ig
 1. Browse `/products` (search, category filter, sort) → product detail pages.
 2. “Request a Quote” deep-links to `/request-quote?product=<slug>` with the
    product preselected; multiple products/line-items supported.
-3. Every line item enforces **≥ 1 container** client-side (RHF/Zod) **and**
-   server-side (API returns 422 otherwise).
-4. On success the API returns a reference (`HB33-XXXXXX`); the UI shows
-   confirmation + next steps. If `RESEND_API_KEY` is unset, the UI states
-   explicitly that email forwarding is off and offers `mailto:` + WhatsApp
-   (prefilled message with reference, products, quantities) fallbacks.
+3. Required fields and every line item (minimum **1 container**) are validated
+   client-side with RHF/Zod before a submission link is opened.
+4. The visitor reviews and sends the pre-filled message in WhatsApp. Product
+   links identify the message as an Enquiry; the general form identifies it as
+   a Request a Quote. Contact messages are labelled Contact.
+
+## Sitemap
+
+`/sitemap.xml` returns standard XML with `application/xml` to crawlers and
+modern HTML to browser requests, without an XSLT dependency. The XML endpoint
+is referenced by `/robots.txt`; the same URL list is shown in the browser view.
+The existing sitemap entries are generated from configured locales and
+product slugs.
 
 ## Production notes
 

@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, FileCheck2, Ship } from "lucide-react";
 import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, localizedPath, type Locale } from "@/lib/i18n";
 import { languageAlternates } from "@/lib/i18n";
 import { site } from "@/lib/site";
-import { siteImages } from "@/lib/images";
+import { siteMedia } from "@/lib/product-media";
 import { socialMetadata } from "@/lib/seo";
-import { getProduct, t } from "@/lib/products";
+import { getProduct } from "@/lib/products";
 import { Eyebrow, MoqBadge, QuoteCtaBand, SectionHeading, btnPrimary } from "@/components/ui";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import FaqList from "@/components/FaqList";
+import MediaFrame from "@/components/MediaFrame";
 
 export async function generateMetadata({
   params,
@@ -73,13 +73,15 @@ export default async function HomePage({
       {/* Hero — full-bleed harvest panel */}
       <section className="container-x pt-6 md:pt-8">
         <div className="relative overflow-hidden rounded-[2.5rem] bg-espresso text-center text-cream">
-          <Image
-            src={siteImages.hero.src}
-            alt={t(siteImages.hero.alt, locale as Locale)}
+          <MediaFrame
+            media={siteMedia.hero}
+            locale={locale as Locale}
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="rounded-none"
+            pillAlign="end"
+            pillLabel={dict.hero.eyebrow}
           />
           <div aria-hidden className="absolute inset-0 bg-espresso/60" />
           <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-espresso/80 to-transparent" />
@@ -206,18 +208,14 @@ export default async function HomePage({
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <Reveal>
             <figure className="relative">
-            <div className="overflow-hidden rounded-[2rem] border border-line">
-              <Image
-                src={siteImages.logistics.src}
-                alt={t(siteImages.logistics.alt, locale as Locale)}
-                width={1200}
-                height={800}
-                loading="lazy"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="aspect-[4/3] w-full object-cover"
-              />
-            </div>
-            <div className="absolute bottom-4 start-4">
+            <MediaFrame
+              media={siteMedia.logistics}
+              locale={locale as Locale}
+              className="aspect-[4/3] border border-line"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              pillAlign="end"
+            />
+            <div className="absolute top-4 start-4 z-10">
               <MoqBadge label={dict.moq.badge} />
             </div>
             </figure>
@@ -250,6 +248,61 @@ export default async function HomePage({
             </ul>
             <p className="mt-4 text-xs text-ink-muted">{dict.common.tonnageNote}</p>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Field-to-port process media */}
+      <section aria-labelledby="field-to-port" className="container-x pb-14 md:pb-20">
+        <Reveal variant="fade">
+          <SectionHeading
+            eyebrow={dict.media.fieldToPort.eyebrow}
+            title={dict.media.fieldToPort.title}
+            lead={dict.media.fieldToPort.lead}
+          />
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <Reveal delay={80}>
+            <article className="card-warm overflow-hidden p-3">
+              <MediaFrame
+                media={siteMedia.fermentation}
+                locale={locale as Locale}
+                className="aspect-[4/3] rounded-[1.5rem]"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                pillPlacement="top"
+                pillLabel={dict.media.fieldToPort.fermentationTitle}
+              />
+              <div className="px-3 pt-5 pb-3">
+                <h3 className="font-display text-xl font-semibold text-bark">
+                  {dict.media.fieldToPort.fermentationTitle}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-muted">
+                  {dict.media.fieldToPort.fermentationText}
+                </p>
+                <p className="mt-2 text-xs text-ink-muted">{dict.media.fieldToPort.note}</p>
+              </div>
+            </article>
+          </Reveal>
+          <Reveal delay={150}>
+            <article className="card-warm overflow-hidden p-3">
+              <MediaFrame
+                media={siteMedia.logistics}
+                locale={locale as Locale}
+                className="aspect-[4/3] rounded-[1.5rem]"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                pillPlacement="top"
+                pillLabel={dict.media.fieldToPort.shippingTitle}
+              />
+              <div className="px-3 pt-5 pb-3">
+                <h3 className="font-display text-xl font-semibold text-bark">
+                  {dict.media.fieldToPort.shippingTitle}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-muted">
+                  {dict.media.fieldToPort.shippingText}
+                </p>
+                <p className="mt-2 text-xs text-ink-muted">{dict.media.fieldToPort.note}</p>
+              </div>
+            </article>
           </Reveal>
         </div>
       </section>

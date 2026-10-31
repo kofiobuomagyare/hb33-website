@@ -4,8 +4,10 @@ import { isLocale, languageAlternates, type Locale } from "@/lib/i18n";
 import { socialMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { products } from "@/lib/products";
+import { siteMedia } from "@/lib/product-media";
 import { Eyebrow, MoqNotice } from "@/components/ui";
 import ProductCatalog from "@/components/ProductCatalog";
+import MediaFrame from "@/components/MediaFrame";
 
 export async function generateMetadata({
   params,
@@ -47,6 +49,13 @@ export default async function ProductsPage({
         {dict.productsPage.lead}
       </p>
       <MoqNotice text={dict.moq.long} className="mt-6 border" />
+      <MediaFrame
+        media={siteMedia.productsBanner}
+        locale={locale as Locale}
+        className="mt-8 aspect-[16/9] border border-line sm:aspect-[21/8]"
+        sizes="(max-width: 768px) 100vw, 1200px"
+        pillLabel={dict.productsPage.title}
+      />
       <div className="mt-8">
         <ProductCatalog products={products} locale={locale as Locale} dict={dict} />
       </div>

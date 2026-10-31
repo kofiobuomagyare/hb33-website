@@ -19,18 +19,20 @@ export const inquiryItemSchema = z.object({
 
 export const quoteInquirySchema = z.object({
   kind: z.literal("quote"),
-  fullName: z.string().trim().min(2, "required"),
+  fullName: z.string().trim().min(2, "required").max(120, "required"),
   company: z.string().trim().max(160, "required").optional().or(z.literal("")),
-  email: z.string().trim().min(1, "required").regex(EMAIL_RE, "email"),
+  email: z.string().trim().min(1, "required").max(254, "email").regex(EMAIL_RE, "email"),
   countryCode: z.string().trim().min(1, "required").regex(/^\+\d{1,5}$/, "phone"),
-  phone: z.string().trim().min(1, "required").regex(PHONE_RE, "phone"),
-  country: z.string().trim().min(2, "required"),
-  destination: z.string().trim().min(2, "required"),
-  timeframe: z.string().trim().min(1, "required"),
+  phone: z.string().trim().min(1, "required").max(30, "phone").regex(PHONE_RE, "phone"),
+  country: z.string().trim().min(2, "required").max(90, "required"),
+  destination: z.string().trim().min(2, "required").max(180, "required"),
+  /** Extra context chosen in the location autocomplete (port code, region, coordinates). */
+  destinationDetails: z.string().trim().max(400, "required").optional().or(z.literal("")),
+  timeframe: z.string().trim().min(1, "required").max(60, "required"),
   packaging: z.string().trim().max(300, "required").optional().or(z.literal("")),
   notes: z.string().trim().max(4000, "required").optional().or(z.literal("")),
   items: z.array(inquiryItemSchema).min(1, "at-least-one").max(20, "at-least-one"),
-  locale: z.string().min(2).max(5).optional().or(z.literal("")),
+  locale: z.string().min(2).max(10).optional().or(z.literal("")),
   website: honeypot,
 });
 
@@ -38,11 +40,11 @@ export type QuoteInquiry = z.infer<typeof quoteInquirySchema>;
 
 export const contactMessageSchema = z.object({
   kind: z.literal("contact"),
-  name: z.string().trim().min(2, "required"),
-  email: z.string().trim().min(1, "required").regex(EMAIL_RE, "email"),
-  subject: z.string().trim().min(2, "required"),
-  message: z.string().trim().min(10, "message-short"),
-  locale: z.string().min(2).max(5).optional().or(z.literal("")),
+  name: z.string().trim().min(2, "required").max(120, "required"),
+  email: z.string().trim().min(1, "required").max(254, "email").regex(EMAIL_RE, "email"),
+  subject: z.string().trim().min(2, "required").max(160, "required"),
+  message: z.string().trim().min(10, "message-short").max(4000, "message-short"),
+  locale: z.string().min(2).max(10).optional().or(z.literal("")),
   website: honeypot,
 });
 

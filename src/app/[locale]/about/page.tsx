@@ -4,10 +4,10 @@ import { isLocale, languageAlternates, localizedPath, type Locale } from "@/lib/
 import { socialMetadata } from "@/lib/seo";
 import { getDictionary } from "@/lib/dictionaries";
 import { site } from "@/lib/site";
-import { siteImages } from "@/lib/images";
-import { t } from "@/lib/products";
+import { siteMedia } from "@/lib/product-media";
 import { Eyebrow, QuoteCtaBand, SectionHeading } from "@/components/ui";
 import Reveal from "@/components/Reveal";
+import MediaFrame from "@/components/MediaFrame";
 
 export async function generateMetadata({
   params,
@@ -64,29 +64,14 @@ export default async function AboutPage({
           </div>
         </section>
         <figure>
-          <div className="overflow-hidden rounded-[2rem] border border-line bg-parchment p-2">
-            <Image
-              src={siteImages.about.src}
-              alt={t(siteImages.about.alt, locale as Locale)}
-              width={1200}
-              height={800}
-              loading="lazy"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="aspect-[3/2] w-full rounded-[1.5rem] object-cover"
-            />
-          </div>
-          <figcaption className="mt-2 text-xs text-ink-muted">
-            {t(siteImages.about.alt, locale as Locale)} · Photo:{" "}
-            <a
-              href={siteImages.about.creditUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2"
-            >
-              {siteImages.about.credit}
-            </a>{" "}
-            ({siteImages.about.license})
-          </figcaption>
+          <MediaFrame
+            media={siteMedia.about}
+            locale={locale as Locale}
+            className="aspect-[3/2] border border-line p-2"
+            mediaClassName="rounded-[1.5rem]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            pillLabel={dict.meta.aboutTitle}
+          />
         </figure>
       </div>
 

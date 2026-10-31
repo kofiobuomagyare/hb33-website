@@ -1,13 +1,14 @@
 import { randomInt } from "node:crypto";
-import { appendFile, mkdir } from "node:fs/promises";
-import path from "node:path";
 import { NextResponse } from "next/server";
+import type { ZodError } from "zod";
 import { contactMessageSchema, quoteInquirySchema } from "@/lib/validation";
 import {
   contactEmailSubject,
   quoteEmailBody,
   quoteEmailSubject,
 } from "@/lib/inquiries";
+import { deliverInquiry } from "@/lib/inquiry-store";
+import { site } from "@/lib/site";
 
 function generateReference(): string {
   const alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
@@ -49,62 +50,36 @@ function isSpam(payload: unknown): boolean {
   );
 }
 
-async function persistRecord(record: Record<string, unknown>) {
-  try {
-    const dir = path.join(process.cwd(), "data");
-    await mkdir(dir, { recursive: true });
-    await appendFile(
-      path.join(dir, "inquiries.jsonl"),
-      JSON.stringify({ receivedAt: new Date().toISOString(), ...record }) + "\n",
-      "utf8",
-    );
-    return true;
-  } catch (err) {
-    console.error("HB33: failed to persist inquiry", err);
-    return false;
-  }
+function validationIssues(error: ZodError) {
+  return error.issues.slice(0, 12).map((issue) => ({
+    field: issue.path.map(String).join(".") || "form",
+    code: issue.message,
+  }));
 }
 
-async function sendEmailNotification(to: string, subject: string, text: string) {
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  if (!apiKey) return { attempted: false, sent: false };
-  try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "HB33 Website <website@hb33.com>",
-        to: [to],
-        subject,
-        text,
-      }),
-    });
-    if (!res.ok) {
-      console.error("HB33: email provider error", await res.text());
-      return { attempted: true, sent: false };
-    }
-    return { attempted: true, sent: true };
-  } catch (err) {
-    console.error("HB33: email send failed", err);
-    return { attempted: true, sent: false };
-  }
+function validationResponse(error: ZodError) {
+  return NextResponse.json(
+    {
+      ok: false,
+      code: "validation",
+      message: "Some details need attention. Please check the highlighted fields.",
+      issues: validationIssues(error),
+    },
+    { status: 422 },
+  );
 }
 
-async function forwardWebhook(record: Record<string, unknown>) {
-  const url = process.env.INQUIRY_WEBHOOK_URL?.trim();
-  if (!url) return;
-  try {
-    await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(record),
-    });
-  } catch (err) {
-    console.error("HB33: webhook forward failed", err);
-  }
+function deliveryUnavailable() {
+  return NextResponse.json(
+    {
+      ok: false,
+      code: "delivery-unavailable",
+      message:
+        "We could not record your inquiry right now. Please try again in a moment, or send it directly by email or WhatsApp so it is not lost.",
+      fallback: { email: site.email },
+    },
+    { status: 503 },
+  );
 }
 
 export async function POST(request: Request) {
@@ -113,7 +88,11 @@ export async function POST(request: Request) {
   // multi-instance production deployments (see README).
   if (!checkRateLimit(clientIp(request))) {
     return NextResponse.json(
-      { ok: false, message: "Too many requests. Please wait a minute and try again." },
+      {
+        ok: false,
+        code: "rate-limited",
+        message: "Too many requests. Please wait a minute and try again.",
+      },
       { status: 429, headers: { "Retry-After": "60" } },
     );
   }
@@ -122,45 +101,55 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ ok: false, message: "Invalid JSON." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, code: "invalid-json", message: "Invalid request body." },
+      { status: 400 },
+    );
   }
 
   const kind = (body as { kind?: unknown })?.kind;
 
   if (isSpam(body)) {
-    return NextResponse.json({ ok: false, message: "Validation failed." }, { status: 422 });
+    return NextResponse.json(
+      { ok: false, code: "validation", message: "Validation failed." },
+      { status: 422 },
+    );
   }
 
   if (kind === "contact") {
     const parsed = contactMessageSchema.safeParse(body);
-    if (!parsed.success) {
-      return NextResponse.json({ ok: false, message: "Validation failed." }, { status: 422 });
-    }
+    if (!parsed.success) return validationResponse(parsed.error);
+
     const data = parsed.data;
     const reference = generateReference();
-    const stored = await persistRecord({ reference, ...data });
-    if (!stored) {
-      return NextResponse.json({ ok: false, message: "Could not record message." }, { status: 500 });
-    }
-    const to = process.env.INQUIRY_TO_EMAIL?.trim();
-    let emailed = false;
-    if (to) {
-      const result = await sendEmailNotification(
-        to,
-        contactEmailSubject(data),
-        `Reference: ${reference}\nName: ${data.name}\nEmail: ${data.email}\nSubject: ${data.subject}\n\n${data.message}`,
-      );
-      emailed = result.sent;
-    }
-    await forwardWebhook({ reference, ...data, emailed });
-    return NextResponse.json({ ok: true, reference, emailed });
+    const result = await deliverInquiry({
+      record: { reference, ...data },
+      subject: contactEmailSubject(data),
+      text: [
+        `New website message ${reference}.`,
+        "",
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        `Subject: ${data.subject}`,
+        "",
+        data.message,
+      ].join("\n"),
+      replyTo: data.email,
+    });
+
+    if (!result.stored) return deliveryUnavailable();
+
+    return NextResponse.json({
+      ok: true,
+      reference,
+      emailed: result.emailed,
+      channels: result.channels,
+    });
   }
 
   // Default: bulk quote inquiry.
   const parsed = quoteInquirySchema.safeParse(body);
-  if (!parsed.success) {
-    return NextResponse.json({ ok: false, message: "Validation failed." }, { status: 422 });
-  }
+  if (!parsed.success) return validationResponse(parsed.error);
   const parsedData = parsed.data;
 
   // Guarantee a complete international number even if a client posts the
@@ -175,25 +164,30 @@ export async function POST(request: Request) {
   const belowMoq = data.items.some((i) => !Number.isInteger(i.containers) || i.containers < 1);
   if (belowMoq) {
     return NextResponse.json(
-      { ok: false, message: "Minimum order is 1 shipping container per product." },
+      {
+        ok: false,
+        code: "moq",
+        message: "Minimum order is 1 shipping container per product.",
+        issues: [{ field: "items", code: "min-containers" }],
+      },
       { status: 422 },
     );
   }
 
   const reference = generateReference();
-  const stored = await persistRecord({ reference, ...data });
-  if (!stored) {
-    return NextResponse.json({ ok: false, message: "Could not record inquiry." }, { status: 500 });
-  }
+  const result = await deliverInquiry({
+    record: { reference, ...data },
+    subject: quoteEmailSubject(reference, data),
+    text: quoteEmailBody(reference, data),
+    replyTo: data.email,
+  });
 
-  const to = process.env.INQUIRY_TO_EMAIL?.trim();
-  let emailed = false;
-  if (to) {
-    const result = await sendEmailNotification(to, quoteEmailSubject(reference, data), quoteEmailBody(reference, data));
-    emailed = result.sent;
-  }
-  await forwardWebhook({ reference, ...data, emailed });
+  if (!result.stored) return deliveryUnavailable();
 
-  return NextResponse.json({ ok: true, reference, emailed });
+  return NextResponse.json({
+    ok: true,
+    reference,
+    emailed: result.emailed,
+    channels: result.channels,
+  });
 }
-

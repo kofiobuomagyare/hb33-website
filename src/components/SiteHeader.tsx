@@ -54,7 +54,6 @@ export default function SiteHeader({
           <Link
             href={localizedPath(locale, "/")}
             className="flex items-baseline gap-2"
-            aria-label="HB33 — home"
           >
             <span className="font-display text-[1.7rem] font-extrabold tracking-tight text-bark">
               HB33

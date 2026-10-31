@@ -41,6 +41,9 @@ export async function generateMetadata({
       template: `%s · ${dict.meta.siteName}`,
     },
     description: dict.meta.homeDescription,
+    ...(site.googleSiteVerification
+      ? { verification: { google: site.googleSiteVerification } }
+      : {}),
     openGraph: {
       type: "website",
       siteName: "HB33",

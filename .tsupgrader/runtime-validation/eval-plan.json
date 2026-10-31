@@ -1,0 +1,111 @@
+{
+  "generatedAt": "2026-10-15T00:00:00Z",
+  "generatedOnPlatform": "win32",
+  "projectType": "webapp",
+  "setup": [
+    {
+      "command": "npm",
+      "args": [
+        "ci",
+        "--prefer-offline",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "timeoutSeconds": 600
+    }
+  ],
+  "assertions": [
+    {
+      "name": "typecheck",
+      "kind": "process",
+      "command": "npx",
+      "args": [
+        "tsc",
+        "--noEmit"
+      ],
+      "verificationMethod": "exit-code",
+      "expected": "0",
+      "timeoutSeconds": 180
+    },
+    {
+      "name": "lint",
+      "kind": "process",
+      "command": "npm",
+      "args": [
+        "run",
+        "lint"
+      ],
+      "verificationMethod": "exit-code",
+      "expected": "0",
+      "timeoutSeconds": 180
+    },
+    {
+      "name": "tests-pass",
+      "kind": "process",
+      "command": "npm",
+      "args": [
+        "test"
+      ],
+      "verificationMethod": "test-results",
+      "expected": "0",
+      "timeoutSeconds": 300
+    },
+    {
+      "name": "production-build",
+      "kind": "process",
+      "command": "npm",
+      "args": [
+        "run",
+        "build"
+      ],
+      "verificationMethod": "exit-code",
+      "expected": "0",
+      "timeoutSeconds": 600
+    },
+    {
+      "name": "product-carousel-serves",
+      "kind": "http-probe",
+      "startCommand": "npm",
+      "startArgs": [
+        "start",
+        "--",
+        "--port",
+        "3042"
+      ],
+      "url": "http://localhost:3042/en/products/cocoa-beans",
+      "verificationMethod": "output-contains",
+      "expected": "Product media",
+      "timeoutSeconds": 120
+    },
+    {
+      "name": "sitemap-xml-serves",
+      "kind": "http-probe",
+      "startCommand": "npm",
+      "startArgs": [
+        "start",
+        "--",
+        "--port",
+        "3042"
+      ],
+      "url": "http://localhost:3042/sitemap.xml?format=xml",
+      "verificationMethod": "output-contains",
+      "expected": "http://www.sitemaps.org/schemas/sitemap/0.9",
+      "timeoutSeconds": 120
+    },
+    {
+      "name": "robots-serves",
+      "kind": "http-probe",
+      "startCommand": "npm",
+      "startArgs": [
+        "start",
+        "--",
+        "--port",
+        "3042"
+      ],
+      "url": "http://localhost:3042/robots.txt",
+      "verificationMethod": "http-status",
+      "expected": "200",
+      "timeoutSeconds": 120
+    }
+  ]
+}

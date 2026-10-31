@@ -1,22 +1,26 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { Controller, useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, MinusCircle, PlusCircle } from "lucide-react";
+import { CheckCircle2, MessageCircle, MinusCircle, PlusCircle } from "lucide-react";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { Locale } from "@/lib/i18n";
 import { isFrench } from "@/lib/i18n";
 import { quoteInquirySchema, type QuoteInquiry } from "@/lib/validation";
 import { getProduct } from "@/lib/products";
 import { quoteWhatsAppMessage } from "@/lib/inquiries";
-import { site, whatsappConfigured, whatsappLink } from "@/lib/site";
+import { whatsappConfigured, whatsappLink } from "@/lib/site";
+import { locationDetails } from "@/lib/locations";
+import type { LocationSuggestion } from "@/lib/location-types";
 import { MoqNotice } from "./ui";
 import CountryCodeSelect from "./CountryCodeSelect";
 import SearchableCountrySelect from "./SearchableCountrySelect";
+import DestinationCombobox from "./DestinationCombobox";
+import LocationMap from "./LocationMap";
 
-type Success = { reference: string; emailed: boolean };
+type Success = { whatsappHref: string };
 
 function errorText(dict: Dictionary, code?: string): string {
   const e = dict.quotePage.errors;
@@ -53,9 +57,10 @@ export function QuoteFormInner({
   initialProduct?: string;
 }) {
   const f = dict.quotePage.form;
-  const [serverError, setServerError] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
   const [success, setSuccess] = useState<Success | null>(null);
-  const [submitted, setSubmitted] = useState<QuoteInquiry | null>(null);
+  const [destination, setDestination] = useState<LocationSuggestion | null>(null);
+  const successRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<QuoteInquiry>({
     resolver: zodResolver(quoteInquirySchema),
@@ -68,6 +73,7 @@ export function QuoteFormInner({
       phone: "",
       country: "",
       destination: "",
+      destinationDetails: "",
       timeframe: "",
       packaging: "",
       notes: "",
@@ -79,82 +85,80 @@ export function QuoteFormInner({
   const { fields, append, remove } = useFieldArray({ control: form.control, name: "items" });
   const { errors } = form.formState;
 
-  async function onSubmit(data: QuoteInquiry) {
-    setServerError(false);
-    // Combine the selected dialing code with the local number so the
-    // recorded phone is always a complete international number.
-    const fullPhone = `${data.countryCode} ${data.phone.trim().replace(/^[+\s]+/, "")}`.trim();
-    try {
-      const res = await fetch("/api/inquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, phone: fullPhone, locale }),
-      });
-      const json = (await res.json()) as { ok: boolean; reference?: string; emailed?: boolean };
-      if (res.ok && json.ok && json.reference) {
-        setSubmitted({ ...data, phone: fullPhone });
-        setSuccess({ reference: json.reference, emailed: !!json.emailed });
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        setServerError(true);
-      }
-    } catch {
-      setServerError(true);
+  useEffect(() => {
+    if (success) successRef.current?.focus();
+  }, [success]);
+
+  function onSubmit(data: QuoteInquiry, whatsappWindow: Window | null) {
+    setServerError(null);
+    if (!whatsappConfigured) {
+      whatsappWindow?.close();
+      setServerError(dict.contactPage.whatsappUnavailable);
+      return;
     }
+
+    const fullPhone = `${data.countryCode} ${data.phone.trim().replace(/^[+\s]+/, "")}`.trim();
+    const submitted = { ...data, phone: fullPhone, locale };
+    const formType = initialProduct ? "Enquiry" : "Request a Quote";
+    const waHref = whatsappLink(quoteWhatsAppMessage(submitted, locale, formType));
+    if (!waHref) {
+      whatsappWindow?.close();
+      setServerError(dict.contactPage.whatsappUnavailable);
+      return;
+    }
+
+    if (whatsappWindow && !whatsappWindow.closed) {
+      whatsappWindow.location.href = waHref;
+    } else {
+      window.open(waHref, "_blank", "noopener,noreferrer");
+    }
+    setSuccess({ whatsappHref: waHref });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  if (success && submitted) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (form.formState.isSubmitting) return;
+    // Reserve a tab during the click gesture before asynchronous validation runs.
+    const whatsappWindow = whatsappConfigured ? window.open("about:blank", "_blank") : null;
+    if (whatsappWindow) whatsappWindow.opener = null;
+    void form.handleSubmit(
+      (data) => onSubmit(data, whatsappWindow),
+      () => whatsappWindow?.close(),
+    )(event);
+  }
+
+  if (success) {
     const q = dict.quotePage;
-    const waMessage = quoteWhatsAppMessage(success.reference, submitted, locale);
-    const waHref = whatsappLink(waMessage);
-    const mailSubject = encodeURIComponent(`[${success.reference}] Bulk quote request — ${submitted.fullName}`);
-    const mailBody = encodeURIComponent(
-      `${isFrench(locale) ? "Bonjour HB33" : "Hello HB33"},\n\n${waMessage}`,
-    );
     return (
-      <div className="border border-leaf/40 bg-white/70 p-6 sm:p-8" role="status">
+      <div
+        ref={successRef}
+        tabIndex={-1}
+        className="border border-leaf/40 bg-white/70 p-6 outline-none sm:p-8"
+        role="status"
+        aria-live="polite"
+      >
         <p className="flex items-center gap-2 text-leaf-deep">
           <CheckCircle2 className="size-6" aria-hidden />
           <span className="font-display text-2xl font-semibold text-bark">{q.successTitle}</span>
         </p>
         <p className="mt-2 text-[15px] text-ink-muted">{q.successLead}</p>
-        <div className="mt-5 border border-line bg-parchment p-4">
-          <p className="text-xs font-bold tracking-wider text-ink-muted uppercase">{q.reference}</p>
-          <p className="font-display mt-1 text-3xl font-bold tracking-wide text-cocoa" aria-live="polite">
-            {success.reference}
-          </p>
-        </div>
-        <h2 className="mt-6 font-display text-lg font-semibold text-bark">{q.nextStepsTitle}</h2>
-        <ol className="mt-2 list-decimal space-y-1.5 ps-5 text-[15px] text-ink-muted">
-          {q.nextSteps.map((s, i) => (
-            <li key={i}>{s}</li>
-          ))}
-        </ol>
-        <p className="mt-4 border-s-2 border-gold bg-parchment/60 px-3 py-2 text-sm text-ink-muted">
-          {success.emailed ? q.emailStatusOn : q.emailStatusOff}
-        </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
           <a
-            href={`mailto:${site.email}?subject=${mailSubject}&body=${mailBody}`}
+            href={success.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-primary"
           >
-            {q.sendEmail}
+            <MessageCircle className="size-4" aria-hidden />
+            {q.sendWhatsapp}
           </a>
-          {whatsappConfigured && waHref ? (
-            <a
-              href={waHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline"
-            >
-              {q.sendWhatsapp}
-            </a>
-          ) : null}
           <button
             type="button"
             onClick={() => {
               setSuccess(null);
-              setSubmitted(null);
+              setServerError(null);
+              setDestination(null);
               form.reset();
             }}
             className="inline-flex min-h-11 items-center justify-center px-4 py-3 text-sm font-semibold text-ink-muted underline underline-offset-4 hover:text-bark"
@@ -167,12 +171,12 @@ export function QuoteFormInner({
   }
 
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} noValidate className="card-warm p-5 sm:p-8">
+    <form onSubmit={handleSubmit} noValidate className="card-warm p-5 sm:p-8">
       <MoqNotice text={dict.moq.long} className="mb-6 border" />
 
       <fieldset>
         <legend className="font-display text-lg font-semibold text-bark">
-          {dict.contactPage.formTitle}
+          {f.details}
         </legend>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div>
@@ -251,7 +255,30 @@ export function QuoteFormInner({
             <label htmlFor="destination" className={labelCls}>
               {f.destination} <span aria-hidden className="text-clay-deep">*</span>
             </label>
-            <input id="destination" placeholder={isFrench(locale) ? "ex. Port d’Abidjan" : "e.g. Port of Rotterdam"} className={inputCls} aria-invalid={!!errors.destination} {...form.register("destination")} />
+            <Controller
+              name="destination"
+              control={form.control}
+              render={({ field }) => (
+                <DestinationCombobox
+                  id="destination"
+                  value={field.value ?? ""}
+                  selected={destination}
+                  onChange={field.onChange}
+                  onSelect={(location) => {
+                    setDestination(location);
+                    form.setValue(
+                      "destinationDetails",
+                      location ? locationDetails(location) : "",
+                      { shouldValidate: false },
+                    );
+                  }}
+                  locale={locale}
+                  dict={dict}
+                  invalid={!!errors.destination}
+                  placeholder={isFrench(locale) ? "ex. Port d’Abidjan" : "e.g. Port of Rotterdam"}
+                />
+              )}
+            />
             {errors.destination ? <p className={errCls} role="alert">{errorText(dict, errors.destination.message)}</p> : null}
           </div>
           <div>
@@ -273,6 +300,11 @@ export function QuoteFormInner({
             </label>
             <input id="packaging" placeholder={f.packagingPlaceholder} className={inputCls} {...form.register("packaging")} />
           </div>
+          {destination ? (
+            <div className="sm:col-span-2">
+              <LocationMap location={destination} dict={dict} />
+            </div>
+          ) : null}
         </div>
       </fieldset>
 
@@ -360,9 +392,9 @@ export function QuoteFormInner({
       </div>
 
       {serverError ? (
-        <p className="mt-4 border border-red-800/40 bg-red-50 p-3 text-sm font-medium text-red-900" role="alert">
-          {dict.quotePage.failTitle} {dict.quotePage.failText}
-        </p>
+        <div className="mt-4 rounded-2xl border border-red-800/40 bg-red-50 p-4" role="alert" aria-live="assertive">
+          <p className="text-sm text-red-900">{serverError}</p>
+        </div>
       ) : null}
 
       {/* Honeypot: hidden from people, catches bots. Leave empty. */}
@@ -421,8 +453,24 @@ export function QuoteSection({
   return (
     <Suspense
       fallback={
-        <div className="border border-line bg-white/70 p-8" role="status" aria-live="polite">
-          {dict.common.sending}
+        <div
+          className="rounded-2xl border border-line bg-white/70 p-5 sm:p-8"
+          role="status"
+          aria-live="polite"
+        >
+          <span className="sr-only">{dict.common.loadingForm}</span>
+          <div className="grid gap-4 sm:grid-cols-2" aria-hidden>
+            {[0, 1, 2, 3].map((i) => (
+              <div key={i} className="space-y-2">
+                <div className="h-3 w-24 rounded bg-parchment" />
+                <div className="h-11 rounded-xl bg-parchment/80" />
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 space-y-2" aria-hidden>
+            <div className="h-3 w-32 rounded bg-parchment" />
+            <div className="h-11 rounded-xl bg-parchment/80" />
+          </div>
         </div>
       }
     >

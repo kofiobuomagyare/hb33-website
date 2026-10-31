@@ -115,11 +115,11 @@ export default function SiteFooter({
       </div>
 
       <div className="border-t border-cream/15">
-        <div className="container-x flex flex-col gap-1 py-5 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-x flex flex-col gap-1 py-5 text-xs text-cream/70 sm:flex-row sm:items-center sm:justify-between">
           <p>© <CurrentYear /> HB33. {dict.common.allRightsReserved}</p>
           <p>SGS-verified origin · FOB / CIF worldwide</p>
         </div>
-        <div className="container-x pb-5 text-[11px] text-cream/45">
+        <div className="container-x pb-5 text-[11px] text-cream/70">
           <p>{dict.footer.photoCredit}</p>
         </div>
       </div>

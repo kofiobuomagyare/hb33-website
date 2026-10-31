@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
@@ -7,11 +6,26 @@ import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, languageAlternates, localizedPath, type Locale } from "@/lib/i18n";
 import { site, whatsappConfigured, whatsappLink } from "@/lib/site";
 import { getProduct, productSlugs, relatedProducts, t } from "@/lib/products";
+import { productGalleryMedia } from "@/lib/product-media";
 import { isFrench, locales } from "@/lib/i18n";
+import { socialMetadata } from "@/lib/seo";
 import { Eyebrow, MoqBadge, MoqNotice } from "@/components/ui";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import FaqList from "@/components/FaqList";
+import ProductMediaCarousel from "@/components/ProductMediaCarousel";
+
+function productDescription(product: NonNullable<ReturnType<typeof getProduct>>, locale: Locale) {
+  const description = `${t(product.tagline, locale)} ${t(product.overview[0], locale)}`.replace(/\s+/g, " ").trim();
+  if (description.length <= 160) return description;
+  const excerpt = description.slice(0, 157);
+  const lastSpace = excerpt.lastIndexOf(" ");
+  return `${excerpt.slice(0, lastSpace > 120 ? lastSpace : excerpt.length).trimEnd()}…`;
+}
+
+function safeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -29,21 +43,24 @@ export async function generateMetadata({
   const product = getProduct(slug);
   if (!product) return {};
   const path = `/${locale}/products/${slug}`;
-  const title = `${t(product.name, locale)} — Bulk ${t(product.name, locale)} | HB33`;
-  const description = `${t(product.tagline, locale)} ${t(product.overview[0], locale).slice(0, 120)}…`;
+  const name = t(product.name, locale);
+  const title = `${name} — Bulk Supply`;
+  const description = productDescription(product, locale);
+  const social = socialMetadata(path, title, description, {
+    url: product.image,
+    width: 1200,
+    height: 900,
+    alt: t(product.imageAlt, locale),
+  });
   return {
     title,
     description,
+    keywords: [name, `${name} bulk`, "West African agricultural commodities"],
     alternates: {
       canonical: `${site.url}${path}`,
       languages: languageAlternates(`/products/${slug}`),
     },
-    openGraph: {
-      title,
-      description,
-      url: `${site.url}${path}`,
-      images: [{ url: product.image, alt: t(product.imageAlt, locale) }],
-    },
+    ...social,
   };
 }
 
@@ -61,27 +78,58 @@ export default async function ProductDetailPage({
   const L = (href: string) => localizedPath(locale as Locale, href);
   const related = relatedProducts(slug, 3);
   const quoteHref = L(`/request-quote?product=${product.slug}`);
+  const galleryMedia = productGalleryMedia(product);
+  const productName = t(product.name, locale as Locale);
+  const productDescriptionText = productDescription(product, locale as Locale);
+  const productUrl = `${site.url}/${locale}/products/${slug}`;
 
   const waMessage =
     isFrench(locale)
-      ? `Bonjour HB33, je souhaite un devis en vrac pour : ${t(product.name, locale as Locale)} (quantité : 1 conteneur minimum).`
-      : `Hello HB33, I'd like a bulk quote for: ${t(product.name, locale as Locale)} (quantity: 1 container minimum).`;
+      ? `Bonjour HB33, je souhaite un devis en vrac pour : ${productName} (quantité : 1 conteneur minimum).`
+      : `Hello HB33, I'd like a bulk quote for: ${productName} (quantity: 1 container minimum).`;
   const waHref = whatsappLink(waMessage);
 
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `HB33 ${t(product.name, locale as Locale)}`,
-    description: t(product.overview[0], locale as Locale),
-    image: product.image,
+    name: productName,
+    description: productDescriptionText,
+    image: galleryMedia
+      .filter((media) => media.kind === "image")
+      .map((media) => new URL(media.src, site.url).href),
+    category: product.category,
     brand: { "@type": "Brand", name: "HB33" },
+    url: productUrl,
+    additionalProperty: product.specs.map((spec) => ({
+      "@type": "PropertyValue",
+      name: t(spec.label, locale as Locale),
+      value: t(spec.value, locale as Locale),
+    })),
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: dict.nav.home, item: `${site.url}/${locale}` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: dict.nav.products,
+        item: `${site.url}/${locale}/products`,
+      },
+      { "@type": "ListItem", position: 3, name: productName, item: productUrl },
+    ],
   };
 
   return (
     <article>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(breadcrumbJsonLd) }}
       />
 
       {/* Breadcrumb */}
@@ -99,35 +147,8 @@ export default async function ProductDetailPage({
         </ol>
       </nav>
 
-      {/* Header split */}
-      <div className="container-x grid gap-10 py-8 lg:grid-cols-2">
-        <figure>
-          <div className="overflow-hidden rounded-[2rem] border border-line bg-parchment p-2">
-            <Image
-              src={product.image}
-              alt={t(product.imageAlt, locale as Locale)}
-              width={1200}
-              height={900}
-              priority
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
-            />
-          </div>
-          <figcaption className="mt-2 text-xs text-ink-muted">
-            {t(product.imageAlt, locale as Locale)} · Photo:{" "}
-            <a
-              href={product.creditUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2"
-            >
-              {product.credit}
-            </a>{" "}
-            ({product.license})
-          </figcaption>
-        </figure>
-
-        <div>
+      <div className="container-x py-8">
+        <div className="max-w-3xl">
           <div className="flex flex-wrap items-center gap-2">
             <Eyebrow>{dict.productsPage.categories[product.category]}</Eyebrow>
             <MoqBadge label={dict.moq.badge} />
@@ -174,6 +195,8 @@ export default async function ProductDetailPage({
       <div className="container-x">
         <MoqNotice text={dict.moq.long} className="border" />
       </div>
+
+      <ProductMediaCarousel media={galleryMedia} locale={locale as Locale} dict={dict} />
 
       {/* Background & uses */}
       <div className="container-x grid gap-10 py-12 lg:grid-cols-[1.1fr_0.9fr]">
