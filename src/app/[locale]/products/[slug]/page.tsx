@@ -6,13 +6,14 @@ import { getDictionary } from "@/lib/dictionaries";
 import { isLocale, languageAlternates, localizedPath, type Locale } from "@/lib/i18n";
 import { site, whatsappConfigured, whatsappLink } from "@/lib/site";
 import { getProduct, productSlugs, relatedProducts, t } from "@/lib/products";
-import { productGalleryMedia } from "@/lib/product-media";
+import { productGalleryMedia, productImageMedia } from "@/lib/product-media";
 import { isFrench, locales } from "@/lib/i18n";
 import { socialMetadata } from "@/lib/seo";
 import { Eyebrow, MoqBadge, MoqNotice } from "@/components/ui";
 import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import FaqList from "@/components/FaqList";
+import MediaFrame from "@/components/MediaFrame";
 import ProductMediaCarousel from "@/components/ProductMediaCarousel";
 
 function productDescription(product: NonNullable<ReturnType<typeof getProduct>>, locale: Locale) {
@@ -78,6 +79,7 @@ export default async function ProductDetailPage({
   const L = (href: string) => localizedPath(locale as Locale, href);
   const related = relatedProducts(slug, 3);
   const quoteHref = L(`/request-quote?product=${product.slug}`);
+  const productHeroMedia = productImageMedia(product);
   const galleryMedia = productGalleryMedia(product);
   const productName = t(product.name, locale as Locale);
   const productDescriptionText = productDescription(product, locale as Locale);
@@ -147,7 +149,16 @@ export default async function ProductDetailPage({
         </ol>
       </nav>
 
-      <div className="container-x py-8">
+      <div className="container-x grid items-center gap-8 py-8 lg:grid-cols-2 lg:gap-12">
+        <div className="rounded-[2rem] border border-sand bg-parchment p-2 sm:p-2.5">
+          <MediaFrame
+            media={productHeroMedia}
+            locale={locale as Locale}
+            className="aspect-[4/3] rounded-[1.5rem]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
+        </div>
         <div className="max-w-3xl">
           <div className="flex flex-wrap items-center gap-2">
             <Eyebrow>{dict.productsPage.categories[product.category]}</Eyebrow>
