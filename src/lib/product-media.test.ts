@@ -1,7 +1,7 @@
 // Runtime validation coverage for product media selection.
 import { describe, expect, it } from "vitest";
 import { products } from "./products";
-import { cocoaBeansGalleryMedia, productGalleryMedia } from "./product-media";
+import { cocoaBeansGalleryMedia, productGalleryMedia, soybeansGalleryMedia } from "./product-media";
 
 describe("product gallery media", () => {
   it("includes every owned Cocoa Beans photo and clip", () => {
@@ -32,9 +32,28 @@ describe("product gallery media", () => {
     }
   });
 
-  it("keeps products without verified process media to their product image", () => {
+  it("uses the full owned media set for soybeans", () => {
     const product = products.find(({ slug }) => slug === "soybeans");
     if (!product) throw new Error("Soybeans product data is missing");
+
+    const gallery = productGalleryMedia(product);
+
+    expect(gallery).toBe(soybeansGalleryMedia);
+    expect(gallery).toHaveLength(4);
+    expect(gallery.every(({ kind }) => kind === "image")).toBe(true);
+    expect(gallery.every(({ src }) => src.startsWith("/media/soybeans/"))).toBe(true);
+    expect(gallery.every(({ thumb }) => Boolean(thumb))).toBe(true);
+    for (const photo of gallery) {
+      expect(photo.width ?? 0).toBeGreaterThan(0);
+      expect(photo.height ?? 0).toBeGreaterThan(0);
+      expect(photo.alt.en.length).toBeGreaterThan(3);
+      expect(photo.alt.fr.length).toBeGreaterThan(3);
+    }
+  });
+
+  it("keeps products without verified process media to their product image", () => {
+    const product = products.find(({ slug }) => slug === "cocopeat");
+    if (!product) throw new Error("Cocopeat product data is missing");
 
     expect(productGalleryMedia(product)).toEqual([
       expect.objectContaining({

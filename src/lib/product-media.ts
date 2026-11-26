@@ -206,9 +206,75 @@ export const cocoaBeansGalleryMedia: MediaAsset[] = [
   cocoaBeansImage("treeCanopy"),
 ];
 
+const soybeansPath = "/media/soybeans";
+
+const soybeansMediaNames = {
+  main: {
+    src: `${soybeansPath}/soybeans-main.webp`,
+    alt: {
+      en: "Soya beans",
+      fr: "Soja en grains",
+    },
+    width: 780,
+    height: 1040,
+  },
+  field1: {
+    src: `${soybeansPath}/soybeans-1.webp`,
+    alt: {
+      en: "Soya bean field",
+      fr: "Champ de soja",
+    },
+    width: 744,
+    height: 992,
+  },
+  field2: {
+    src: `${soybeansPath}/soybeans-2.webp`,
+    alt: {
+      en: "Soya bean plants",
+      fr: "Plants de soja",
+    },
+    width: 744,
+    height: 992,
+  },
+  field3: {
+    src: `${soybeansPath}/soybeans-3.webp`,
+    alt: {
+      en: "Soya bean crop",
+      fr: "Culture de soja",
+    },
+    width: 540,
+    height: 960,
+  },
+} satisfies Record<
+  string,
+  { src: string; alt: Localized; width: number; height: number }
+>;
+
+function soybeansImage(name: keyof typeof soybeansMediaNames): MediaAsset {
+  const image = soybeansMediaNames[name];
+  return {
+    kind: "image",
+    src: image.src,
+    thumb: image.src.replace(/\.webp$/, "-thumb.webp"),
+    alt: image.alt,
+    credit: "HB33",
+    license: "Original",
+    width: image.width,
+    height: image.height,
+  };
+}
+
+export const soybeansGalleryMedia: MediaAsset[] = [
+  soybeansImage("main"),
+  soybeansImage("field1"),
+  soybeansImage("field2"),
+  soybeansImage("field3"),
+];
+
 /** Verified product-specific assets for the product detail gallery. */
 export function productGalleryMedia(product: Product): MediaAsset[] {
   if (product.slug === "cocoa-beans") return cocoaBeansGalleryMedia;
+  if (product.slug === "soybeans") return soybeansGalleryMedia;
   const media = [productImageMedia(product)];
   const video = productVideoFor(product.slug);
   if (video) media.push(imageToMedia(siteImages.about), video);

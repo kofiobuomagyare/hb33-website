@@ -154,7 +154,11 @@ export default async function ProductDetailPage({
           <MediaFrame
             media={productHeroMedia}
             locale={locale as Locale}
-            className="aspect-[4/3] rounded-[1.5rem]"
+            className={
+              product.slug === "soybeans"
+                ? "aspect-[3:4] rounded-[1.5rem]"
+                : "aspect-[4/3] rounded-[1.5rem]"
+            }
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
