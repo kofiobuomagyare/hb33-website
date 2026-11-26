@@ -268,6 +268,8 @@ const fr: Dictionary = {
     nextMedia: "Média suivant",
     chooseMedia: "Choisir un média",
     goToMedia: "Afficher le média",
+    mediaGridTitle: "Toutes les images et vidéos",
+    mediaGridHint: "Sélectionnez une vignette pour l’afficher ci-dessus.",
     mediaLoading: "Chargement du média…",
     mediaUnavailable: "Ce média n’a pas pu être chargé.",
     openMediaSource: "Ouvrir le média d’origine",

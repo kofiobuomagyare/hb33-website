@@ -58,18 +58,30 @@ export default function MediaPill({
           </span>
         </>
       ) : null}
-      <a
-        href={media.creditUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        title={media.credit}
-        className={cn(
-          "max-w-[10rem] shrink-0 truncate underline decoration-current/40 underline-offset-2 hover:decoration-current sm:max-w-[12rem]",
-          tone === "dark" ? "hover:text-white" : "hover:text-cocoa",
-        )}
-      >
-        {media.credit}
-      </a>
+      {media.creditUrl ? (
+        <a
+          href={media.creditUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          title={media.credit}
+          className={cn(
+            "max-w-[10rem] shrink-0 truncate underline decoration-current/40 underline-offset-2 hover:decoration-current sm:max-w-[12rem]",
+            tone === "dark" ? "hover:text-white" : "hover:text-cocoa",
+          )}
+        >
+          {media.credit}
+        </a>
+      ) : (
+        <span
+          title={media.credit}
+          className={cn(
+            "max-w-[10rem] shrink-0 truncate sm:max-w-[12rem]",
+            tone === "dark" ? "text-cream/90" : "text-bark/85",
+          )}
+        >
+          {media.credit}
+        </span>
+      )}
       <span className={cn("shrink-0", tone === "dark" ? "text-cream/55" : "text-bark/50")}>
         {media.license}
       </span>

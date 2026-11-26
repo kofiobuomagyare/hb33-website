@@ -18,7 +18,9 @@ export default function MediaFrame({
   sizes = "100vw",
   priority = false,
   fill = false,
+  fit = "cover",
   controls = true,
+  preload = "metadata",
   showPill = true,
   pillLabel,
   pillClassName,
@@ -36,7 +38,11 @@ export default function MediaFrame({
   sizes?: string;
   priority?: boolean;
   fill?: boolean;
+  /** How the media fills the frame. Use `contain` to avoid cropping portraits. */
+  fit?: "cover" | "contain";
   controls?: boolean;
+  /** `none` defers the network request until the visitor presses play. */
+  preload?: "none" | "metadata" | "auto";
   showPill?: boolean;
   pillLabel?: string;
   pillClassName?: string;
@@ -49,6 +55,7 @@ export default function MediaFrame({
 }) {
   const alt = t(media.alt, locale);
   const sourceType = media.src.endsWith(".webm") ? "video/webm" : "video/mp4";
+  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
   // Native video controls live along the bottom edge, so keep the credit pill
   // at the top for playable videos unless a caller overrides it.
   const placement = pillPlacement ?? (media.kind === "video" && controls ? "top" : "bottom");
@@ -56,9 +63,9 @@ export default function MediaFrame({
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-espresso",
+        "overflow-hidden bg-espresso",
+        fill ? "absolute inset-0" : "relative",
         rounded && "rounded-[2rem]",
-        fill && "absolute inset-0",
         className,
       )}
     >
@@ -70,7 +77,7 @@ export default function MediaFrame({
             fill
             priority={priority}
             sizes={sizes}
-            className={cn("object-cover", mediaClassName)}
+            className={cn(fitClass, mediaClassName)}
             onLoad={onMediaLoad}
             onError={onMediaError}
           />
@@ -82,18 +89,18 @@ export default function MediaFrame({
             height={media.height ?? 800}
             priority={priority}
             sizes={sizes}
-            className={cn("h-full w-full object-cover", mediaClassName)}
+            className={cn("h-full w-full", fitClass, mediaClassName)}
             onLoad={onMediaLoad}
             onError={onMediaError}
           />
         )
       ) : (
         <video
-          className={cn("h-full w-full object-cover", mediaClassName)}
+          className={cn("h-full w-full", fitClass, mediaClassName)}
           poster={media.poster}
           controls={controls}
           playsInline
-          preload="metadata"
+          preload={preload}
           aria-label={alt}
           onLoadedData={onMediaLoad}
           onError={onMediaError}

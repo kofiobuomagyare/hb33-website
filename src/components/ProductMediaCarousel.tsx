@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
-import { ChevronLeft, ChevronRight, ImageOff } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from "react";
+import { ChevronLeft, ChevronRight, ImageOff, Play } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries/en";
 import type { MediaAsset } from "@/lib/product-media";
@@ -19,26 +20,52 @@ export default function ProductMediaCarousel({
   dict: Dictionary;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(media[0]?.kind !== "video");
   const [failed, setFailed] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const activeMedia = media[activeIndex];
   const productDetail = dict.productDetail;
 
+  // Cached images can finish loading before React attaches `onLoad`, which
+  // would leave the "Loading media…" overlay up forever. Check the DOM once
+  // after each switch and clear the overlay if the image is already complete.
+  useEffect(() => {
+    if (!loading) return;
+    const image = stageRef.current?.querySelector("img");
+    if (image?.complete && image.naturalWidth > 0) setLoading(false);
+  }, [activeIndex, loading]);
+
   function showMedia(index: number) {
-    setActiveIndex((index + media.length) % media.length);
-    setLoading(true);
+    const next = (index + media.length) % media.length;
+    if (next === activeIndex) {
+      // Retry only when the current item previously failed to load.
+      if (!failed) return;
+      setFailed(false);
+      setLoading(media[next].kind === "image");
+      return;
+    }
+    setActiveIndex(next);
+    setLoading(media[next].kind === "image");
     setFailed(false);
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (media.length < 2) return;
+    // Let the native video player keep its own keyboard controls.
+    if ((event.target as HTMLElement).closest("video")) return;
     if (event.key === "ArrowLeft") {
       event.preventDefault();
       showMedia(activeIndex - 1);
     } else if (event.key === "ArrowRight") {
       event.preventDefault();
       showMedia(activeIndex + 1);
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      showMedia(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      showMedia(media.length - 1);
     }
   }
 
@@ -83,45 +110,64 @@ export default function ProductMediaCarousel({
       </div>
 
       <div className="relative overflow-hidden rounded-[2rem] border border-line bg-espresso">
-        {failed ? (
-          <div className="flex aspect-[4/3] flex-col items-center justify-center gap-3 px-6 text-center text-cream">
-            <ImageOff className="size-8 text-sand" aria-hidden />
-            <p>{productDetail.mediaUnavailable}</p>
-            <a
-              href={activeMedia.src}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm underline underline-offset-4"
-            >
-              {productDetail.openMediaSource}
-            </a>
-          </div>
-        ) : (
-          <>
-            <MediaFrame
-              key={activeMedia.src}
-              media={activeMedia}
-              locale={locale}
-              className="aspect-[4/3] rounded-none animate-media-enter"
-              sizes="(max-width: 768px) 100vw, 1200px"
-              priority={activeIndex === 0}
-              pillPlacement="top"
-              onMediaLoad={() => setLoading(false)}
-              onMediaError={() => {
-                setLoading(false);
-                setFailed(true);
-              }}
-            />
-            {loading ? (
-              <div
-                className="absolute inset-0 grid place-items-center bg-espresso/75 text-sm text-cream"
-                role="status"
+        {activeMedia.thumb ? (
+          <Image
+            key={`${activeMedia.thumb}-backdrop`}
+            src={activeMedia.thumb}
+            alt=""
+            aria-hidden
+            fill
+            sizes="240px"
+            className="scale-110 object-cover opacity-40 blur-2xl"
+          />
+        ) : null}
+
+        <div
+          ref={stageRef}
+          className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[16/10]"
+        >
+          {failed ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center text-cream">
+              <ImageOff className="size-8 text-sand" aria-hidden />
+              <p>{productDetail.mediaUnavailable}</p>
+              <a
+                href={activeMedia.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm underline underline-offset-4"
               >
-                {productDetail.mediaLoading}
-              </div>
-            ) : null}
-          </>
-        )}
+                {productDetail.openMediaSource}
+              </a>
+            </div>
+          ) : (
+            <>
+              <MediaFrame
+                key={activeMedia.src}
+                media={activeMedia}
+                locale={locale}
+                fill
+                fit="contain"
+                className="rounded-none bg-transparent animate-media-enter"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 55vw, 480px"
+                preload="none"
+                pillPlacement="top"
+                onMediaLoad={() => setLoading(false)}
+                onMediaError={() => {
+                  setLoading(false);
+                  setFailed(true);
+                }}
+              />
+              {loading ? (
+                <div
+                  className="absolute inset-0 z-10 grid place-items-center bg-espresso/60 text-sm text-cream"
+                  role="status"
+                >
+                  {productDetail.mediaLoading}
+                </div>
+              ) : null}
+            </>
+          )}
+        </div>
 
         {media.length > 1 ? (
           <>
@@ -146,20 +192,66 @@ export default function ProductMediaCarousel({
       </div>
 
       {media.length > 1 ? (
-        <div className="mt-4 flex items-center justify-center gap-2" role="group" aria-label={productDetail.chooseMedia}>
-          {media.map((item, index) => (
-            <button
-              key={`${item.kind}-${item.src}`}
-              type="button"
-              onClick={() => showMedia(index)}
-              aria-label={`${productDetail.goToMedia} ${index + 1}: ${t(item.alt, locale)}`}
-              aria-current={index === activeIndex ? "true" : undefined}
-              className={cn(
-                "size-3 rounded-full border border-clay-deep transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-deep",
-                index === activeIndex ? "bg-clay-deep" : "bg-transparent hover:bg-clay/40",
-              )}
-            />
-          ))}
+        <div className="mt-6 sm:mt-8">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h3 className="font-display text-lg font-semibold text-bark sm:text-xl">
+              {productDetail.mediaGridTitle}
+            </h3>
+            <p className="text-sm text-ink-muted">{productDetail.mediaGridHint}</p>
+          </div>
+          <div
+            className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-3 lg:grid-cols-5"
+            role="group"
+            aria-label={productDetail.chooseMedia}
+          >
+            {media.map((item, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={`${item.kind}-${item.src}`}
+                  type="button"
+                  onClick={() => showMedia(index)}
+                  aria-label={`${productDetail.goToMedia} ${index + 1}: ${t(item.alt, locale)}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className={cn(
+                    "group relative aspect-square overflow-hidden rounded-xl border bg-espresso transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-deep",
+                    isActive
+                      ? "border-clay-deep ring-2 ring-clay-deep ring-offset-2 ring-offset-cream"
+                      : "border-line hover:border-clay/60",
+                  )}
+                >
+                  {item.thumb ? (
+                    <Image
+                      src={item.thumb}
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 30vw, (max-width: 1024px) 22vw, 180px"
+                      loading="lazy"
+                      className={cn(
+                        "object-cover transition duration-300",
+                        isActive
+                          ? "opacity-100"
+                          : "opacity-85 group-hover:scale-105 group-hover:opacity-100",
+                      )}
+                    />
+                  ) : null}
+                  {item.kind === "video" ? (
+                    <span
+                      className="absolute inset-0 grid place-items-center bg-espresso/20"
+                      aria-hidden
+                    >
+                      <span className="grid size-8 place-items-center rounded-full border border-white/40 bg-espresso/75 text-cream shadow-sm backdrop-blur-sm transition group-hover:scale-110 sm:size-9">
+                        <Play className="size-3.5 translate-x-px fill-current sm:size-4" />
+                      </span>
+                    </span>
+                  ) : null}
+                  {isActive ? (
+                    <span className="absolute inset-x-0 bottom-0 h-1 bg-clay-deep" aria-hidden />
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
         </div>
       ) : null}
     </section>

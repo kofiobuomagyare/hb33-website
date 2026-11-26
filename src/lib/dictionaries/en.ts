@@ -266,6 +266,8 @@ const en = {
     nextMedia: "Next media",
     chooseMedia: "Choose media",
     goToMedia: "Go to media",
+    mediaGridTitle: "All images & videos",
+    mediaGridHint: "Select a thumbnail to view it above.",
     mediaLoading: "Loading media…",
     mediaUnavailable: "This media could not be loaded.",
     openMediaSource: "Open original media",
