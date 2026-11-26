@@ -82,7 +82,7 @@ const registry: Record<Locale, Omit<LocaleInfo, "code">> = {
   sw: { language: "sw", name: "Kiswahili", group: "east-africa", intl: "sw-KE", dir: "ltr", chain: ["sw"], status: "starter" },
   ar: { language: "ar", name: "العربية", group: "middle-east", intl: "ar-EG", dir: "rtl", chain: ["ar"], status: "starter" },
   ja: { language: "ja", name: "日本語", group: "asia", intl: "ja-JP", dir: "ltr", chain: ["ja"], status: "starter" },
-  "zh-CN": { language: "zh", name: "简体中文", group: "asia", intl: "zh-CN", dir: "ltr", chain: ["zh"], status: "starter" },
+  "zh-CN": { language: "zh", name: "简体中文", group: "asia", intl: "zh-CN", dir: "ltr", chain: ["zh"], status: "complete" },
 };
 
 export const localeRegistry: LocaleInfo[] = localeCodes.map((code) => ({
