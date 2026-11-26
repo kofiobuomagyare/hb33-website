@@ -270,6 +270,8 @@ const fr: Dictionary = {
     goToMedia: "Afficher le média",
     mediaGridTitle: "Toutes les images et vidéos",
     mediaGridHint: "Sélectionnez une vignette pour l’afficher ci-dessus.",
+    viewFullScreen: "Afficher en plein écran",
+    closeFullScreen: "Fermer le plein écran",
     mediaLoading: "Chargement du média…",
     mediaUnavailable: "Ce média n’a pas pu être chargé.",
     openMediaSource: "Ouvrir le média d’origine",
